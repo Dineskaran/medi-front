@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+}
+
+body {
+    height:80%;
+    /* width:100% ; */
+    background-color: rgb(255, 255, 255);
+    overflow: scroll;
+}
+
+:root {
+    --primaryColor: black;
+    
+
+}
+.color_white {
+    color: aliceblue;
+}
+.icon_big {
+    font-size: 40px;
+}

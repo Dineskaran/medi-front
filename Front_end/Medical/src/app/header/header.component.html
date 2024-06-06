@@ -1,0 +1,18 @@
+<div class="header">
+
+    <div class="header_menu_logo" >
+        <span *ngIf="!mainService.isMinimized" class="material-symbols-outlined color_white" (click)="mainService.toggle()">menu</span>
+        <span *ngIf="mainService.isMinimized" class="material-symbols-outlined color_white" (click)="mainService.toggle()">menu</span>
+        <img src="../../assets/uyirilai.png" alt="medical logo" class="logo"/>
+    </div>
+
+    <div class="header_option">
+
+        <input type="text" class=" Search_in" placeholder=" Search">
+        <button  class="material-symbols-outlined search_submit color_white"> search</button>
+        <span class="material-symbols-outlined color_white">notifications_active </span>
+        <span class="material-symbols-outlined color_white"> account_circle  </span>
+        
+    </div>
+
+</div>

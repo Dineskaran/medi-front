@@ -1,0 +1,11 @@
+<div class="home">
+
+    <div  [ngClass]="mainService.isMinimized ? 'left_mini' : 'left'">
+        <app-left-panel></app-left-panel>
+    </div>
+   
+    <div [ngClass]="mainService.isMinimized ? 'right_mini' : 'right'">
+         <app-right-panel ></app-right-panel>
+    </div>
+
+</div>

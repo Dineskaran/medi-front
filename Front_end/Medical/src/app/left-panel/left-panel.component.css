@@ -1,0 +1,43 @@
+.left_menu {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4px;
+    /* background-color: rgba(146, 212, 190, 0.637); */
+    border-radius: 8px;
+    
+    
+
+    
+   
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    padding: 4px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+    margin-right: 8px;
+    border-radius: 8px;
+    /* background-color: rgba(95, 100, 104, 0.521); */
+
+}
+
+.menu:hover{
+    background-color: rgba(81, 166, 206, 0.815);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.menu_icon {
+
+    font-size: 40px;
+    cursor: pointer;
+
+}
+.menu_name{
+    font-size: 20px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    
+}
