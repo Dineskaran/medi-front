@@ -27,7 +27,7 @@
                 <th>Discharge Date</th>
                 <th>Dicharge Reason</th>
                 <th>work In uyirilai</th>
-                <th>Note</th>
+                <!-- <th>Note</th> -->
     
                 </tr>
 
@@ -35,13 +35,13 @@
                     <td>{{ i+1}}</td>
                     <!-- <td>{{ home_Admistion.id}}</td> -->
                     <td>{{ home_Admistion.person_details}}</td>
-                    <td>{{ home_Admistion.disease }}</td>
                     <td>{{ home_Admistion.admission_date }}</td>
+                    <td>{{ home_Admistion.disease }}</td>
                     <td>{{ home_Admistion.room_no}}</td>
                     <td>{{ home_Admistion.hospital_name}}</td>
                     <td>{{ home_Admistion.discharge_date}}</td>
                     <td>{{ home_Admistion.discharge_reason}}</td>
-                    <td>{{ home_Admistion.note }}</td>
+                    <td>{{ home_Admistion.note}}</td>
                     <td></td>
                     <td><button  class="material-symbols-outlined buttons__edit" (click)="this.home_AdmistionService.editAdmistion(i)">edit</button></td>
                     <td><button  class="material-symbols-outlined buttons__delete" (click)="deleteHomeadmission(home_Admistion.id)">delete</button></td>
@@ -214,7 +214,7 @@
 
                             <tr>
                                 <td><span class="form__name">Description</span></td>
-                                <td><textarea formControlName="note" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.note" ></textarea>  </td>
+                                <td><textarea formControlName="note" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.note" ></textarea></td>
 
                             </tr>
 

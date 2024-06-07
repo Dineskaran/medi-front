@@ -4,13 +4,14 @@ import { HomeAdmistionService } from '../services/home-admistion.service';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeAdmistion } from '../model/home-admistion';
+import { RouterLink, RouterModule } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-home-admistion',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule,FormsModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule,FormsModule,RouterLink,RouterModule],
   templateUrl: './home-admistion.component.html',
   styleUrl: './home-admistion.component.css'
 })
@@ -41,7 +42,7 @@ export class HomeAdmistionComponent implements OnInit{
       work_in_uyirilai:new FormControl('',[Validators.required,]),
       discharge_date:new FormControl('',[Validators.required,]),
       discharge_reason:new FormControl('',[Validators.required,]),
-      note:new FormControl(''),
+      note:new FormControl('')
       })
 
       this.loadAllAdmitions();

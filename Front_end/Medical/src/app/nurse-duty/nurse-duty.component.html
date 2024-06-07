@@ -1,0 +1,131 @@
+<div class="home__admission">
+
+    <div *ngIf="nurse_dutyService.isAddNew" class="show__Addmission">
+        <div class="header"> 
+
+            <div class="title">
+                Nurse Duty
+            </div>
+
+            <div class="option">
+                <button class="show__button" (click)="nurse_dutyService.changeOption()"><span class="material-symbols-outlined"> add </span>New</button>
+            </div>
+
+        </div>
+
+        <div class="list" >
+
+            <table class="row1" >
+                <tr >
+                
+                <th>No</th>
+                <th>Person Id</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Person Type</th>
+                <th>Duty Option</th>
+                <th>Description</th>
+                
+    
+                </tr>
+
+                <tr  class="data" *ngFor="let nerse_duty of nurse_dutyService.nurse_dutyList ; let i = index">
+                    <td>{{ i+1}}</td>
+                    <td>{{ nerse_duty.person_details_id}}</td>
+                    <td>{{ nerse_duty.date }}</td>
+                    <td>{{ nerse_duty.time }}</td>
+                    <td>{{ nerse_duty.person_type}}</td>
+                    <td>{{ nerse_duty.duty_option}}</td>
+                    <td>{{ nerse_duty.note}}</td>
+                    <td></td>
+                    <td><button  class="material-symbols-outlined buttons__edit" (click)="this.nurse_dutyService.editNurseduty(i)" >edit</button></td>
+                    <td><button  class="material-symbols-outlined buttons__delete" (click)="deleteNurseduty(nerse_duty.id)" >delete</button></td>
+                  </tr>              
+            </table>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="!nurse_dutyService.isAddNew" class="Addmission__new__add">
+        
+        <div class="header">
+
+            <div class="title">
+                New Nurse Duty
+            </div>
+
+        </div>
+
+        <div class="form__row1">
+            <div class="form__data">
+
+                <!-- <form > -->
+                    <table class="space" >
+                        <div class="row1">
+
+                           
+                            <tr>
+                                <td><span class="form__name" >Person Id</span></td>
+                                <td>
+                                    <select  class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_details_id" >
+                                        <option value="0">--none--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="form__name"> Date</span></td>
+                                <td><input   type="date" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.date"  /></td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="form__name">Add Time</span></td>
+                                <td><input  type="time" class ="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.time" /></td>
+
+                            </tr>
+
+
+                            <tr>
+                                <td><span class="form__name">Person Type</span></td>
+                                <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type" >
+
+                            </tr>
+                            <tr>
+                                <td><span class="form__name">Duty option</span></td>
+                                <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" >
+
+                            </tr>
+
+                            <tr>
+                                <td><span class="form__name">Description</span></td>
+                                <td><textarea  class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.note" ></textarea></td>
+
+                            </tr>
+                        </div>
+                    </table>
+                    
+                <!-- </form> -->
+
+            </div>
+
+        </div>
+
+        <div class="form__row2">
+
+            <button class="Submit__color" (click)="insertNursedutyDetails()">Submit</button>
+            <button class="Discharge__color" (click)="nurse_dutyService.changeOption()" >Back</button>
+            
+
+        </div>
+
+    </div>
+
+</div>

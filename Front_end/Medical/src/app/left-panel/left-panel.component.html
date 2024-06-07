@@ -2,10 +2,10 @@
 
     <div class="left_menu">
 
-        <div class="menu">
+        <a routerLink="/" class="menu">
              <span class="material-symbols-outlined menu_icon">home</span>
              <span *ngIf="!mainService.isMinimized"  class="menu_name"> Home</span>
-        </div>
+        </a>
 
         <div class="menu">
             <span class="material-symbols-outlined  menu_icon"> inventory  </span>
@@ -25,39 +25,39 @@
         </div>
 
 
-        <div class="menu">
+        <a routerLink="/nurseduty" routerLinkActive="active" class="menu">
             <span class="material-symbols-outlined menu_icon">ecg_heart </span>
             <span  *ngIf="!mainService.isMinimized" class="menu_name"> Nurse Duty</span>
         
-        </div>
+        </a>
 
 
-        <div class="menu">
+        <a routerLink="/homeadmision" routerLinkActive="active" class="menu">
             <span class="material-symbols-outlined menu_icon">add_box </span>
             <span  *ngIf="!mainService.isMinimized" class="menu_name"> Home Admistion</span>
         
-        </div>
+        </a>
 
 
-        <div class="menu">
+        <a routerLink="/search&report" routerLinkActive="active" class="menu">
             <span class="material-symbols-outlined menu_icon">content_paste_search </span>
             <span *ngIf="!mainService.isMinimized"  class="menu_name"> Search & Report</span>
         
-        </div>
+        </a>
 
 
-        <div class="menu">
+        <a routerLink="/notification" routerLinkActive="active" class="menu">
             <span class="material-symbols-outlined menu_icon">notifications</span>
             <span  *ngIf="!mainService.isMinimized" class="menu_name">Notification</span>
         
-        </div>
+        </a>
 
 
-        <div class="menu">
+        <a routerLink="/settings" routerLinkActive="active" class="menu">
             <span class="material-symbols-outlined menu_icon"> settings</span>
             <span *ngIf="!mainService.isMinimized"  class="menu_name"> settings</span>
         
-        </div>
+        </a>
 
         <div class="menu">
             <span class="material-symbols-outlined menu_icon">  logout </span>

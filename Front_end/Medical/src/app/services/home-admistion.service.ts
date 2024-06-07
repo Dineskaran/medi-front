@@ -47,13 +47,8 @@ export class HomeAdmistionService   {
 
 
   editAdmistion(i:number):void {
-    // console.log("index is " +i)
-    // console.log(this.home_admistionList)
-    // console.log(this.home_admistionList[i])
+
     this.home_admistionObj=this.home_admistionList[i];
-    //this.home_admistionObj.admission_date = new Date (this.home_admistionObj.admission_date)
-    // this.home_admistionObj.admission_date = this.home_admistionObj.admission_date
-    // this.home_admistionObj.discharge_date = this.home_admistionObj.discharge_date
     this.isAddNew=!this.isAddNew;
     this.editflag = true;
     this.index = i;
@@ -155,7 +150,7 @@ export class HomeAdmistionService   {
   minimizedToggle(){
     this.isMinimized = !this.isMinimized;
   }
-  homeadmisioninsertUrl="http://127.0.0.1:8000/userservice/home_admission_insert";
+  // homeadmisioninsertUrl="http://127.0.0.1:8000/userservice/home_admission_insert";
 
   // homeadmistioninsertdetails(data:HomeAdmistion):Observable<HomeAdmistion[]>{
     homeadmistioninsertdetails():Observable<HomeAdmistion[]>{
