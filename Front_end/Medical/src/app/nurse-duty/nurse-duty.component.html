@@ -19,7 +19,7 @@
                 <tr >
                 
                 <th>No</th>
-                <th>Person Id</th>
+                <th>Member</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Person Type</th>
@@ -64,22 +64,23 @@
                     <table class="space" >
                         <div class="row1">
 
+                            
+                            <tr>
+                                <td><span class="form__name">Person Type</span></td>
+                                <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type" >
+
+                            </tr>
                            
                             <tr>
-                                <td><span class="form__name" >Person Id</span></td>
-                                <td>
-                                    <select  class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_details_id" >
-                                        <option value="0">--none--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-
-                                    </select>
-                                </td>
-
+                                <td><span class="form__name" >Member</span></td>
+                                
+                                    <td>
+                                        <select type="text"  id="person" name="person" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_details_id" required>
+                                            <option [value]="null" [disabled]="true" [selected]="true">--Select Members--</option>
+                                            <option *ngFor="let person_detailsList of person_detailsService.person_detailsList" [value]="person_detailsList.id">{{person_detailsList.first_name}} {{person_detailsList.last_name}}</option>
+                                            <!-- <option>1</option> -->
+                                        </select>
+                                    </td>    
                             </tr>
                             <tr>
                                 <td><span class="form__name"> Date</span></td>
@@ -89,13 +90,6 @@
                             <tr>
                                 <td><span class="form__name">Add Time</span></td>
                                 <td><input  type="time" class ="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.time" /></td>
-
-                            </tr>
-
-
-                            <tr>
-                                <td><span class="form__name">Person Type</span></td>
-                                <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type" >
 
                             </tr>
                             <tr>

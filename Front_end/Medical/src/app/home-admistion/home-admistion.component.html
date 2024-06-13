@@ -1,6 +1,6 @@
 <div class="home__admission">
 
-    <div *ngIf="home_AdmistionService.isAddNew" class="show__Addmission">
+    <div *ngIf="!home_AdmistionService.isAddNew" class="show__Addmission">
         <div class="header"> 
 
             <div class="title">
@@ -8,7 +8,7 @@
             </div>
 
             <div class="option">
-                <button class="show__button" (click)="home_AdmistionService.addnew()"><span class="material-symbols-outlined"> add </span>Add New</button>
+                <button class="show__button" (click)="home_AdmistionService.changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
             </div>
 
         </div>
@@ -19,31 +19,30 @@
                 <tr >
                 
                 <th>No</th>
-                <th>Person Id</th>
+                <th>Member</th>
                 <th>Addmission Date</th>
-                <th>Disease</th>
+                <th>Reason</th>
                 <th>Room No</th>
                 <th>Hospital Name</th>
                 <th>Discharge Date</th>
                 <th>Dicharge Reason</th>
-                <th>work In uyirilai</th>
-                <!-- <th>Note</th> -->
+                <th>Note</th>
     
                 </tr>
 
                 <tr  class="data" *ngFor="let home_Admistion of home_AdmistionService.home_admistionList ; let i = index">
                     <td>{{ i+1}}</td>
                     <!-- <td>{{ home_Admistion.id}}</td> -->
-                    <td>{{ home_Admistion.person_details}}</td>
-                    <td>{{ home_Admistion.admission_date }}</td>
-                    <td>{{ home_Admistion.disease }}</td>
-                    <td>{{ home_Admistion.room_no}}</td>
-                    <td>{{ home_Admistion.hospital_name}}</td>
-                    <td>{{ home_Admistion.discharge_date}}</td>
-                    <td>{{ home_Admistion.discharge_reason}}</td>
-                    <td>{{ home_Admistion.note}}</td>
-                    <td></td>
+                    <td>{{home_Admistion.person_details_id}}</td>
+                    <td>{{home_Admistion.admission_date }}</td>
+                    <td>{{home_Admistion.disease }}</td>
+                    <td>{{home_Admistion.room_no}}</td>
+                    <td>{{home_Admistion.hospital_name}}</td>
+                    <td>{{home_Admistion.discharge_date}}</td>
+                    <td>{{home_Admistion.discharge_reason}}</td>
+                    <td>{{home_Admistion.note}}</td>
                     <td><button  class="material-symbols-outlined buttons__edit" (click)="this.home_AdmistionService.editAdmistion(i)">edit</button></td>
+                    <td><button  class="material-symbols-outlined buttons__discharge" (click)="this.home_AdmistionService.dischargePerson(i)">transfer_within_a_station</button></td>
                     <td><button  class="material-symbols-outlined buttons__delete" (click)="deleteHomeadmission(home_Admistion.id)">delete</button></td>
                   </tr>              
             </table>
@@ -52,7 +51,7 @@
 
     </div>
 
-    <div *ngIf="!home_AdmistionService.isAddNew" class="Addmission__new__add">
+    <div *ngIf="home_AdmistionService.isAddNew" class="Addmission__new__add">
         
         <div class="header">
 
@@ -65,175 +64,144 @@
         <div class="form__row1">
             <div class="form__data">
 
-                <form [formGroup]="HomeAdmistionReactiveForm" >
+                
                     <table class="space" >
                         <div class="row1">
 
                            
+                            <tr >
+                                <td><span class="form__name">If New</span></td>
+                                <td><input  type="checkbox" class="checkbox" id="checkbox"  name="sendemail" [(ngModel)]="home_AdmistionService.home_admistionObj.if_new"></td>
+                                <!-- <td><input id="checkbox" type="checkbox" name="sendemail" (change)="onChange($event)" [(ngModel)]="home_AdmistionService.home_admistionObj.if_new"></td> -->
+                            </tr>
+
+                            
+                            <tr>
+                                <td><span class="form__name" >Member</span></td>
+                                
+                                    <td>
+                                        <select type="text"  id="person" name="person" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.person_details_id"  required>
+                                            <option  [value]="null" [disabled]="true" [selected]="true">--Select Admit Member--</option>
+                                            <option  *ngFor="let personObj of person_detailsService.person_detailsList" [value]="personObj.id">{{personObj.first_name}} {{personObj.last_name}}  {{personObj.district}}</option>
+                                        </select>
+                                    </td>    
+                            </tr>
+
                             <tr>
                                 <td><span class="form__name">Addmission Date</span></td>
-                                <td><input formControlName="admission_date"  type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.admission_date"  /></td>
+                                <td><input   type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.admission_date"  /></td>
 
                             </tr>
-                            <!-- <tr>
-                                <td><span class="form__name">Add Time</span></td>
-                                <td><input  type="time" class ="form__input" [(ngModel)]="home_AdmistionService.admistionObj." [ngModelOptions]="{standalone:true}"/></td>
-
-                            </tr> -->
 
                             <tr>
-                                <td><span class="form__name">Disease</span></td>
-                                <td><input  formControlName="disease" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.disease"/></td>
+                                <td><span class="form__name">Reason</span></td>
+                                <td>
+                                    <select type="text"  id="disease" name="disease" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.disease"  required>
+                                        <option  [value]="null" [disabled]="true" [selected]="true">--Select disease--</option>
+                                        <option  placeholder=" Reason" *ngFor="let reasonObj of reasonArray" [value]="reasonObj.list_value"> {{reasonObj.list_value}}</option>
+                                    </select>
+                                </td>    
+                                <!-- <td><input  placeholder="Admit Reason" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.disease"/></td> -->
 
                             </tr>
 
                             <tr>
                                 <td><span class="form__name">Room No</span></td>
-                                <td><input formControlName="room_no" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.room_no" /></td>
+                                <td><input type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.room_no" /></td>
 
                             </tr>
-
-                            <tr>
-                                <td><span class="form__name">Hospital Name</span></td>
-                                <td><input formControlName="hospital_name"  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.hospital_name" /></td>
-
-                            </tr>
-
-                            <!-- <tr>
-                                <td><span class="form__name">Bed source status</span></td>
-                                <td><input formControlName="bed_source_image" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.bed_source_image" /></td>
-
-                            </tr> -->
-
+                            
                             <tr>
                                 <td><span class="form__name">Given Things</span></td>
-                                <td><input formControlName="given_things"  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.given_things"/></td>
+                                <td><input  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.given_things"/></td>
 
                             </tr>
 
                             <tr>
-                                <td><span class="form__name">Bed Source Img</span></td>
-                                <td><input formControlName="bed_source_image" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.bed_source_image" /></td>
+                                <td><span class="form__name">Bed Sores</span></td>
+                                <td><select  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.bed_sores_status" >
+                                    <option value="இல்லை">இல்லை</option>
+                                    <option value="சாதாரணம்">சாதாரணம்</option>
+                                    <option value="கடுமை">கடுமை</option>
+                                </select></td>
 
                             </tr>
 
                             <tr>
                                 <td><span class="form__name">Toilet Managing</span></td>
-                                <td><input formControlName="toilet_managing"  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.toilet_managing" /></td>
+                                <td><input   type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.toilet_managing" /></td>
 
                             </tr>
 
-                           
-
-                            <tr>
-                                <td><span class="form__name">Dicharge Reason</span></td>
-                                <td><input formControlName="discharge_reason" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_reason" /></td>
-
-                            </tr>
-
-                            
-                           
                         </div>
 
                         <div class="row2">
 
                             <tr>
-                                <td><span class="form__name">urine Managing</span></td>
-                                <td> <select formControlName="urine_managing" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.urine_managing" >
-                                    <option value="0">--none--</option>
-                                    <option value="Ok">Ok</option>
-                                    <option value="Not Ok">Not Ok</option>
-                                </select></td>
-
-                            </tr>
-
-                            <tr>
-                                <td><span class="form__name">work In uyirilai</span></td>
-                                <td> <select formControlName="work_in_uyirilai" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.work_in_uyirilai" >
-                                    <option value="0">--none--</option>
-                                    <option value="yes">YES</option>
-                                    <option value="NO">NO</option>
-
-                                </select></td>
-
-                            </tr>
-
-
-                            <tr>
-                                <td><span class="form__name">If New</span></td>
-                                <td><select formControlName="if_new" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.if_new" >
-                                    <option value="0">--none--</option>
-                                    <option value="yes">YES</option>
-                                    <option value="NO">NO</option>
+                                <td><span class="form__name">Urine Managing</span></td>
+                                <td> <input type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.urine_managing" >
                                     
-                                </select></td>
+                                
 
                             </tr>
-                            <tr>
-                                <td><span class="form__name" >Person Id</span></td>
-                                <td>
-                                    <select formControlName="person_details" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.person_details" >
-                                        <option value="0">--none--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
 
-                                    </select>
-                                </td>
+                            <tr>
+                                <td><span class="form__name">Work In uyirilai</span></td>
+                                <td> <input type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.work_in_uyirilai" ></td>
 
                             </tr>
 
                             <tr>
                                 <td><span class="form__name">Is Go Clinic</span></td>
-                                <td>
-                                    <select formControlName="is_go_clinic" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.is_go_clinic" >
-                                        <option value="0">--none--</option>
-                                        <option value="yes">YES</option>
-                                        <option value="NO">NO</option>
-                                    </select>
-                                </td>
+                               
+                                    <td><input  class="check" id="checkbox"  type="checkbox" name="sendemail" [(ngModel)]="home_AdmistionService.home_admistionObj.is_go_clinic"></td>
+                            </tr>
+
+                            <tr *ngIf="home_AdmistionService.home_admistionObj.is_go_clinic">
+                                <td><span class="form__name">Clinic Hospital Name</span></td>
+                                <td><input  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.hospital_name" /></td>
 
                             </tr>
 
-                            <tr>
+                            <tr >
                                 <td><span class="form__name">Able To ActIndepend</span></td>
-                                <td><select formControlName="able_to_act_independently" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.able_to_act_independently"  >
-                                    <option value="0">--none--</option>
-                                    <option value="yes">YES</option>
-                                    <option value="NO">NO</option>
-                                    
-                                </select></td>
+                                <td><input  class="check" id="checkbox" type="checkbox" name="sendemail" [(ngModel)]="home_AdmistionService.home_admistionObj.act_independently"></td>
+                                
 
                             </tr>
 
                             <tr>
-                                <td><span class="form__name">Discharge Date</span></td>
-                                <td><input formControlName="discharge_date" type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_date" /></td>
+                                <td><span class="form__name">Note </span></td>
+                                <td><textarea  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.note" ></textarea></td>
 
                             </tr>
 
-                            <tr>
-                                <td><span class="form__name">Description</span></td>
-                                <td><textarea formControlName="note" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.note" ></textarea></td>
+                            <div *ngIf="this.home_AdmistionService.dischargeButton">
+                                <tr>
+                                    <td><span class="form__name">Dicharge Reason</span></td>
+                                    <td><input  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_reason" /></td>
 
-                            </tr>
+                                </tr>
+                                <tr>
+                                    <td><span class="form__name">Discharge Date</span></td>
+                                    <td><input type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_date" /></td>
+
+                                </tr>
+                            </div>
 
                     </div>
                     </table>
                     
-                </form>
-
+            
             </div>
 
         </div>
 
         <div class="form__row2">
 
-            <button class="Submit__color" (click)="insertHomeAddmissionDetails()">Submit</button>
-            <!-- <button  class="edit__color" (click)="home_AdmistionService.editAdmistion()" >Edit</button> -->
-            <button class="Discharge__color" (click)="home_AdmistionService.addnew()">Back</button>
-            <!-- <button class="Delete__color" (click)="home_AdmistionService.deleteAdmistion">Delete</button> -->
-
+            <button class="Submit__color" (click)="insertHomeAddmissionDetails()">Save</button>
+            <button class="Discharge__color" (click)="home_AdmistionService.changeOption()">Back</button>
+           
         </div>
 
     </div>

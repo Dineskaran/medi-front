@@ -1,0 +1,32 @@
+<div class="list" >
+
+    <table class="row1" >
+        <tr >
+        
+        <th>No</th>
+        <th>id</th>
+        <th>person_type</th>
+        <th>person_no</th>
+        <th> first_name</th>
+        <th>last_name</th>
+        <th>date_of_birth</th>
+        <th>gender</th>
+        
+        
+
+        </tr>
+
+        <tr  class="data" *ngFor="let person_details of person_detailsService.person_detailsList ; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{person_details.id}}</td>
+            <td>{{person_details.person_type}}</td>
+            <td>{{person_details.person_no}}</td>
+            <td>{{person_details.first_name}}</td>
+            <td>{{person_details.last_name}}</td>
+            <td>{{person_details.date_of_birth}}</td>
+            <td>{{person_details.gender}}</td>
+            <td></td>
+            <td><button  class="material-symbols-outlined buttons__edit" (click)="this.person_detailsService.editPerson(i)" >edit</button></td>
+            <td><button  class="material-symbols-outlined buttons__delete"  >delete</button></td>
+          </tr>              
+    </table>

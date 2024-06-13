@@ -1,16 +1,16 @@
 export interface HomeAdmistion {
     
     id:number;
-    person_details:string;
-    if_new: string;
+    person_details_id:number;
+    if_new:number;
     disease:string;
     admission_date:string;
     room_no:string;
     given_things:string;
-    is_go_clinic:string;
+    is_go_clinic:number;
     hospital_name:string;
-    bed_source_image:string;
-    able_to_act_independently:string;
+    bed_sores_status:string;
+    act_independently:number;
     toilet_managing:string;
     urine_managing:string;
     work_in_uyirilai:string;

@@ -8,28 +8,31 @@ import { MainService } from './main.service';
   providedIn: 'root'
 })
 export class HomeAdmistionService   {
-  
-  
+
+  constructor(private httpclient:HttpClient, private __main : MainService) { }
+
   isAddNew: boolean =true;
   editflag: boolean = false;
   index: number=1;
-    
+  dischargeButton:boolean=false;
 
-  constructor(private httpclient:HttpClient, private __main : MainService) { }
+  home_admistionList:HomeAdmistion [] =[]
+  home_dischargeObj:HomeAdmistion[]=[]
+  
 
   home_admistionObj : HomeAdmistion = {
 
     id:0 ,
-    person_details: "",
-    if_new: "",
+    person_details_id:0,
+    if_new:0,
     disease: "",
     admission_date: "",
     room_no: "",
     given_things: "",
-    is_go_clinic: "",
+    is_go_clinic:0,
     hospital_name: "",
-    bed_source_image: "",
-    able_to_act_independently: "",
+    bed_sores_status: "",
+    act_independently:0,
     toilet_managing: "",
     urine_managing: "",
     work_in_uyirilai: "",
@@ -40,22 +43,37 @@ export class HomeAdmistionService   {
   }
   
 
-  addnew(){
-
-    this.isAddNew=!this.isAddNew;
+  changeOption(){ 
+    
+    this.isAddNew = !this.isAddNew;
+    this.clearhomeObj()
+    this.dischargeButton=false;
+   
   }
 
 
   editAdmistion(i:number):void {
-
+    debugger
+    console.log(this.home_admistionObj)
     this.home_admistionObj=this.home_admistionList[i];
     this.isAddNew=!this.isAddNew;
     this.editflag = true;
     this.index = i;
+    this.dischargeButton=false;  
+  }
 
-    
+  
+  dischargePerson(i:number){
+    // console.log(this.home_admistionObj)
+    this.home_admistionObj=this.home_admistionList[i];
+    this.isAddNew=!this.isAddNew;
+    this.editflag = true;
+    this.index = i;
+    this.dischargeButton=true;
 
   }
+
+  
 
   saveAdmisstion(){
     if(this.editflag==false)
@@ -63,26 +81,30 @@ export class HomeAdmistionService   {
           this.home_admistionList.push(this.home_admistionObj);
         }
 
-        else{
+      else{
 
-              this.home_admistionList[this.index]=this.home_admistionObj;
-              this.editflag=false;
+          this.home_admistionList[this.index]=this.home_admistionObj;
+          this.editflag=false;
+      }   
 
-            }   
+      this.clearhomeObj()
+        
+    } 
 
+  clearhomeObj(){
     this.home_admistionObj = {
 
       id:0 ,
-      person_details: "",
-      if_new: "",
+      person_details_id:0,
+      if_new: 0,
       disease: "",
       admission_date: "",
       room_no: "",
       given_things: "",
-      is_go_clinic: "",
+      is_go_clinic:0,
       hospital_name: "",
-      bed_source_image: "",
-      able_to_act_independently: "",
+      bed_sores_status: "",
+      act_independently:0,
       toilet_managing: "",
       urine_managing: "",
       work_in_uyirilai: "",
@@ -93,81 +115,29 @@ export class HomeAdmistionService   {
             
     }
 
-  } 
-  home_admistionList:HomeAdmistion [] =[]
-  // home_admistionList:HomeAdmistion [] =[
-
-  //   {
-    
-  //     id:0 ,
-  //     person_details:'string',
-  //     if_new: "string",
-  //     disease:"string",
-  //     admission_date:"string",
-  //     room_no:"string", 
-  //     given_things:"string",
-  //     is_go_clinic:"string",
-  //     hospital_name:"string",
-  //     bed_source_image:"string",
-  //     able_to_act_independently:"string",
-  //     toilet_managing:"string",
-  //     urine_managing:"string",
-  //     work_in_uyirilai:"string",
-  //     discharge_date:"string",
-  //     discharge_reason:"string",
-  //     note:"string",
-  //   },
-  //   {
-
-  //     id:0 ,  
-  //     person_details:"string",
-  //     if_new:"string",
-  //     disease:"string",
-  //     admission_date:"string",
-  //     room_no:"string",
-  //     given_things:"string",
-  //     is_go_clinic:"string",
-  //     hospital_name:"string",
-  //     bed_source_image:"string",
-  //     able_to_act_independently:"string",
-  //     toilet_managing:"string",
-  //     urine_managing:"string",
-  //     work_in_uyirilai:"string",
-  //     discharge_date:"string",
-  //     discharge_reason:"string",
-  //     note:"string",
-  //   },
-  // ]
-
+  }
   
-
-  insert_homeadmisstion:HomeAdmistion[]=[];
-  httpOptions = {headers:new HttpHeaders({'Content-Type':'application/json'})} 
-  
-
   isMinimized:boolean =true;
   
   minimizedToggle(){
     this.isMinimized = !this.isMinimized;
   }
-  // homeadmisioninsertUrl="http://127.0.0.1:8000/userservice/home_admission_insert";
-
-  // homeadmistioninsertdetails(data:HomeAdmistion):Observable<HomeAdmistion[]>{
+ 
     homeadmistioninsertdetails():Observable<HomeAdmistion[]>{
+      console.log(this.home_admistionObj)
     return this.httpclient.post<HomeAdmistion[]>(`${this.__main.URL}/home_admission_insert`,this.home_admistionObj);
-
 
   } 
 
-  
   getAllHomeadmition():Observable<HomeAdmistion[]>{
     return this.httpclient.get<HomeAdmistion[]>(`${this.__main.URL}/home_admission_insert`);
   } 
 
  
   deleteHomeadmissionDetail(id:number){
-    console.log("Id is " + id)
-    console.log(`${this.__main.URL+"/delete?"}/${id}`)
+    // console.log("Id is " + id)
+    // console.log(`${this.__main.URL+"/delete?"}/${id}`)
+    
     const params = new HttpParams().set('id', id.toString());
     // return this.httpclient.delete<HomeAdmistion>(`${this.__main.URL+"/delete?id"}/${id}`);
     return this.httpclient.delete<HomeAdmistion>(`${this.__main.URL}/delete`, { params });

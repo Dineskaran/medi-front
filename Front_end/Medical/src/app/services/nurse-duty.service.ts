@@ -23,7 +23,7 @@ export class NurseDutyService {
     id:0,
     date:"",
     time:"",
-    person_details_id:"",
+    person_details_id:0,
     person_type:"",
     duty_option:"",
     note:""
@@ -68,7 +68,7 @@ export class NurseDutyService {
       id:0,
       date:"",
       time:"",
-      person_details_id:"",
+      person_details_id:0,
       person_type:"",
       duty_option:"",
       note:""
