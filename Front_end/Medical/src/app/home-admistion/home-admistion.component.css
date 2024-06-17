@@ -1,4 +1,4 @@
-
+/* 
 .header{
   
     border-radius: 5px;
@@ -53,16 +53,15 @@
 .tr__input  {
 
     padding: 5px;
-    background-color: rgba(189, 189, 189, 0.527);
+    background-color: rgba(218, 208, 208, 0.418);
     width: 40vh;
     border: none;
     margin-bottom: 5px;
     border-radius: 8px;
     }
-/* check box design
- */
+
  input[type="checkbox"]{
-    width: 30px;
+    width: 20px;
     height:25px;
     border: 5px;
     border-radius: 8px;
@@ -72,7 +71,7 @@
 .row1 > tr{
 
         padding: 5px;
-        /* background-color: rgba(148, 140, 27, 0.527); */
+     
         width: 50vw;
         border: none;
         margin-bottom: 5px;
@@ -84,7 +83,7 @@
     }
 
 .row1 > tr {
-    /* display: flex; */
+   
     justify-content:flex-start;
     text-align: start;
 }
@@ -105,7 +104,7 @@
 }
 
 .row2 {
-   /* justify-content: flex-start; */
+ 
    margin-left: 20vh;
 }
 .form__data {
@@ -147,7 +146,7 @@
 }
 .data {
     padding: 5px;
-    background-color: rgba(189, 189, 189, 0.527);
+    background-color: rgba(221, 214, 214, 0.527);
     border: none;
     margin-bottom: 5px;
     border-radius: 8px;
@@ -212,7 +211,7 @@
 
     padding: 12px;
     width: 38vh;
-    background-color: rgba(179, 174, 167, 0.644);
+    background-color: rgba(202, 201, 194, 0.404);
     border: none;
     border-radius: 8px;
 
@@ -223,7 +222,7 @@
 
     display: flex;
     width: 100%;
-    /* align-items: center; */
+   
     justify-content:flex-end;
     margin-top: 2px;
     margin-right: 10px;
@@ -234,7 +233,7 @@
     margin-left: 8px;
     margin-right:8px ;
     cursor: pointer;
-    /* background-color: brown; */
+  
 }
 .Submit__color {
 
@@ -257,4 +256,4 @@
     font-size: large;
     width: 30%;
     padding-right: 25px;
-}
+} */

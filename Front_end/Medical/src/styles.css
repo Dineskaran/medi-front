@@ -1,14 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+
 * {
     margin: 0;
 }
 
 body {
     height:80%;
-    /* width:100% ; */
     background-color: rgb(255, 255, 255);
-    overflow: scroll;
+  
 }
 
 :root {
@@ -21,4 +22,356 @@ body {
 }
 .icon_big {
     font-size: 40px;
+}
+
+.left_menu {
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 4px; */
+    /* background-color: rgba(146, 212, 190, 0.637); */
+    border-radius: 8px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    /* background-color: rgba(95, 100, 104, 0.521); */
+
+}
+
+.menu:hover{
+    background-color: rgba(81, 166, 206, 0.815);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.menu_icon {
+
+    font-size: 40px;
+    cursor: pointer;
+
+}
+.menu_name{
+    font-size: 20px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    
+}
+.dropdown {
+    float:inline-start;
+    overflow: hidden;
+    
+
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    background-color: rgba(81, 166, 206, 0.815);
+    /* padding: 4px 6px; */
+    background-color: inherit;
+    /* font-family: inherit; */
+    margin-bottom: 0;
+  }
+ 
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    /* min-width: 160px; */
+    margin-left: 180px;
+    bottom: 3vh;
+    
+    z-index: 1;
+  }
+
+.dropdown-content__mini {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  /* min-width: 160px; */
+  margin-left: 47px;
+  bottom: 3vh;
+  z-index: 1;
+}
+  
+.dropdown-content a {
+    /* float: none; */
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    /* text-align: left; */
+  }
+  
+.dropdown-content a:hover {
+  background-color: rgba(81, 166, 206, 0.815);
+  }
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
+
+
+  
+.header{
+  
+  border-radius: 5px;
+  /* background-color: rgba(135, 197, 194, 0.774); */
+  justify-content: space-between; 
+  display: flex;
+  width: 100%;
+  
+ 
+}
+
+.title{
+  
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 10px;
+  background-color: rgba(69, 179, 212, 0.781);
+  width: 100%;
+  border-radius: 8px;
+  justify-content: center;
+}
+
+.option {
+  padding: 2px;
+ 
+}
+.show__button   {
+
+  background-color: #89ac0bc0;
+  padding: 8px;
+  border: none;
+  padding-left: 5px;
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
+  }
+.show__button:hover{
+
+  background-color: aqua;
+  text-align: center;
+}
+
+.tr__input  {
+
+  padding: 5px;
+  background-color: rgba(218, 208, 208, 0.418);
+  width: 40vh;
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  }
+/* check box design
+*/
+input[type="checkbox"]{
+  width: 30px;
+  height:25px;
+  border: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.row1 > tr{
+
+      padding: 5px;
+      /* background-color: rgba(148, 140, 27, 0.527); */
+      width: 50vw;
+      border: none;
+      margin-bottom: 5px;
+      border-radius: 8px;
+      justify-content: center;
+      text-align: center;
+      
+     
+  }
+
+.row1 > tr {
+  /* display: flex; */
+  justify-content:flex-start;
+  text-align: start;
+}
+.form__row1 {
+  display: flex;
+  width: 100%;
+  
+}
+
+.Addmission__new__add{
+  display: flex;
+  flex-direction: column;
+}
+.space{
+  display: flex;
+  padding-left: 10px;
+  
+}
+
+.row2 {
+ /* justify-content: flex-start; */
+ margin-left: 20vh;
+}
+.form__data {
+
+
+margin-top: 12px;
+justify-content:space-between;
+display: flex;
+
+
+}
+
+.form__name {
+
+  font-weight:bolder;
+  font-size: 20px;
+  padding-right: 10px;
+
+}
+.data >td{
+
+  border-radius: 8px;
+  text-align: center;
+ 
+  
+}  
+ 
+.row2> tr> td> textarea{
+  display: flex;
+}
+.row1 > tr >th{
+
+  padding: 5px;
+  background-color: rgba(148, 140, 27, 0.527);
+  width: 38vh;
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 8px;
+}
+.data {
+  padding: 5px;
+  background-color: rgba(221, 214, 214, 0.527);
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.buttons__edit{
+
+  background-color: #3ad413c9;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  
+}
+.buttons__edit:hover{
+
+  background-color: #3861e6da;
+}
+
+.buttons__discharge{
+
+  background-color: #a82b0cf3;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+  display: flex;
+ 
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+}
+
+.buttons__discharge:hover{
+  
+  background-color: #c23f17da;
+
+}
+.buttons__delete{
+
+  background-color: #e08c3df3;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+  display: flex;
+ 
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.buttons__delete:hover{
+  background-color: rgba(255, 13, 13, 0.842);
+}
+.form__input {
+
+  padding: 12px;
+  width: 38vh;
+  background-color: rgba(202, 201, 194, 0.404);
+  border: none;
+  border-radius: 8px;
+
+
+}
+
+.form__row2 {
+
+  display: flex;
+  width: 100%;
+  /* align-items: center; */
+  justify-content:flex-end;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+.form__row2 > button {
+
+  padding: 8px;
+  margin-left: 8px;
+  margin-right:8px ;
+  cursor: pointer;
+  /* background-color: brown; */
+}
+.Submit__color {
+
+  background-color:rgba(77, 223, 92, 1);
+}
+.edit__color {
+
+  background-color:rgba(255, 255, 0, 1);
+}
+
+.Discharge__color {
+
+  background-color:rgba(223, 77, 191, 0.81);
+}
+.Delete__color {
+
+  background-color: rgba(243, 35, 35, 1);
+}
+.form__data > form > table > tr > td > span {
+  font-size: large;
+  width: 30%;
+  padding-right: 25px;
 }

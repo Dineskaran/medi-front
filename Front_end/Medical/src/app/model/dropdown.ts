@@ -1,7 +1,8 @@
 export interface Dropdown {
+
+    id:number;
     list_type:string;
     list_value:string;
-    status:number;
     filter_by:string;
 
     

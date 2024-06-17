@@ -12,7 +12,7 @@ export class NurseDutyService {
   constructor(private httpclient:HttpClient, private __main : MainService) { }
 
 
-
+  isMinimized:boolean =true;
   editflag:boolean=false;
   index: number=1;
   isAddNew: boolean =true;
@@ -43,25 +43,22 @@ export class NurseDutyService {
     this.isAddNew=!this.isAddNew;
     this.editflag = true;
     this.index = i;
-
-    
-
   }
 
-  saveNurseduty(){
-    if(this.editflag==false)
-      {
-        this.nurse_dutyList.push(this.nurse_dutyObj);
-      }
+  // saveNurseduty(){
+  //   if(this.editflag==false)
+  //     {
+  //       this.nurse_dutyList.push(this.nurse_dutyObj);
+  //     }
     
-      else{
+  //     else{
 
-        this.nurse_dutyList[this.index]=this.nurse_dutyObj;
-        this.editflag=false;
-      }
+  //       this.nurse_dutyList[this.index]=this.nurse_dutyObj;
+  //       this.editflag=false;
+  //     }
 
-      this.clearDutyObj()
-  }
+  //     this.clearDutyObj()
+  // }
 
   clearDutyObj(){
     this.nurse_dutyObj={
@@ -77,7 +74,7 @@ export class NurseDutyService {
 
   }
 
-  isMinimized:boolean =true;
+
   
   minimizedToggle(){
     this.isMinimized = !this.isMinimized;

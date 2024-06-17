@@ -2,7 +2,7 @@
 
     height: 10%;
     width: 100%;
-    background-color:#1D2128;
+    background-color:#6882ac;
     position:-webkit-sticky;
     display: flex;
     bottom:0; 
@@ -15,7 +15,7 @@
 
 .footer_copyright p{
     
-   color: rgba(206, 202, 202, 0.89);
+   color: rgba(14, 12, 12, 0.89);
    text-align: center;
    justify-content: center;
    display: flex;

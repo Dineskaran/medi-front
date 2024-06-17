@@ -64,19 +64,36 @@
                     <table class="space" >
                         <div class="row1">
 
+                            <tr>
+                                <td><span class="form__name">Duty </span></td>
+                                <td>
+                                    <select type="text"  id="Duty option" name="Duty option" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option"  required>
+                                        <option  [value]="null" [disabled]="true" [selected]="true">--Select Duty option--</option>
+                                        <option  placeholder=" dutyoption" *ngFor="let dutyoptionObj of dutyoptionArray" [value]="dutyoptionObj.list_value"> {{dutyoptionObj.list_value}}</option>
+                                    </select>
+                                </td>    
+                                <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
+
+                            </tr>
                             
                             <tr>
-                                <td><span class="form__name">Person Type</span></td>
-                                <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type" >
+                                <td><span class="form__name">Patient Type</span></td>
+                                <td>
+                                    <select type="text"  id="Person Type" name="Person Type" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type"  required>
+                                        <option  [value]="null" [disabled]="true" [selected]="true">--Select Patient Type --</option>
+                                        <option  placeholder=" PeronType" *ngFor="let PeronTypeObj of personTypeArray" [value]="PeronTypeObj.list_value"> {{PeronTypeObj.list_value}}</option>
+                                    </select>
+                                </td>    
+                                <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type" > -->
 
                             </tr>
                            
                             <tr>
-                                <td><span class="form__name" >Member</span></td>
+                                <td><span class="form__name" >Patient</span></td>
                                 
                                     <td>
                                         <select type="text"  id="person" name="person" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_details_id" required>
-                                            <option [value]="null" [disabled]="true" [selected]="true">--Select Members--</option>
+                                            <option [value]="null" [disabled]="true" [selected]="true">-- Patient --</option>
                                             <option *ngFor="let person_detailsList of person_detailsService.person_detailsList" [value]="person_detailsList.id">{{person_detailsList.first_name}} {{person_detailsList.last_name}}</option>
                                             <!-- <option>1</option> -->
                                         </select>
@@ -92,15 +109,11 @@
                                 <td><input  type="time" class ="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.time" /></td>
 
                             </tr>
-                            <tr>
-                                <td><span class="form__name">Duty option</span></td>
-                                <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" >
-
-                            </tr>
+                            
 
                             <tr>
                                 <td><span class="form__name">Description</span></td>
-                                <td><textarea  class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.note" ></textarea></td>
+                                <td><textarea placeholder="write the note here" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.note" ></textarea></td>
 
                             </tr>
                         </div>

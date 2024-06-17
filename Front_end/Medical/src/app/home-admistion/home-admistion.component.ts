@@ -106,46 +106,6 @@ export class HomeAdmistionComponent implements OnInit{
   //     this.home_AdmistionService.home_admistionObj.if_new = 0;
   //   }
     
-    
-  //  }
-
-  //  onChangeAble(event: any): void {
-  //   if (event.target['checked']){
-  //     console.log("it's true");
-  //     this.home_AdmistionService.home_admistionObj.act_independently = 1;
-  //   } 
-
-  //   else {
-
-  //     console.log("it's false");
-  //     this.home_AdmistionService.home_admistionObj.act_independently = 0;
-  //   }
-    
-    
-  //  }
-
-  //  ischeck :boolean=false;
-  //  hideclinic(){
-  //   this.ischeck= !this.ischeck;
-  //  }
-
-  //  onChangeclinic(event: any): void {
-
-    
-  //   if (event.target['checked']){
-  //     console.log("it's true");
-  //     this.home_AdmistionService.home_admistionObj.is_go_clinic = 1;
-     
-  //   } 
-
-  //   else {
-
-  //     console.log("it's false");
-  //     this.home_AdmistionService.home_admistionObj.is_go_clinic = 0;
-  //   }
-    
-    
-  //  }
 
   loadAllPersondetails():void{
     this.person_detailsService.getAllPerson('Member').subscribe(( resultList)=>{

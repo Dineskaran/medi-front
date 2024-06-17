@@ -1,6 +1,6 @@
 <div class="home__admission">
 
-    <div *ngIf="!home_AdmistionService.isAddNew" class="show__Addmission">
+    <div *ngIf="home_AdmistionService.isAddNew" class="show__Addmission">
         <div class="header"> 
 
             <div class="title">
@@ -18,29 +18,29 @@
             <table class="row1" >
                 <tr >
                 
-                <th>No</th>
+                <!-- <th>No</th> -->
                 <th>Member</th>
                 <th>Addmission Date</th>
                 <th>Reason</th>
                 <th>Room No</th>
-                <th>Hospital Name</th>
+                <!-- <th>Hospital Name</th>
                 <th>Discharge Date</th>
-                <th>Dicharge Reason</th>
-                <th>Note</th>
+                <th>Dicharge Reason</th> -->
+                <th>Bed Sores</th>
     
                 </tr>
 
                 <tr  class="data" *ngFor="let home_Admistion of home_AdmistionService.home_admistionList ; let i = index">
-                    <td>{{ i+1}}</td>
+                    <!-- <td>{{ i+1}}</td> -->
                     <!-- <td>{{ home_Admistion.id}}</td> -->
                     <td>{{home_Admistion.person_details_id}}</td>
                     <td>{{home_Admistion.admission_date }}</td>
                     <td>{{home_Admistion.disease }}</td>
                     <td>{{home_Admistion.room_no}}</td>
-                    <td>{{home_Admistion.hospital_name}}</td>
+                    <!-- <td>{{home_Admistion.hospital_name}}</td>
                     <td>{{home_Admistion.discharge_date}}</td>
-                    <td>{{home_Admistion.discharge_reason}}</td>
-                    <td>{{home_Admistion.note}}</td>
+                    <td>{{home_Admistion.discharge_reason}}</td> -->
+                    <td>{{home_Admistion.bed_sores_status}}</td>
                     <td><button  class="material-symbols-outlined buttons__edit" (click)="this.home_AdmistionService.editAdmistion(i)">edit</button></td>
                     <td><button  class="material-symbols-outlined buttons__discharge" (click)="this.home_AdmistionService.dischargePerson(i)">transfer_within_a_station</button></td>
                     <td><button  class="material-symbols-outlined buttons__delete" (click)="deleteHomeadmission(home_Admistion.id)">delete</button></td>
@@ -51,7 +51,7 @@
 
     </div>
 
-    <div *ngIf="home_AdmistionService.isAddNew" class="Addmission__new__add">
+    <div *ngIf="!home_AdmistionService.isAddNew" class="Addmission__new__add">
         
         <div class="header">
 
@@ -107,13 +107,13 @@
 
                             <tr>
                                 <td><span class="form__name">Room No</span></td>
-                                <td><input type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.room_no" /></td>
+                                <td><input placeholder="Enter Room No" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.room_no" /></td>
 
                             </tr>
                             
                             <tr>
                                 <td><span class="form__name">Given Things</span></td>
-                                <td><input  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.given_things"/></td>
+                                <td><input placeholder="Enter Given Things" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.given_things"/></td>
 
                             </tr>
 
@@ -129,25 +129,25 @@
 
                             <tr>
                                 <td><span class="form__name">Toilet Managing</span></td>
-                                <td><input   type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.toilet_managing" /></td>
+                                <td><input placeholder="Enter here"  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.toilet_managing" /></td>
 
                             </tr>
+
+                    
 
                         </div>
 
                         <div class="row2">
 
+                          
                             <tr>
                                 <td><span class="form__name">Urine Managing</span></td>
-                                <td> <input type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.urine_managing" >
-                                    
-                                
-
+                                <td> <input placeholder="write here " type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.urine_managing" >
                             </tr>
-
+                            
                             <tr>
                                 <td><span class="form__name">Work In uyirilai</span></td>
-                                <td> <input type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.work_in_uyirilai" ></td>
+                                <td> <input placeholder="write here " type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.work_in_uyirilai" ></td>
 
                             </tr>
 
@@ -159,7 +159,7 @@
 
                             <tr *ngIf="home_AdmistionService.home_admistionObj.is_go_clinic">
                                 <td><span class="form__name">Clinic Hospital Name</span></td>
-                                <td><input  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.hospital_name" /></td>
+                                <td><input placeholder="write here" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.hospital_name" /></td>
 
                             </tr>
 
@@ -172,22 +172,22 @@
 
                             <tr>
                                 <td><span class="form__name">Note </span></td>
-                                <td><textarea  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.note" ></textarea></td>
+                                <td><textarea placeholder="write Note" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.note" ></textarea></td>
 
                             </tr>
 
-                            <div *ngIf="this.home_AdmistionService.dischargeButton">
-                                <tr>
+                           
+                                <tr *ngIf="this.home_AdmistionService.dischargeButton">
                                     <td><span class="form__name">Dicharge Reason</span></td>
-                                    <td><input  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_reason" /></td>
+                                    <td><input placeholder="write Reason " type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_reason" /></td>
 
                                 </tr>
-                                <tr>
+                                <tr *ngIf="this.home_AdmistionService.dischargeButton">
                                     <td><span class="form__name">Discharge Date</span></td>
-                                    <td><input type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_date" /></td>
+                                    <td><input  type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_date" /></td>
 
                                 </tr>
-                            </div>
+                            
 
                     </div>
                     </table>

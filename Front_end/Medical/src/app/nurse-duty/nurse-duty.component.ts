@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterModule } from '@angular/router';
 import { PersonDetails } from '../model/person-details';
 import { PersonDetailsService } from '../services/person-details.service';
+import { MainService } from '../services/main.service';
+import { Dropdown } from '../model/dropdown';
 
 @Component({
   selector: 'app-nurse-duty',
@@ -21,11 +23,17 @@ export class NurseDutyComponent {
 
   nurse_dutyService:NurseDutyService=inject(NurseDutyService)
   person_detailsService:PersonDetailsService=inject(PersonDetailsService)
+  __main:MainService= inject(MainService)
+
+  personTypeArray:Dropdown[]=[]
+  dutyoptionArray:Dropdown[]=[]
 
   ngOnInit(): void{
 
     this.loadAllNurseduty();
     this.loadAllPersondetails();
+    this.loadDutyoption();
+    this.loadPersonType();
   }
 
 
@@ -33,10 +41,10 @@ export class NurseDutyComponent {
     this.nurse_dutyService.getAllNurseduty().subscribe((resultList) => {
       this.nurse_dutyService.nurse_dutyList = []
      resultList.forEach((goods:any)=>{
-      console.log(goods)
+      // console.log(goods)
        let a:NurseDuty =JSON.parse(goods)
        this.nurse_dutyService.nurse_dutyList .push(a)
-       console.log(goods)
+      //  console.log(goods)
      })
     })
   }
@@ -60,7 +68,7 @@ export class NurseDutyComponent {
   }
 
   deleteNurseduty(id:number){
-    debugger
+    
     this.nurse_dutyService.deleteNursedutyDetail(id)
     .subscribe((result)=>{
       alert("Home admission details succesfully delete")
@@ -87,4 +95,30 @@ export class NurseDutyComponent {
      })
     })
   }
+
+  
+  loadPersonType():void{
+    this.__main.getDropdownitems('PersonType','').subscribe(( resultList)=>{
+      this.personTypeArray = []
+     resultList.forEach((personType:any)=>{
+      // console.log(personType)
+       let a:Dropdown =JSON.parse(personType)
+       this.personTypeArray.push(a)
+      //  console.log(personType)
+     })
+    })
+  }
+
+  loadDutyoption():void{
+    this.__main.getDropdownitems('DutyOption ','').subscribe(( resultList)=>{
+      this.dutyoptionArray = []
+     resultList.forEach((item:any)=>{
+      // console.log(item)
+       let a:Dropdown =JSON.parse(item)
+       this.dutyoptionArray.push(a)
+      //  console.log(item)
+     })
+    })
+  }
+
 }

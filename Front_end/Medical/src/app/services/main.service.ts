@@ -17,8 +17,9 @@ export class MainService {
 
   getDropdownitems(list_type:string,filter_by:string):Observable<Dropdown[]>{
     let paramList = new HttpParams().set('list_type',list_type.toString());
-    paramList = new HttpParams().set('filter_by',filter_by.toString());
-    return this.httpclient.get<Dropdown[]>(`${this.URL}/get_drop_down`,{params:paramList});
+    paramList.set('filter_by',filter_by.toString());
+    console.log("list_type ",list_type , 'filter_by ',filter_by)
+    return this.httpclient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:paramList});
   } 
 
 }

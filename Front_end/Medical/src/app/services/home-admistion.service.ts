@@ -53,7 +53,7 @@ export class HomeAdmistionService   {
 
 
   editAdmistion(i:number):void {
-    debugger
+    // debugger
     console.log(this.home_admistionObj)
     this.home_admistionObj=this.home_admistionList[i];
     this.isAddNew=!this.isAddNew;
