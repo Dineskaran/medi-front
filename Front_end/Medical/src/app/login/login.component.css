@@ -1,0 +1,71 @@
+.body1 {
+   
+    margin: 0;
+    padding: 0;
+    /* background-image: url("path/to/your/image.jpg"); */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: rgba(59, 112, 211, 0.849);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    width: 400px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.checkbox {
+    margin-top: 10px;
+}
+
+.checkbox label {
+    margin-right: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: #070606;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 3vw;
+}
+
+button {
+    background-color: #00b894;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+    margin-top: 4px;
+}
+
+button:hover {
+    background-color: #00a796;
+}

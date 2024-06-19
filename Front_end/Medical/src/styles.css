@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
 
+/* Order */
 * {
     margin: 0;
 }
@@ -18,7 +21,8 @@ body {
 
 }
 .color_white {
-    color: aliceblue;
+    color: rgb(20, 21, 22);
+    padding-left: 6%;
 }
 .icon_big {
     font-size: 40px;
@@ -199,6 +203,20 @@ input[type="checkbox"]{
       
      
   }
+  .row> tr{
+
+    padding: 5px;
+    /* background-color: rgba(148, 140, 27, 0.527); */
+    width: 35vw;
+    border: none;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    padding-top: 10px;
+    justify-content: center;
+    text-align: center;
+    
+   
+}
 
 .row1 > tr {
   /* display: flex; */
@@ -216,6 +234,11 @@ input[type="checkbox"]{
   flex-direction: column;
 }
 .space{
+  display: flex;
+  padding-left: 10px;
+  
+}
+.space1{
   display: flex;
   padding-left: 10px;
   
@@ -339,17 +362,17 @@ display: flex;
 .form__row2 {
 
   display: flex;
-  width: 100%;
+  width: 90%;
   /* align-items: center; */
   justify-content:flex-end;
   margin-top: 2px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .form__row2 > button {
 
   padding: 8px;
   margin-left: 8px;
-  margin-right:8px ;
+  margin-right:5px ;
   cursor: pointer;
   /* background-color: brown; */
 }

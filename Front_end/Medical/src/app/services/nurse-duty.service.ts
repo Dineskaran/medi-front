@@ -26,7 +26,9 @@ export class NurseDutyService {
     person_details_id:0,
     person_type:"",
     duty_option:"",
-    note:""
+    note:"",
+    by_whom:"Ramani",
+    designation:"Uyirilai nurse",
 
   }
 
@@ -68,7 +70,9 @@ export class NurseDutyService {
       person_details_id:0,
       person_type:"",
       duty_option:"",
-      note:""
+      note:"",
+      designation:"Uyirilai nurse",
+      by_whom:"Ramani"
 
     }
 

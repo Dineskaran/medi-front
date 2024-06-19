@@ -2,12 +2,37 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Dropdown } from '../model/dropdown';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  constructor(private httpclient:HttpClient) { }
+  constructor(private httpclient:HttpClient, private router:Router) { }
+  currentUrlValue!:string;
+  currentUrl(){
+    return this.router.url;
+  }
+  ngOnInit(){
+    this.currentUrlValue = this.router.url;
+    
+    console.log("mainurls: ", this.currentUrlValue);
+  }
+  //this is the method for store the router value
+  showBar():boolean{
+    if(this.currentUrlValue === '/'){
+      return false;
+    }else if(this.currentUrlValue === '/change-password'){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+
+
+
+
 
   isMinimized:boolean=true;
   toggle(){

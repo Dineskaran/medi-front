@@ -21,21 +21,49 @@ export class DropdownComponent {
   drop_downServise:DropdownService = inject(DropdownService)
   __main:MainService = inject(MainService)
 
+  ListTypeArray:Dropdown[]=[];
 
   ngOnInit(){
     
     this.loadAlldropDown();
+    this.loadListType();
 
     
   }
 
+  selected_drodown(droplist_type:string){
 
-  loadAlldropDown(): void {
-    this.drop_downServise.getAlldrop_down().subscribe((resultList) => {
+    this.__main.getDropdownitems(droplist_type,'').subscribe((resultList) => {
       this.drop_downServise.drop_downList = []
       resultList.forEach((goods:any)=>{
       let a:Dropdown =JSON.parse(goods)
-      this.drop_downServise.drop_downList .push(a)
+      this.drop_downServise.drop_downList.push(a)
+      
+     })
+    })
+
+
+  }
+
+  loadListType():void{
+    this.drop_downServise.getAll_ListType().subscribe(( resultList)=>{
+      this.ListTypeArray = []
+      resultList.forEach((personType:any)=>{
+      // console.log(personType)
+       let a:Dropdown =JSON.parse(personType)
+       this.ListTypeArray.push(a)
+      //  console.log(personType)
+     })
+    })
+  }
+
+
+  loadAlldropDown(): void {
+    this.__main.getDropdownitems('Bywhom','').subscribe((resultList) => {
+      this.drop_downServise.drop_downList = []
+      resultList.forEach((goods:any)=>{
+      let a:Dropdown =JSON.parse(goods)
+      this.drop_downServise.drop_downList.push(a)
       
      })
     })
@@ -44,7 +72,7 @@ export class DropdownComponent {
 
   // insert drop_down list 
   insert_drop_downDetails(){
-    // debugger
+   
 
       let getData = this.drop_downServise.insert_drop_down();
       getData.subscribe(data=>{

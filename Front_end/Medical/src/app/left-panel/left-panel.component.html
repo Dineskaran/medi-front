@@ -1,8 +1,8 @@
-<div class="left-panal">
+<div  class="left-panal">
 
     <div [ngClass]="!mainService.isMinimized ?'left_menu':'left_menu_mini'">
 
-        <a routerLink="/" class="menu">
+        <a routerLink="/" class="menu" >
              <span class="material-symbols-outlined menu_icon">home</span>
              <span *ngIf="!mainService.isMinimized"  class="menu_name "> Home</span>
         </a>
@@ -57,9 +57,9 @@
             <span class="material-symbols-outlined menu_icon"> settings</span>
              <span *ngIf="!mainService.isMinimized"  class="menu_name"> settings </span>
              <div [ngClass]="mainService.isMinimized ? 'dropdown-content__mini' : 'dropdown-content'" class="dropdown-content">
-                <a routerLink="/userDetails">User details</a>
-                <a routerLink="/person">Person Details</a>
-                <a routerLink="/dropdown">Dropdown</a>
+                <a routerLink="userDetails">User details</a>
+                <a routerLink="person">Person Details</a>
+                <a routerLink="dropdown">Dropdown</a>
                 <a href="#">Log Info</a>
                 
               </div>

@@ -4,7 +4,7 @@
         <div class="header"> 
 
             <div class="title">
-                Nurse Duty
+                Investigation Diagnosis and treatment
             </div>
 
             <div class="option">
@@ -23,7 +23,7 @@
                 <th>Date</th>
                 <th>Time</th>
                 <th>Person Type</th>
-                <th>Duty Option</th>
+                <th>Treatment</th>
                 <th>Description</th>
                 
     
@@ -52,7 +52,7 @@
         <div class="header">
 
             <div class="title">
-                New Nurse Duty
+                Investigation Diagnosis and treatment
             </div>
 
         </div>
@@ -65,11 +65,35 @@
                         <div class="row1">
 
                             <tr>
-                                <td><span class="form__name">Duty </span></td>
+                                <td><span class="form__name">Treatment</span></td>
                                 <td>
                                     <select type="text"  id="Duty option" name="Duty option" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option"  required>
                                         <option  [value]="null" [disabled]="true" [selected]="true">--Select Duty option--</option>
                                         <option  placeholder=" dutyoption" *ngFor="let dutyoptionObj of dutyoptionArray" [value]="dutyoptionObj.list_value"> {{dutyoptionObj.list_value}}</option>
+                                    </select>
+                                </td>    
+                                <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
+
+                            </tr>
+
+                            <tr>
+                                <td><span class="form__name"> Designation</span></td>
+                                <td>
+                                    <select type="text"  id="designation" name="designation" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.designation"  required>
+                                        <option  [value]="null" [disabled]="true" [selected]="true">--Select Designation Name --</option>
+                                        <option   *ngFor="let designationObj of designationArray" [value]="designationObj.list_value"> {{designationObj.list_value}}</option>
+                                    </select>
+                                </td>    
+                                <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
+
+                            </tr>
+
+                            <tr>
+                                <td><span class="form__name"> Name</span></td>
+                                <td>
+                                    <select type="text"  id="by_whom" name="by_whom" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.by_whom"  required>
+                                        <option  [value]="null" [disabled]="true" [selected]="true">--Select Done By --</option>
+                                        <option   *ngFor="let by_whomObj of by_whomArray" [value]="by_whomObj.list_value"> {{by_whomObj.list_value}}</option>
                                     </select>
                                 </td>    
                                 <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->

@@ -3,7 +3,7 @@
     position: sticky;
     top: 0;
     justify-content: space-between;
-    background-color: #3d3f42;
+    background-color:#6882ac;
     padding-left: 1.4%;
     padding-right: 5%;
     display: flex;
@@ -20,8 +20,8 @@
     
 }
 .header_menu_logo img{
-    width: 120px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
    
     
 }
@@ -44,8 +44,9 @@
 .header_menu_logo > span:hover{
 
     cursor:pointer;
-    color: aqua;
-    font-size:30px;
+    color: rgb(255, 255, 255);
+    /* font-size:30px; */
+    padding-left: 8%;
  
  }
  
@@ -58,8 +59,8 @@
 .header_option >span:hover{
 
    cursor:pointer;
-   color: aqua;
-   font-size:30px;
+   color: rgb(255, 255, 255);
+   /* font-size:30px; */
 
 }
 
@@ -67,7 +68,7 @@
 .Search_in {
 
     border: none;
-    background-color:#323842;
+    background-color:#fdfeff;
     display: flex;
     justify-content: center;
     color: white;
@@ -81,7 +82,7 @@
 }
 .search_submit:hover {
 
-    background-color: #2ddd59a6;
+    /* background-color: #000000a6; */
     cursor: pointer;
 
 }
@@ -90,5 +91,5 @@
     border: none;
     border-radius: 4px;
     margin-left: 2px;
-    background-color: #323842;
+    background-color: #ffffff;
 }

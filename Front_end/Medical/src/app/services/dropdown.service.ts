@@ -20,7 +20,7 @@ export class DropdownService {
 
   drop_DownObj:Dropdown={
     id:0,
-    list_type:"",
+    list_type:"Bywhom",
     list_value:"",
     filter_by:"",
 
@@ -44,7 +44,7 @@ export class DropdownService {
    edit_Dropdown(i:number):void{
     this.drop_DownObj = this.drop_downList[i];
     this.editflag=true;
-    this.isAddNew=false;
+    // this.isAddNew=false;
     this.index=i;
     
    }
@@ -61,6 +61,11 @@ export class DropdownService {
   getAlldrop_down():Observable<Dropdown[]>{
     return this.httpclient.get<Dropdown[]>(`${this.__main.URL}/insert_drop_down`);
   } 
+
+  getAll_ListType():Observable<Dropdown[]>{
+    return this.httpclient.get<Dropdown[]>(`${this.__main.URL}/drop_down_distin`);
+  } 
+
 
 
   

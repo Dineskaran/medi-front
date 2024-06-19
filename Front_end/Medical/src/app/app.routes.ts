@@ -8,10 +8,12 @@ import { NurseDutyComponent } from './nurse-duty/nurse-duty.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { LoginComponent } from './login/login.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 export const routes: Routes = [
 
-    // {path:'',component:HomeComponent,title:'home'},
+    {path:'home',component:HomeComponent,title:'home'},
     {path:'homeadmision',component:HomeAdmistionComponent,title:'homeadmision'},
     {path:'search&report',component:SearchReportComponent,title:'search&report'},
     {path:'notification',component:NotificationComponent,title:'notification'},
@@ -19,6 +21,11 @@ export const routes: Routes = [
     {path:'nurseduty',component:NurseDutyComponent,title:'nurseduty'},
     {path:'userDetails',component:UserDetailsComponent,title:'user details'},
     {path:'person',component:PersonDetailsComponent,title:'person'},
+    {path:'settings',component:SettingsComponent,title:'settings'},
+    {path:'',component:LoginComponent,title:'login'},
+    {path:'change-password',component:ChangePasswordComponent,title:'changepassword'},
+
+
     
 
 

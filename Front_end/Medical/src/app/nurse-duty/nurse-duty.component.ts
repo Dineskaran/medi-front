@@ -25,8 +25,11 @@ export class NurseDutyComponent {
   person_detailsService:PersonDetailsService=inject(PersonDetailsService)
   __main:MainService= inject(MainService)
 
-  personTypeArray:Dropdown[]=[]
-  dutyoptionArray:Dropdown[]=[]
+  personTypeArray:Dropdown[]=[];
+  dutyoptionArray:Dropdown[]=[];
+  by_whomArray:Dropdown[]=[];
+  designationArray:Dropdown[]=[];
+
 
   ngOnInit(): void{
 
@@ -34,6 +37,8 @@ export class NurseDutyComponent {
     this.loadAllPersondetails();
     this.loadDutyoption();
     this.loadPersonType();
+    this.loaddesignation();
+    this.loadBy_whom();
   }
 
 
@@ -51,7 +56,7 @@ export class NurseDutyComponent {
 
   
   insertNursedutyDetails(){
-    // debugger
+
 
       let getData = this.nurse_dutyService.insertnursedutydetails();
       getData.subscribe(data=>{
@@ -117,6 +122,30 @@ export class NurseDutyComponent {
        let a:Dropdown =JSON.parse(item)
        this.dutyoptionArray.push(a)
       //  console.log(item)
+     })
+    })
+  }
+
+  loaddesignation():void{
+    this.__main.getDropdownitems('Designation','').subscribe(( resultList)=>{
+      this.designationArray = []
+     resultList.forEach((designation:any)=>{
+      // console.log(personType)
+       let a:Dropdown =JSON.parse(designation)
+       this.designationArray.push(a)
+      //  console.log(personType)
+     })
+    })
+  }
+
+  loadBy_whom():void{
+    this.__main.getDropdownitems('Bywhom','').subscribe(( resultList)=>{
+      this.by_whomArray = []
+     resultList.forEach((by_whom:any)=>{
+      // console.log(personType)
+       let a:Dropdown =JSON.parse(by_whom)
+       this.by_whomArray.push(a)
+      //  console.log(personType)
      })
     })
   }

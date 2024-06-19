@@ -63,7 +63,7 @@ export class HomeAdmistionComponent implements OnInit{
 
 
   deleteHomeadmission(id:number){
-    // debugger
+
     this.home_AdmistionService.deleteHomeadmissionDetail(id)
     .subscribe((result)=>{
       alert("Home admission details succesfully delete")

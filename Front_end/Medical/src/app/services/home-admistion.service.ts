@@ -9,6 +9,7 @@ import { MainService } from './main.service';
 })
 export class HomeAdmistionService   {
 
+
   constructor(private httpclient:HttpClient, private __main : MainService) { }
 
   isAddNew: boolean =true;
@@ -53,7 +54,7 @@ export class HomeAdmistionService   {
 
 
   editAdmistion(i:number):void {
-    // debugger
+
     console.log(this.home_admistionObj)
     this.home_admistionObj=this.home_admistionList[i];
     this.isAddNew=!this.isAddNew;

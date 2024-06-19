@@ -8,4 +8,6 @@ export interface NurseDuty {
     duty_option:string;
     // status:string;
     note:string;
+    designation:string;
+    by_whom:string;
 }

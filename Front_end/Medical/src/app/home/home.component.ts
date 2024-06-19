@@ -12,5 +12,22 @@ import { MainService } from '../services/main.service';
 })
 export class HomeComponent {
 
-        mainService: MainService = inject(MainService);
+    mainService: MainService = inject(MainService);
+
+    currentUrls=this.mainService.currentUrl();
+
+    logpage:boolean=false;
+
+    removeHome(){
+        if (this.currentUrls === " "){
+            this.logpage=true;
+            
+        }
+    }
+
+    ngOnInit(){
+        this.mainService.currentUrl()
+        console.log("check current Url:  ", this.mainService.currentUrl())
+        this. removeHome();
+    }
 }

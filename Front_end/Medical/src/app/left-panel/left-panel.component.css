@@ -11,8 +11,8 @@
     flex-direction: column; 
     /* padding-left: 4px; */
     border-radius: 4px;
-    border: 1px solid;
-    width: fit-content;
+    /* border: 1px solid;
+    width: fit-content; */
    
     
 }
@@ -25,7 +25,7 @@
   border-radius: 4px;
   border: 1px solid;
   width: fit-content;
-  background-color: rgb(16, 106, 141);
+  background-color: rgb(255, 255, 255);
   
 }
 
@@ -42,7 +42,7 @@
 }
 
 .menu:hover{
-    background-color: rgba(169, 243, 239, 0.815);
+    background-color: rgba(65, 133, 211, 0.815);
     cursor: pointer;
 }
 .menu_icon {
@@ -54,7 +54,7 @@
 
 }
 .menu_name{
-    font-size: 2vh;
+    font-size: 15px;
     margin-right: 8px;
     
 }
