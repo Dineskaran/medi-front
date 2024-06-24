@@ -3,46 +3,47 @@ import { Injectable } from '@angular/core';
 import { MainService } from './main.service';
 import { UserDetails } from '../model/user-details';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDetailsService {
+  LoginList: any;
 
-  constructor(private httpclient:HttpClient, private __main : MainService) { }
+  constructor(private httpclient:HttpClient, private __main : MainService, private router: Router,) { }
 
   editflag:boolean=false;
   index: number=1;
   isAddNew: boolean =true;
-
-
   isMinimized:boolean =true;
-  
-  minimizedToggle(){
-    this.isMinimized = !this.isMinimized;
+
+
+  isLogined:boolean=false;
+
+
+  logout(){
+
+    if(this.isLogined){
+
+        this.isLogined=false;
+       this.router.navigate(['/']);
+
+      }
   }
 
+  minimizedToggle(){
+   this.isMinimized = !this.isMinimized;
+  }
 
   userdetailsList:UserDetails[] = []
  
-
   changeOption(){ 
     
     this.isAddNew = !this.isAddNew;
-    
-   
+  
   }
 
-  // userdetailsObj:UserDetails={
-  //   id:0,
-  //   userid:"",
-  //   user_name:"",
-  //   password:"",
-  //   privilege:"",
-  //   create_date:"",
-  //   create_by:"",
-
-  // }
 
   insertuserDetails(userObj:UserDetails):Observable<UserDetails[]>{
     console.log(userObj)

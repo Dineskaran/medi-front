@@ -9,6 +9,28 @@ import { Router } from '@angular/router';
 })
 export class MainService {
   constructor(private httpclient:HttpClient, private router:Router) { }
+
+// privilege:string="Admin";
+checkadmin:boolean=true;
+
+  logde(privilege:string){
+    if(privilege==="Admin"){
+      this.checkadmin=true;
+    }
+    else{
+      this.checkadmin=false;
+    }
+  }
+
+  
+
+
+
+
+
+
+
+
   currentUrlValue!:string;
   currentUrl(){
     return this.router.url;

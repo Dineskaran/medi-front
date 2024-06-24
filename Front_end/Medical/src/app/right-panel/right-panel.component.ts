@@ -6,14 +6,16 @@ import { NotificationComponent } from '../notification/notification.component';
 import { SettingsComponent } from '../settings/settings.component';
 import { RouterLink } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-right-panel',
   standalone: true,
-  imports: [RouterModule,RouterLink,RouterLink,HomeAdmistionComponent,HomeComponent,SettingsComponent,NurseDutyComponent,NotificationComponent],
+  imports: [RouterModule,CommonModule,RouterLink,RouterLink,HomeAdmistionComponent,HomeComponent,SettingsComponent,NurseDutyComponent,NotificationComponent],
   templateUrl: './right-panel.component.html',
   styleUrl: './right-panel.component.css'
 })
 export class RightPanelComponent {
+isLoggedIn: any;
 
 }

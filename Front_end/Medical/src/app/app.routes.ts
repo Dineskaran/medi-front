@@ -10,10 +10,14 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MainHomeComponent } from './main-home/main-home.component';
 
 export const routes: Routes = [
 
-    {path:'home',component:HomeComponent,title:'home'},
+    {path:'', redirectTo:'login', pathMatch:'full'},
+
+    {path:'',component:LoginComponent,title:'login'},
+    {path:'dashboard',component:MainHomeComponent,title:'dashboard'},
     {path:'homeadmision',component:HomeAdmistionComponent,title:'homeadmision'},
     {path:'search&report',component:SearchReportComponent,title:'search&report'},
     {path:'notification',component:NotificationComponent,title:'notification'},
@@ -22,7 +26,6 @@ export const routes: Routes = [
     {path:'userDetails',component:UserDetailsComponent,title:'user details'},
     {path:'person',component:PersonDetailsComponent,title:'person'},
     {path:'settings',component:SettingsComponent,title:'settings'},
-    {path:'',component:LoginComponent,title:'login'},
     {path:'change-password',component:ChangePasswordComponent,title:'changepassword'},
 
 

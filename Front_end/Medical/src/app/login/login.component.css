@@ -52,20 +52,23 @@ input[type="checkbox"] {
 a {
     color: #fff;
     text-decoration: none;
-    margin-left: 3vw;
+    margin-left: 4vw;
 }
 
 button {
-    background-color: #00b894;
+    background-color: #ac9f2f;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s ease all;
-    margin-top: 4px;
+    margin-top: 2vw;
+    margin-left: 16vw;
+   
+    
 }
 
 button:hover {
-    background-color: #00a796;
+    background-color: #32ce78;
 }
