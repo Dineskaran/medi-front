@@ -13,23 +13,6 @@ export class MainService {
 // privilege:string="Admin";
 checkadmin:boolean=true;
 
-  logde(privilege:string){
-    if(privilege==="Admin"){
-      this.checkadmin=true;
-    }
-    else{
-      this.checkadmin=false;
-    }
-  }
-
-  
-
-
-
-
-
-
-
 
   currentUrlValue!:string;
   currentUrl(){
@@ -40,6 +23,7 @@ checkadmin:boolean=true;
     
     console.log("mainurls: ", this.currentUrlValue);
   }
+  
   //this is the method for store the router value
   showBar():boolean{
     if(this.currentUrlValue === '/'){
@@ -50,11 +34,6 @@ checkadmin:boolean=true;
       return true;
     }
   }
-
-
-
-
-
 
   isMinimized:boolean=true;
   toggle(){
@@ -68,5 +47,7 @@ checkadmin:boolean=true;
     console.log("list_type ",list_type , 'filter_by ',filter_by)
     return this.httpclient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:paramList});
   } 
+
+  
 
 }

@@ -1,5 +1,7 @@
 export interface Login {
-    user_name: string;
+    error: string;
+    message: string;
+    userid: string;
     password: string;
     privilege:string;
 }

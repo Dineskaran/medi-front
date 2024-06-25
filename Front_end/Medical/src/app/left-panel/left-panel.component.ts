@@ -18,10 +18,10 @@ import { UserDetailsService } from '../services/user-details.service';
 export class LeftPanelComponent {
   mainService: MainService = inject(MainService);
   __user:UserDetailsService=inject(UserDetailsService);
-  dropdownOpen = false;
+  showSubmenu = false;
 
   toggleDropdown() {
-    this.dropdownOpen = !this.dropdownOpen;
+    this.showSubmenu = !this.showSubmenu;
   }
 
 }

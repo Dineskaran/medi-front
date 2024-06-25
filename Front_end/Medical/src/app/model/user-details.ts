@@ -1,4 +1,5 @@
 export interface UserDetails {
+    message(message: any): unknown;
 
     id:number;
     userid:string;

@@ -1,84 +1,83 @@
-<div class="left-panal" >
+<div class="left-panal" *ngIf="__user.isLogined" >
     <div [ngClass]="mainService.isMinimized ? 'left_menu_mini' : 'left_menu'">
-  
+
       <a routerLink="/dashboard" class="menu">
         <span class="material-symbols-outlined menu_icon">home</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Home</span>
       </a>
-  
+
       <a class="menu">
         <span class="material-symbols-outlined menu_icon">inventory</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Main Details</span>
       </a>
-  
+
       <a class="menu">
         <span class="material-symbols-outlined menu_icon">input</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">In Stock</span>
       </a>
-  
+
       <a class="menu">
         <span class="material-symbols-outlined menu_icon">output</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Out Stock</span>
       </a>
-  
+
       <a routerLink="nurseduty" routerLinkActive="active" class="menu">
         <span class="material-symbols-outlined menu_icon">ecg_heart</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Nurse Duty</span>
       </a>
-  
+
       <a routerLink="homeadmision" routerLinkActive="active" class="menu">
         <span class="material-symbols-outlined menu_icon">add_box</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Home Admission</span>
       </a>
-  
+
       <a routerLink="search&report" routerLinkActive="active" class="menu">
         <span class="material-symbols-outlined menu_icon">content_paste_search</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Search & Report</span>
       </a>
-  
+
       <a routerLink="notification" routerLinkActive="active" class="menu">
         <span class="material-symbols-outlined menu_icon">notifications</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Notification</span>
       </a>
-  
+
       <a class="dropdown menu" (click)="toggleDropdown()">
         <span class="material-symbols-outlined menu_icon">settings</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Settings</span>
       </a>
-  
-      <div *ngIf="dropdownOpen" class="submenu">
-        <a *ngIf="!mainService.checkadmin" routerLink="change-password" class="menu">
+
+      <div *ngIf="showSubmenu" class="submenu">
+        <!-- <a *ngIf="!mainService.checkadmin" routerLink="change-password" class="menu">
             <span class="material-symbols-outlined  menu_icon">lock_reset</span>
           <span *ngIf="!mainService.isMinimized" class="menu_name">Change Password</span>
-        </a>
-        <ng-container *ngIf="mainService.checkadmin">
-          <a routerLink="change-password" class="menu">
+        </a> -->
+        <ng-container >
+          <a routerLink="change-password" class="menu" (click)="toggleDropdown()">
             <span class="material-symbols-outlined  menu_icon">lock_reset</span>
             <span *ngIf="!mainService.isMinimized" class="menu_name">Change Password</span>
           </a>
-          <a routerLink="userDetails" class="menu">
+          <a routerLink="userDetails" class="menu" (click)="toggleDropdown()" *ngIf="__user.loggedUserObj.privilege === 'Admin' ">
             <span class="material-symbols-outlined  menu_icon">account_circle </span>
             <span *ngIf="!mainService.isMinimized" class="menu_name">User Details</span>
           </a>
-          <a routerLink="person" class="menu">
+          <a routerLink="person" class="menu" (click)="toggleDropdown()" *ngIf="__user.loggedUserObj.privilege === 'Admin' ">
             <span class="material-symbols-outlined menu_icon">person</span>
             <span *ngIf="!mainService.isMinimized" class="menu_name">Person Details</span>
           </a>
-          <a routerLink="dropdown" class="menu">
+          <a routerLink="dropdown" class="menu" (click)="toggleDropdown()" *ngIf="__user.loggedUserObj.privilege === 'Admin' ">
             <span class="material-symbols-outlined menu_icon">arrow_drop_down_circle</span>
             <span *ngIf="!mainService.isMinimized" class="menu_name">Dropdown</span>
           </a>
-          <a routerLink="logininfo" class="menu">
+          <a routerLink="logininfo" class="menu" (click)="toggleDropdown()" *ngIf="__user.loggedUserObj.privilege === 'Admin' ">
             <span class="material-symbols-outlined menu_icon">info</span>
             <span *ngIf="!mainService.isMinimized" class="menu_name">Login Info</span>
           </a>
         </ng-container>
       </div>
-  
+
       <a (click)="__user.logout()" class="menu">
         <span class="material-symbols-outlined menu_icon">logout</span>
         <span *ngIf="!mainService.isMinimized" class="menu_name">Log Out</span>
       </a>
     </div>
   </div>
-  

@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from '../app.component';
@@ -19,108 +18,54 @@ import { UserDetailsService } from '../services/user-details.service';
 })
 export class LoginComponent {
 
+
   __main:MainService=inject(MainService);
   __user:UserDetailsService=inject(UserDetailsService);
 
 
-  user_name: string = '';
-  // password: string = '';
+  constructor(private router: Router) {}
+
+
+  userid: string = 'Mat01';
+  password: string = 'Mat01#';
   privilege: string = '';
 
-
-  user: string = 'user01';
-  password: string ='12345';
 
   LoginList:Login[]=[];
 
 
-    ngOnInit(){
-      this.loadAll_User_log();
+    // ngOnInit(){
+    //   this.loadAll_User_log();
 
+    // }
+
+    log_user():void {
+      this.__user.login_user(this.userid, this.password).subscribe((resultList) => {
+        resultList.forEach((obj:any)=>{
+           let a:any =JSON.parse(obj)
+           if (a.status === "Success") {
+            alert('Loggedin successfull!');
+            this.__user.loggedUserObj = a;
+            this.__user.isLogined = true;
+            this.router.navigate(['/dashboard']); // Navigate to dashboard on successful login
+          } else {
+            alert("Log status " + a.status)
+          }
+         })
+        })
     }
 
-  loadAll_User_log():void{
-   
-    this. __user.getAll_user_DetailsList().subscribe((data)=>{
-      this.LoginList = []
-      data.forEach((user:any) => { 
-        let x:Login = JSON.parse(user)
-        this.LoginList .push(x)
-      })
-
-    })
-  }
- 
-
-  // isLoggedIn: boolean = false;
-
-  constructor(private router: Router,private http:HttpClient){
-    
-  }
 
 
-  // login(){
-  //   if(this.user_name === this. user_name&& this.password === this.password){
-  //     this.LoginList.forEach((user:Login) => { 
-  //     this.__main.logde("user")
-  //     this.__user.isLogined = true;
-  //     alert("Login Success")
-  //     this.router.navigateByUrl('/dashboard');
-  //     })
-
-  //   } else {
-  //     alert("Invalid username or password") ;
-  //     this.__user.isLogined = false;
-  //     }
-
-    
-  // }
-  
-
-  // login(){
-  //   debugger
-  //   this.LoginList.forEach((user:Login) =>{
-  //     if(user !== null){
-  //       if(this.user_name === user.user_name && this.password === user.password){
-  //         console.log(this.LoginList)
-  //         // this.isLoggedIn = true;
-  //         this.__main.logde(user.privilege)
-  //         this.__user.isLogined = false;
-  //         alert("Login Success")
-  //         this.router.navigateByUrl('dashboard')
-  //         }
-        
-
-  //     }
-      
-  //   },(_error: any)=>{
-  //     alert("Invalid username or password")
-  //     this.__user.isLogined = false;
-  //     })
-
-  //   }
-  // }
 
 
-  
 
 
-  // login() {
-  //   this.errorMessage = '';
-  //   this.loginService.login({ username: this.username, password: this.password })
-  //     .subscribe(
-  //       (isLoggedIn) => {
-  //         if (isLoggedIn) {
-  //           this.router.navigate(['/']); // Redirect to desired URL after successful login
-  //         } else {
-  //           this.errorMessage = 'Invalid credentials';
-  //         }
-  //       },
-  //       (error: any) => {
-  //         console.error(error);
-  //         this.errorMessage = 'An error occurred. Please try again later.';
-  //       }
-  //     );
+
+
+
+
+
 
 }
 
