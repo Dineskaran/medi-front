@@ -1,4 +1,5 @@
 export interface UserDetails {
+list_value: any;
     message(message: any): unknown;
 
     id:number;

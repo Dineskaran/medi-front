@@ -1,7 +1,7 @@
 <div class="home__admission">
 
     <div *ngIf="drop_downServise.isAddNew" class="show__Addmission">
-        <div class="header"> 
+        <div class="header">
 
             <div class="title">
                 Drop Down List
@@ -16,11 +16,11 @@
         <div class="list" >
             <div class="form__row1">
                 <div class="form__data">
-    
+
                     <!-- <form> -->
                         <table class="space1" >
                             <div class="row">
-    
+
                                 <!-- <tr>
                                     <td><span class="form__name">List Type</span></td>
                                     <td><input  type="text" class="form__input"  [(ngModel)]="drop_downServise.drop_DownObj.list_type"/>
@@ -32,38 +32,38 @@
                                             <option  [value]="null" [disabled]="true" [selected]="true">--Select List Type  --</option>
                                             <option   *ngFor="let ListTypeObj of ListTypeArray" [value]="ListTypeObj.list_type"> {{ListTypeObj.list_type}}</option>
                                         </select>
-                                    </td>    
+                                    </td>
                                     <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
-    
+
                                 </tr>
-    
+
                                 <tr>
                                     <td><span class="form__name">List Value</span></td>
                                     <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_value" />
                                 </tr>
-    
+
                                 <tr>
                                     <td><span class="form__name">Filter By</span></td>
                                     <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  /></td>
-    
+
                                 </tr>
                                 <tr class="form__row2">
 
                                     <button class="Submit__color" (click)="insert_drop_downDetails()"  >Submit</button>
                                     <button class="Discharge__color" (click)="drop_downServise.changeOption()"  >Back</button>
-                                    
+
                                 </tr>
-    
+
                             </div>
 
                                 <div class="row1" >
-                                    <tr > 
+                                    <tr >
                                         <th>No</th>
                                         <th>List Type</th>
                                         <th>List Value</th>
                                         <th>Filter_by</th>
                                     </tr>
-                
+
                                     <tr  class="data" *ngFor="let dropdown of drop_downServise.drop_downList ; let i = index">
                                         <td>{{ i+1}}</td>
                                         <td>{{ dropdown.list_type}}</td>
@@ -71,28 +71,28 @@
                                         <td>{{ dropdown.filter_by }}</td>
                                         <td><button  class="material-symbols-outlined buttons__edit"  (click)="drop_downServise.edit_Dropdown(i)">edit</button></td>
                                         <td><button  class="material-symbols-outlined buttons__delete" (click)="delete_dropDown(dropdown.id)" >delete</button></td>
-                                    </tr>              
+                                    </tr>
                                 </div>
-                
-                            
-    
-                        </table>
-                        
-                    <!-- </form> -->
-    
-                </div>
-    
-            </div>
-    
 
-            
+
+
+                        </table>
+
+                    <!-- </form> -->
+
+                </div>
+
+            </div>
+
+
+
         </div>
 
     </div>
 
-  
-        
 
-        
-      
+
+
+
+
 

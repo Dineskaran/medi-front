@@ -68,7 +68,7 @@
             <span class="material-symbols-outlined menu_icon">arrow_drop_down_circle</span>
             <span *ngIf="!mainService.isMinimized" class="menu_name">Dropdown</span>
           </a>
-          <a routerLink="logininfo" class="menu" (click)="toggleDropdown()" *ngIf="__user.loggedUserObj.privilege === 'Admin' ">
+          <a routerLink="log-info" class="menu" (click)="toggleDropdown()" *ngIf="__user.loggedUserObj.privilege === 'Admin' ">
             <span class="material-symbols-outlined menu_icon">info</span>
             <span *ngIf="!mainService.isMinimized" class="menu_name">Login Info</span>
           </a>

@@ -1,1 +1,48 @@
-<p>log-info works!</p>
+<div class="home__admission">
+
+  <div *ngIf="__user.isAddNew" class="show__Addmission">
+      <div class="header">
+
+          <div class="title">
+              User logInfo Details
+          </div>
+
+      </div>
+
+      <div class="list" >
+
+          <table class="row1" >
+              <tr >
+
+              <th>No</th>
+              <th>User Id</th>
+              <th>User</th>
+              <th>Log Date </th>
+              <th>Log Time</th>
+              <th>Location</th>
+              <th>Logout Time</th>
+              <th>Num Attempt</th>
+              <th>Log Status</th>
+
+
+              </tr>
+
+              <tr  class="data" *ngFor="let logdetals of __user.logInfoList ; let i = index">
+                  <td>{{ i+1}}</td>
+                  <td>{{ logdetals.user_details_id}}</td>
+                  <td>{{ logdetals.userid}}</td>
+                  <td>{{ logdetals.log_date }}</td>
+                  <td>{{ logdetals.log_time }}</td>
+                  <td>{{ logdetals.location}}</td>
+                  <td>{{ logdetals.log_out_time}}</td>
+                  <td>{{ logdetals.num_of_attempt}}</td>
+                  <td>{{ logdetals.log_status}}</td>
+                  <!-- <td><button  class="material-symbols-outlined buttons__delete" (click)="delete_user(userdetals.id)" >delete</button></td> -->
+                </tr>
+          </table>
+
+      </div>
+
+  </div>
+
+

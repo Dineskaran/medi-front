@@ -28,7 +28,7 @@ export class DropdownService {
 
 
    changeOption(){
-    this.isAddNew=!this.isAddNew;
+    // this.isAddNew=!this.isAddNew;
     this.clearDroplist();
    }
 
@@ -46,7 +46,7 @@ export class DropdownService {
     this.editflag=true;
     // this.isAddNew=false;
     this.index=i;
-    
+
    }
 
    minimizedToggle(){
@@ -60,15 +60,15 @@ export class DropdownService {
 
   getAlldrop_down():Observable<Dropdown[]>{
     return this.httpclient.get<Dropdown[]>(`${this.__main.URL}/insert_drop_down`);
-  } 
+  }
 
   getAll_ListType():Observable<Dropdown[]>{
     return this.httpclient.get<Dropdown[]>(`${this.__main.URL}/drop_down_distin`);
-  } 
+  }
 
 
 
-  
+
   delete_dropDownDetail(id:number){
     // console.log("Id is " + id)
     const params = new HttpParams().set('id', id.toString());
@@ -76,6 +76,6 @@ export class DropdownService {
 
   }
 
-  
+
 
 }

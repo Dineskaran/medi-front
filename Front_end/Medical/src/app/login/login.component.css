@@ -1,5 +1,5 @@
 .body1 {
-   
+
     margin: 0;
     padding: 0;
     /* background-image: url("path/to/your/image.jpg"); */
@@ -65,10 +65,17 @@ button {
     transition: 0.3s ease all;
     margin-top: 2vw;
     margin-left: 16vw;
-   
-    
+
+
 }
 
 button:hover {
     background-color: #32ce78;
+}
+.btn {
+  width: 100%;
+}
+
+.alert {
+  margin-top: 20px;
 }

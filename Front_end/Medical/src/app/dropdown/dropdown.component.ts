@@ -24,11 +24,11 @@ export class DropdownComponent {
   ListTypeArray:Dropdown[]=[];
 
   ngOnInit(){
-    
+
     this.loadAlldropDown();
     this.loadListType();
 
-    
+
   }
 
   selected_drodown(droplist_type:string){
@@ -38,7 +38,7 @@ export class DropdownComponent {
       resultList.forEach((goods:any)=>{
       let a:Dropdown =JSON.parse(goods)
       this.drop_downServise.drop_downList.push(a)
-      
+
      })
     })
 
@@ -64,15 +64,15 @@ export class DropdownComponent {
       resultList.forEach((goods:any)=>{
       let a:Dropdown =JSON.parse(goods)
       this.drop_downServise.drop_downList.push(a)
-      
+
      })
     })
   }
 
 
-  // insert drop_down list 
+  // insert drop_down list
   insert_drop_downDetails(){
-   
+
 
       let getData = this.drop_downServise.insert_drop_down();
       getData.subscribe(data=>{
@@ -80,7 +80,7 @@ export class DropdownComponent {
         alert("Nurse Duty details succesfully Added")
         this.loadAlldropDown();
         this.drop_downServise.clearDroplist()
-        // this.drop_downServise.nurse_dutyObj=new <class name> () model class using 
+        // this.drop_downServise.nurse_dutyObj=new <class name> () model class using
       },error=>{
         console.log(error);
         alert("Error try again")
@@ -89,10 +89,10 @@ export class DropdownComponent {
   }
 
 
-  // delete drop_down list 
+  // delete drop_down list
 
   delete_dropDown(id:number){
-    
+
     this.drop_downServise.delete_dropDownDetail(id)
     .subscribe((result)=>{
       alert("Home admission details succesfully delete")
@@ -102,13 +102,13 @@ export class DropdownComponent {
       console.log(error);
       alert("Error try again")
     });
-    
+
   }
 
 
 
 
- 
- 
- 
+
+
+
 }

@@ -1,29 +1,48 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Dropdown } from '../model/dropdown';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  constructor(private httpclient:HttpClient, private router:Router) { }
+location: any;
+  // constructor(private httpclient:HttpClient, private router:Router) { }
+  constructor(private httpClient:HttpClient,private http:HttpClient,@Inject(DOCUMENT) private document: HTMLDocument,private router:Router) {
+    this.router.events.subscribe(event=>{
+      if(event instanceof NavigationEnd){
+        this.previousUrlvalue = this.currentUrlValue;
+        this.currentUrlValue = event.urlAfterRedirects;
+      }
+    })
+    //this is for show an alert message as would you like to reload the page it will not work properly
+
+  }
 
 // privilege:string="Admin";
 checkadmin:boolean=true;
+index: number=1;
+
+isAddNew:boolean=true;
 
 
+  previousUrlvalue!:string;
   currentUrlValue!:string;
   currentUrl(){
     return this.router.url;
   }
   ngOnInit(){
     this.currentUrlValue = this.router.url;
-    
+    // this.previousUrlvalue = this.currentUrlValue
+
+
     console.log("mainurls: ", this.currentUrlValue);
+    console.log("mainurls: ", this.previousUrlvalue);
   }
-  
+
   //this is the method for store the router value
   showBar():boolean{
     if(this.currentUrlValue === '/'){
@@ -45,9 +64,11 @@ checkadmin:boolean=true;
     let paramList = new HttpParams().set('list_type',list_type.toString());
     paramList.set('filter_by',filter_by.toString());
     console.log("list_type ",list_type , 'filter_by ',filter_by)
-    return this.httpclient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:paramList});
-  } 
+    return this.httpClient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:paramList});
+  }
 
-  
+  getlocation(){
+    return this.http.get('https://ipapi.co/json')
+  }
 
 }

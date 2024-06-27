@@ -1,7 +1,7 @@
 <div class="home__admission">
 
     <div *ngIf="user_detailsService.isAddNew" class="show__Addmission">
-        <div class="header"> 
+        <div class="header">
 
             <div class="title">
                 User Details
@@ -17,15 +17,15 @@
 
             <table class="row1" >
                 <tr >
-                
+
                 <th>No</th>
                 <th>User Id</th>
                 <th>User Name</th>
                 <th>Privilege</th>
                 <th>Create Date</th>
                 <th>Create By</th>
-                
-    
+
+
                 </tr>
 
                 <tr  class="data" *ngFor="let userdetals of user_detailsService.userdetailsList ; let i = index">
@@ -37,7 +37,7 @@
                     <td>{{ userdetals.create_by}}</td>
                     <td><button  class="material-symbols-outlined buttons__edit"  (click)="edit_user(i)">edit</button></td>
                     <td><button  class="material-symbols-outlined buttons__delete" (click)="delete_user(userdetals.id)" >delete</button></td>
-                  </tr>              
+                  </tr>
             </table>
 
         </div>
@@ -45,7 +45,7 @@
     </div>
 
     <div *ngIf="!user_detailsService.isAddNew" class="Addmission__new__add">
-        
+
         <div class="header">
 
             <div class="title">
@@ -70,7 +70,7 @@
                                 <td><span class="form__name">User Name</span></td>
                                 <td><input formControlName="user_name"  type="text" class="form__input"  />
                             </tr>
-                           
+
                             <tr *ngIf="changeButton">
                                 <td><label  class="form__name" for="password">Password:</label></td>
                                 <input formControlName="password" type="password" id="password" name="password" class="form__input"  required>
@@ -79,26 +79,25 @@
                             <tr  *ngIf="changeButton">
                                 <td><label  class="form__name" for="confirmPassword">Confirm Password</label></td>
                                     <input formControlName="confirmPassword" type="password" id="confirmPassword" name="confirmPassword" class="form__input"  required>
-                                
+
                             </tr>
-                            
+
                             <tr>
                                 <td><span class="form__name">Privilege</span></td>
-                                <td><input formControlName="privilege"   type="text" class="form__input"  /></td>
 
-                            </tr>
-<!-- 
-                            <tr>
-                                <td><span class="form__name"> Date</span></td>
-                                <td><input formControlName="create_date"  type="date" class="form__input"  /></td>
+                                  <td>
+                                      <select type="text"  id="privilege" name="privilege" class="form__input" formControlName="privilege"  required>
+                                          <option  [value]="null" [disabled]="true" [selected]="true">--Select privilege--</option>
+                                          <option  placeholder=" privilege" *ngFor="let privilegeObj of loginArray" [value]="privilegeObj.list_value"> {{privilegeObj.list_value}}</option>
+                                      </select>
+                                  </td>
+                                  <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
 
-                            </tr>
-                          -->
-                            
+                              </tr>
 
                         </div>
                     </table>
-                    
+
                 </form>
 
             </div>
@@ -109,7 +108,7 @@
 
             <button class="Submit__color" (click)="insert_user_Details()" >Submit</button>
             <button class="Discharge__color" (click)="changeOption()" >Back</button>
-            
+
 
         </div>
 

@@ -11,6 +11,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { MainHomeComponent } from './main-home/main-home.component';
+import { LogInfoComponent } from './log-info/log-info.component';
 
 export const routes: Routes = [
 
@@ -27,9 +28,10 @@ export const routes: Routes = [
     {path:'person',component:PersonDetailsComponent,title:'person'},
     {path:'settings',component:SettingsComponent,title:'settings'},
     {path:'change-password',component:ChangePasswordComponent,title:'changepassword'},
+    {path:'log-info',component:LogInfoComponent,title:'log-info'},
 
 
-    
+
 
 
 ];

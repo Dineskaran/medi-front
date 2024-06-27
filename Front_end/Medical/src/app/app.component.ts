@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from "./login/login.component";
 import { CommonModule } from '@angular/common';
 import { LeftPanelComponent } from "./left-panel/left-panel.component";
+import { MainService } from './services/main.service';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { LeftPanelComponent } from "./left-panel/left-panel.component";
 })
 export class AppComponent {
   title = 'Medical';
+  __main:MainService=inject(MainService)
+  location:any;
 
   isLoggedIn: boolean = false;
 
@@ -24,6 +27,13 @@ export class AppComponent {
 
   ngOnInit() {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    this.__main.getlocation().subscribe(
+      (response)=>{
+        console.log(response)
+        this.location=response
+      }
+    )
   }
 
   showSidebar() {

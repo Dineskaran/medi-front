@@ -5,13 +5,14 @@ import { UserDetails } from '../model/user-details';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Login } from '../model/login';
+import { LogInfo } from '../model/log-info';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDetailsService {
-  LoginList: any;
-  http: any;
+  [x: string]: any;
+
 
   constructor(private httpclient:HttpClient, private __main : MainService, private router: Router,) { }
 
@@ -21,19 +22,50 @@ export class UserDetailsService {
   isMinimized:boolean =true;
 
 
+  // userid: string = 'Mat01';
+  // password: string = '123.0';
+  // privilege: string = '';
+
+
+  // LoginList:Login[]=[];
+  // num_of_attempt=0;
+
   isLogined:boolean=false;
 
  loggedUserObj:UserDetails={} as UserDetails;
+
+ loginfoObj:LogInfo={} as LogInfo;
+ logInfoList: LogInfo[] = [];
+
+
+ userid: string = 'Mat01';
+ password: string = '123.0';
+ num_of_attempt=0;
+
+ resetLoginInfo(): void {
+  this.userid = '';
+  this.password = '';
+  this.num_of_attempt = 0;
+  this.loginfoObj = {} as LogInfo;
+}
+
+
 
   logout(){
 
     if(this.isLogined){
 
-        this.isLogined=false;
+       this.isLogined=false;
+      //  this.resetLoginInfo();
+       this.insertLoginfo().subscribe((data)=>
+        {
+          // alert("update succesfully"+ data)
+        })
        this.router.navigate(['/']);
-
       }
+      this.resetLoginInfo()
   }
+
 
   minimizedToggle(){
    this.isMinimized = !this.isMinimized;
@@ -73,11 +105,34 @@ export class UserDetailsService {
       return this.httpclient.get<any[]>(`${this.__main.URL}/login`,{params:paramList});
     }
 
-    // change_password():Observable<any>{
-    //   return this.httpclient.post<any>(`${this.__main.URL}/change password`);
+    change_password(userid:string,old_password:string,new_password:string):Observable<any>{
+      let userobj={userid,
+        old_password,
+        new_password}
+      return this.httpclient.post<any>(`${this.__main.URL}/change password`,userobj)
 
+
+    }
+
+    blockUser(userId: number): Observable<any> {
+      return this.httpclient.post<any>(`${this.__main.URL}/blockuser`,{ user_id: userId })
+
+    }
+
+
+
+    getAllLoginfo():Observable<LogInfo[]>{
+      return this.httpclient.get<LogInfo[]>(`${this.__main.URL}/insert_log_details`);
+    }
+
+    insertLoginfo():Observable<LogInfo[]>{
+      console.log(this.loginfoObj)
+      return this.httpclient.post<LogInfo[]>(`${this.__main.URL}/insert_log_details`,this.loginfoObj);
+    }
+
+    // insertLoginfo():Observable<LogInfo[]>{
+    //   return this.httpclient.post<LogInfo[]>(`${this.__main.URL}/insert_log_details`,this.loginfoObj);
     // }
-
 
 }
 

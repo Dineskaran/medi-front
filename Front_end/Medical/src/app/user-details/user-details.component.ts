@@ -36,10 +36,11 @@ export class UserDetailsComponent implements OnInit {
     })
 
     this.loadAll_User();
-    
+    this.loguser();
+
   }
 
-  changeOption(){ 
+  changeOption(){
     this.user_detailsService.isAddNew = !this.user_detailsService.isAddNew;
     this.user_detailReactiveForm.reset();
     this.loadAll_User();
@@ -54,7 +55,7 @@ export class UserDetailsComponent implements OnInit {
     this.index = i;
     this.changeButton= false;
 
-      
+
   }
   populateForm(data:UserDetails){
     console.log("populateForm" ,data)
@@ -69,7 +70,7 @@ export class UserDetailsComponent implements OnInit {
   loadAll_User():void{
     this.user_detailsService.getAll_user_DetailsList().subscribe((data)=>{
       this.user_detailsService.userdetailsList = []
-      data.forEach((user:any) => { 
+      data.forEach((user:any) => {
         let x:UserDetails = JSON.parse(user)
         this.user_detailsService.userdetailsList .push(x)
       })
@@ -106,8 +107,21 @@ export class UserDetailsComponent implements OnInit {
       })
   }
 
- 
-          
+
+  loginArray:UserDetails[]=[];
+
+  loguser():void{
+    this.__main.getDropdownitems('privilege','').subscribe(( resultList)=>{
+      this.loginArray = []
+     resultList.forEach((loginArray:any)=>{
+       let a:any =JSON.parse(loginArray)
+       this.loginArray.push(a)
+     })
+    })
+  }
+
+
+
 }
 
 
