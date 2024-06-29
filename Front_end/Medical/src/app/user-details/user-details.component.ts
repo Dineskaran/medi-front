@@ -37,6 +37,7 @@ export class UserDetailsComponent implements OnInit {
 
     this.loadAll_User();
     this.loguser();
+    this.user_detailsService.isLogined = localStorage.getItem('isLogined') === 'true';
 
   }
 

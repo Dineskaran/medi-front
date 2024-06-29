@@ -8,12 +8,13 @@ import { Login } from '../model/login';
 import { MainService } from '../services/main.service';
 import { UserDetailsService } from '../services/user-details.service';
 import { LogInfo } from '../model/log-info';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,AppComponent,FormsModule,],
+  imports: [CommonModule,AppComponent,FormsModule,MatProgressBarModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

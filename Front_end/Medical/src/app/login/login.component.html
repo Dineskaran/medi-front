@@ -1,4 +1,6 @@
+<!-- <mat-progress-bar mode="indeterminate" (click)="log_user()"></mat-progress-bar> -->
 <div class="container">
+
     <h1>Log in</h1>
     <form *ngIf="!isBlocked" action="#">
         <label for="userid">UserId:</label>
@@ -12,6 +14,8 @@
             </label>
             <!--   -->
         </div>
+
+
         <button class="loin" type="submit" (click)="log_user()">Login</button>
 
     </form>

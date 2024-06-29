@@ -1,23 +1,54 @@
-<div  class="nav__5">
-  <button (click)="changeclick()"  class="b1">Monthly Investigation and treatment Report</button>
-  <button  (click)="changeclick1()" class="b2">Pampers Cather Change Report</button>
-  <button (click)="changeclick2()" class="b3">Nurse Duty Patient Report</button>
-</div>
+<div >
+<!-- <div>
+  Monthly Nurse Duty Report
+</div> -->
 
+      <div class="A__1">
+
+          <button class="button" mat-button [matMenuTriggerFor]="searchBy">
+            <div class="search_dropdown_icons">
+              <span>Select Report</span>
+              <span class="material-symbols-outlined">arrow_drop_down</span>
+
+            </div>
+          </button>
+
+          <div class="A__2"  *ngIf="!isAddNew">
+            <div class="start__date">start dade : <input [(ngModel)]="start_date_str" type="date"></div>
+            <div class="end_date">end dade : <input [(ngModel)]="end_date_str" type="date"></div>
+            <button class="Search" (click)="loaddutycount()">Search</button>
+
+          </div>
+
+          <mat-menu #searchBy="matMenu">
+            <button mat-menu-item (click)="changeclick()" >Monthly Investigation</button>
+            <button mat-menu-item >Pampers Cather Change</button>
+            <button mat-menu-item >All Patient</button>
+
+          </mat-menu>
+      </div>
+
+      <div >
+        <div class="report__heading">
+          <div class="report_heading_logo">
+           <img src="../../assets/remove bg.png" alt="uyirilai_logo" class="uyilai__logo">
+          </div>
+          <div class="report_heading_content">
+             <h1>Uyirilai</h1>
+             <h3 >spinal core association</h3>
+             <h5 class="small__span">A9 road, mankulam, mullaitivu</h5>
+              <!-- here we can dynamically chage the name likedonation , mill ,monthly payment -->
+              <!-- <h6 class="small__span">{{searchName}}{{'( '}}{{searchType}}{{' )'}} sheet month-{{displayMonth}}</h6> -->
+          </div>
+       </div>
+      </div>
 
 <div class="home__admission">
 
-  <div *ngIf="isAddNew" class="show__Addmission">
+  <div *ngIf="!isAddNew"  class="show__Addmission">
       <div class="header">
-
-          <div class="title__1">
-            Monthly Investigation and treatment Report
-          </div>
-
       </div>
-
       <div class="list__1" >
-
           <table class="row__1" >
               <tr >
               <th>No</th>
@@ -37,9 +68,32 @@
                   <td>{{ dutycount.blood_sugar_count  }}</td>
                 </tr>
           </table>
-
       </div>
+  </div>
+</div>
 
+<div>
+  <div *ngIf="isAddNew_1" class="show__Addmission">
+    <table class="row__1" >
+      <tr >
+      <th>No</th>
+      <th>Dete</th>
+      <th>Dressing</th>
+      <th>Catheter Change</th>
+      <th>Blood Presser</th>
+      <th>Blood Suger</th>
+      </tr>
+
+      <tr  class="data__1" *ngFor="let dutycount of duty_countArray ; let i = index">
+          <td>{{ i+1}}</td>
+          <td>{{ dutycount.duty_date}}</td>
+          <td>{{ dutycount.dressing_count}}</td>
+          <td>{{ dutycount.catheter_change_count}}</td>
+          <td>{{ dutycount.blood_presser_count  }}</td>
+          <td>{{ dutycount.blood_sugar_count  }}</td>
+        </tr>
+  </table>
   </div>
 
+</div>
 

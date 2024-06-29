@@ -104,8 +104,13 @@ export class NurseDutyService {
 
   // duty_option count get
 
-  getduty_Count():Observable<any[]>{
-    return this.httpclient.get<any[]>(`${this.__main.URL}/count_duty_option`);
+  getduty_Count(start_date_str:string,end_date_str:string):Observable<any[]>{
+    const paramList = new HttpParams()
+    .set('start_date_str',start_date_str.toString())
+    .set('end_date_str',end_date_str.toString())
+    console.log("start_date ", start_date_str, 'end_date ', end_date_str);
+    return this.httpclient.get<any[]>(`${this.__main.URL}/count_duty_option`,{params:paramList});
+    // return this.httpclient.post<any[]>(`${this.__main.URL}/count_duty_option`);
   }
 }
 
