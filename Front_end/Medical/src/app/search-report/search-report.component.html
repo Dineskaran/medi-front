@@ -1,1 +1,45 @@
-<p>search-report works!</p>
+<div  class="nav__5">
+  <button (click)="changeclick()"  class="b1">Monthly Investigation and treatment Report</button>
+  <button  (click)="changeclick1()" class="b2">Pampers Cather Change Report</button>
+  <button (click)="changeclick2()" class="b3">Nurse Duty Patient Report</button>
+</div>
+
+
+<div class="home__admission">
+
+  <div *ngIf="isAddNew" class="show__Addmission">
+      <div class="header">
+
+          <div class="title__1">
+            Monthly Investigation and treatment Report
+          </div>
+
+      </div>
+
+      <div class="list__1" >
+
+          <table class="row__1" >
+              <tr >
+              <th>No</th>
+              <th>Dete</th>
+              <th>Dressing</th>
+              <th>Catheter Change</th>
+              <th>Blood Presser</th>
+              <th>Blood Suger</th>
+              </tr>
+
+              <tr  class="data__1" *ngFor="let dutycount of duty_countArray ; let i = index">
+                  <td>{{ i+1}}</td>
+                  <td>{{ dutycount.duty_date}}</td>
+                  <td>{{ dutycount.dressing_count}}</td>
+                  <td>{{ dutycount.catheter_change_count}}</td>
+                  <td>{{ dutycount.blood_presser_count  }}</td>
+                  <td>{{ dutycount.blood_sugar_count  }}</td>
+                </tr>
+          </table>
+
+      </div>
+
+  </div>
+
+

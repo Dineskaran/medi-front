@@ -17,5 +17,11 @@
       }
     ],
     "disown-opener": "off"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_ff <= 126",
+    "not firefox <= 127"
+  ]
 }

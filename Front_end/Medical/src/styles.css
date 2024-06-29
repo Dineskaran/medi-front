@@ -12,12 +12,12 @@
 body {
     height:80%;
     background-color: rgb(255, 255, 255);
-  
+
 }
 
 :root {
     --primaryColor: black;
-    
+
 
 }
 .color_white {
@@ -61,35 +61,36 @@ body {
     font-size: 20px;
     /* font-weight: bold; */
     cursor: pointer;
-    
+
 }
-  
+
 .header{
-  
+
   border-radius: 5px;
   /* background-color: rgba(135, 197, 194, 0.774); */
-  justify-content: space-between; 
+  justify-content: space-between;
   display: flex;
   width: 100%;
-  
- 
+
+
 }
 
 .title{
-  
+
   font-size: 20px;
-  font-weight: bold;
+  font-weight:500;
   padding-left: 10px;
   padding-top: 10px;
   background-color: rgba(69, 179, 212, 0.781);
   width: 100%;
   border-radius: 8px;
   justify-content: center;
+  padding-bottom: 10px;
 }
 
 .option {
   padding: 2px;
- 
+
 }
 .show__button   {
 
@@ -103,7 +104,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  
+
   }
 .show__button:hover{
 
@@ -140,8 +141,8 @@ input[type="checkbox"]{
       border-radius: 8px;
       justify-content: center;
       text-align: center;
-      
-     
+
+
   }
   .row> tr{
 
@@ -154,8 +155,8 @@ input[type="checkbox"]{
     padding-top: 10px;
     justify-content: center;
     text-align: center;
-    
-   
+
+
 }
 
 .row1 > tr {
@@ -166,7 +167,7 @@ input[type="checkbox"]{
 .form__row1 {
   display: flex;
   width: 100%;
-  
+
 }
 
 .Addmission__new__add{
@@ -176,12 +177,12 @@ input[type="checkbox"]{
 .space{
   display: flex;
   padding-left: 10px;
-  
+
 }
 .space1{
   display: flex;
   padding-left: 10px;
-  
+
 }
 
 .row2 {
@@ -200,7 +201,7 @@ display: flex;
 
 .form__name {
 
-  font-weight:bolder;
+  font-weight:500;
   font-size: 20px;
   padding-right: 10px;
 
@@ -209,17 +210,19 @@ display: flex;
 
   border-radius: 8px;
   text-align: center;
- 
-  
-}  
- 
+
+
+}
+
 .row2> tr> td> textarea{
   display: flex;
 }
 .row1 > tr >th{
 
   padding: 5px;
-  background-color: rgba(148, 140, 27, 0.527);
+  background-color: rgba(207, 194, 194, 0.123);
+  padding-bottom: 20px;
+  font-weight: bolder;
   width: 38vh;
   border: none;
   margin-bottom: 5px;
@@ -227,7 +230,7 @@ display: flex;
 }
 .data {
   padding: 5px;
-  background-color: rgba(221, 214, 214, 0.527);
+  background-color: rgba(223, 215, 215, 0.116);
   border: none;
   margin-bottom: 5px;
   border-radius: 8px;
@@ -245,7 +248,7 @@ display: flex;
   justify-content: center;
   cursor: pointer;
   border: none;
-  
+
 }
 .buttons__edit:hover{
 
@@ -259,7 +262,7 @@ display: flex;
   color: rgb(0, 0, 0);
   border-radius: 4px;
   display: flex;
- 
+
   border: none;
   align-items: center;
   justify-content: center;
@@ -268,7 +271,7 @@ display: flex;
 }
 
 .buttons__discharge:hover{
-  
+
   background-color: #c23f17da;
 
 }
@@ -279,7 +282,7 @@ display: flex;
   color: rgb(0, 0, 0);
   border-radius: 4px;
   display: flex;
- 
+
   border: none;
   align-items: center;
   justify-content: center;

@@ -29,6 +29,7 @@ export class NurseDutyComponent {
   dutyoptionArray:Dropdown[]=[];
   by_whomArray:Dropdown[]=[];
   designationArray:Dropdown[]=[];
+  duty_countArray:NurseDuty[]=[];
 
 
   ngOnInit(): void{
@@ -39,6 +40,7 @@ export class NurseDutyComponent {
     this.loadPersonType();
     this.loaddesignation();
     this.loadBy_whom();
+  
   }
 
 
@@ -54,7 +56,18 @@ export class NurseDutyComponent {
     })
   }
 
-  
+  // loaddutycount():void{
+  //   this.nurse_dutyService.getduty_Count().subscribe((resultList) => {
+  //     this.duty_countArray=[]
+  //     resultList.forEach((goods:any)=>{
+  //       console.log("dutycounts",goods)
+  //       let a:any =JSON.parse(goods)
+  //       this.duty_countArray.push(a)
+  //       })
+  //       })
+  // }
+
+
   insertNursedutyDetails(){
 
 
@@ -64,7 +77,7 @@ export class NurseDutyComponent {
         alert("Nurse Duty details succesfully Added")
         this.loadAllNurseduty();
         this.nurse_dutyService.clearDutyObj()
-        // this.nurse_dutyService.nurse_dutyObj=new <class name> () model class using 
+        // this.nurse_dutyService.nurse_dutyObj=new <class name> () model class using
       },error=>{
         console.log(error);
         alert("Error try again")
@@ -73,7 +86,7 @@ export class NurseDutyComponent {
   }
 
   deleteNurseduty(id:number){
-    
+
     this.nurse_dutyService.deleteNursedutyDetail(id)
     .subscribe((result)=>{
       alert("Home admission details succesfully delete")
@@ -83,7 +96,7 @@ export class NurseDutyComponent {
       console.log(error);
       alert("Error try again")
     });
-    
+
   }
 
 
@@ -101,7 +114,7 @@ export class NurseDutyComponent {
     })
   }
 
-  
+
   loadPersonType():void{
     this.__main.getDropdownitems('PersonType','').subscribe(( resultList)=>{
       this.personTypeArray = []
@@ -115,7 +128,7 @@ export class NurseDutyComponent {
   }
 
   loadDutyoption():void{
-    this.__main.getDropdownitems('DutyOption ','').subscribe(( resultList)=>{
+    this.__main.getDropdownitems('DutyOption','').subscribe(( resultList)=>{
       this.dutyoptionArray = []
      resultList.forEach((item:any)=>{
       // console.log(item)

@@ -33,11 +33,11 @@ export class NurseDutyService {
   }
 
 
-  changeOption(){ 
-    
+  changeOption(){
+
     this.isAddNew = !this.isAddNew;
     this.clearDutyObj()
-   
+
   }
 
   editNurseduty(i:number):void {
@@ -52,7 +52,7 @@ export class NurseDutyService {
   //     {
   //       this.nurse_dutyList.push(this.nurse_dutyObj);
   //     }
-    
+
   //     else{
 
   //       this.nurse_dutyList[this.index]=this.nurse_dutyObj;
@@ -79,7 +79,7 @@ export class NurseDutyService {
   }
 
 
-  
+
   minimizedToggle(){
     this.isMinimized = !this.isMinimized;
   }
@@ -88,11 +88,11 @@ export class NurseDutyService {
   insertnursedutydetails():Observable<NurseDuty[]>{
     console.log(this.nurse_dutyObj)
     return this.httpclient.post<NurseDuty[]>(`${this.__main.URL}/insert_nurse_duty`,this.nurse_dutyObj);
-  } 
+  }
 
   getAllNurseduty():Observable<NurseDuty[]>{
     return this.httpclient.get<NurseDuty[]>(`${this.__main.URL}/insert_nurse_duty`);
-  } 
+  }
 
   deleteNursedutyDetail(id:number){
     console.log("Id is " + id)
@@ -100,6 +100,12 @@ export class NurseDutyService {
     // return this.httpclient.delete<HomeAdmistion>(`${this.__main.URL+"/delete?id"}/${id}`);
     return this.httpclient.delete<NurseDuty>(`${this.__main.URL}/delete_nurse_duty_details`, { params });
 
+  }
+
+  // duty_option count get
+
+  getduty_Count():Observable<any[]>{
+    return this.httpclient.get<any[]>(`${this.__main.URL}/count_duty_option`);
   }
 }
 

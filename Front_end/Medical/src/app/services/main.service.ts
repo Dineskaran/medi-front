@@ -67,8 +67,5 @@ isAddNew:boolean=true;
     return this.httpClient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:paramList});
   }
 
-  getlocation(){
-    return this.http.get('https://ipapi.co/json')
-  }
-
+  
 }

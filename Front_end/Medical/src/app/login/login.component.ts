@@ -29,7 +29,7 @@ export class LoginComponent {
   isBlocked: boolean = false;
   blockMessage: string = '';
   userid: string = 'Mat01';
-  password: string = '123.0';
+  password: string = '123';
   privilege: string = '';
 
   LoginList:Login[]=[];
@@ -56,7 +56,7 @@ export class LoginComponent {
     }
   }
 
-  
+
 
     log_user():void {
       this.__user.login_user(this.userid, this.password).subscribe((resultList) => {
@@ -73,7 +73,7 @@ export class LoginComponent {
             this.__user.loginfoObj.user_details_id= a.id
             this.__user.insertLoginfo().subscribe((data)=>
               {
-                alert("Add succesfully"+ data)
+                // alert("Add succesfully"+ data)
                 this.__user.loginfoObj.id= Number(data)
               })
 

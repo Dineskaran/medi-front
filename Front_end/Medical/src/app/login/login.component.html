@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Welcome Back</h1>
+    <h1>Log in</h1>
     <form *ngIf="!isBlocked" action="#">
         <label for="userid">UserId:</label>
         <input [(ngModel)]="userid" type="text" id="userid" name="userid" placeholder="Enter your userid" required><br><br>
@@ -10,14 +10,10 @@
                 <input type="checkbox" id="rememberme" name="rememberme">
                 Remember me
             </label>
-            <a href="#">Forget password?</a>
+            <!--   -->
         </div>
         <button class="loin" type="submit" (click)="log_user()">Login</button>
-        <h1>
-        <p>city:{{__main.location.city}}</p>
-        <p>city:{{__main.location.latitude}}</p>
-        <p>city:{{__main.location.longitude}}</p>
-      </h1>
+
     </form>
     <!-- <div *ngIf="isBlocked" class="alert alert-danger">
       {{ blockMessage }}

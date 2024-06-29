@@ -19,21 +19,25 @@ import { MainService } from './services/main.service';
 export class AppComponent {
   title = 'Medical';
   __main:MainService=inject(MainService)
-  location:any;
+
 
   isLoggedIn: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    if (!window.onbeforeunload) {
+		  window.onbeforeunload = (e) => {
+        e.preventDefault()
+			  return true;
+	      };
+	  }
+  }
 
   ngOnInit() {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
-    this.__main.getlocation().subscribe(
-      (response)=>{
-        console.log(response)
-        this.location=response
-      }
-    )
+
+
+
   }
 
   showSidebar() {
