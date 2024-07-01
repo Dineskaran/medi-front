@@ -39,7 +39,7 @@ export class UserDetailsService {
   this.loginfoObj = {} as LogInfo;
 }
 
-
+  
 
   logout(){
 
@@ -109,7 +109,7 @@ export class UserDetailsService {
       return this.httpclient.post<LogInfo[]>(`${this.__main.URL}/insert_log_details`,this.loginfoObj);
     }
 
-   
+
 
 }
 

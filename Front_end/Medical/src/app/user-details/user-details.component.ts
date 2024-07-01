@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, RouterModule } from '@angular/router';
 import { UserDetails } from '../model/user-details';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule,FormsModule,RouterLink,RouterModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule,FormsModule,RouterLink,RouterModule,LoginComponent],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css'
 })
@@ -24,6 +25,7 @@ export class UserDetailsComponent implements OnInit {
   changeButton:boolean=false;
 
   user_detailReactiveForm!:FormGroup;
+  // sessionStorage: any;
 
   ngOnInit():void{
     this.user_detailReactiveForm = new FormGroup({
@@ -37,6 +39,8 @@ export class UserDetailsComponent implements OnInit {
 
     this.loadAll_User();
     this.loguser();
+    // this. getCurrentUserId();
+    console.log(this.loadAll_User)
     this.user_detailsService.isLogined = localStorage.getItem('isLogined') === 'true';
 
   }
@@ -68,21 +72,40 @@ export class UserDetailsComponent implements OnInit {
   })
   }
 
+
+
   loadAll_User():void{
     this.user_detailsService.getAll_user_DetailsList().subscribe((data)=>{
       this.user_detailsService.userdetailsList = []
       data.forEach((user:any) => {
         let x:UserDetails = JSON.parse(user)
         this.user_detailsService.userdetailsList .push(x)
+        console.log(data)
       })
 
     })
   }
 
+
+  getCurrentUserId(){
+
+    // this.sessionStorage.getItem('create_by',this.user_detailsService.loggedUserObj)
+
+  }
+
+
+
   insert_user_Details(){
-    if(this.user_detailReactiveForm.valid){
+    if (this.user_detailReactiveForm.valid) {
+      const adminUserId = sessionStorage.getItem('user');
+      console.log("current id ", adminUserId)
+
+      const requestPayload = {
+        ...this.user_detailReactiveForm.value,
+        create_by: adminUserId
+      };
       console.log("reactive form is valid",this.user_detailReactiveForm.valid)
-      this.user_detailsService.insertuserDetails(this.user_detailReactiveForm.value).subscribe((data)=>
+      this.user_detailsService.insertuserDetails(requestPayload).subscribe((data)=>
         {
           console.log("reactive form value",this.user_detailReactiveForm.valid)
           alert("Add succesfully")

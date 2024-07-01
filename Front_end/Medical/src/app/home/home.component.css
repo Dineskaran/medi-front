@@ -5,11 +5,8 @@
     height: 100%;
     padding-left: 1vh;
     overflow-y:auto;
-
-
-
-
 }
+
 .left {
 
     width: 15%;
@@ -45,16 +42,29 @@
 
 
 }
+@media print {
+  .left_mini{
+    display: none;
+  }
+  .left{
+    display: none;
+  }
+  .right{
+    width: 100%;
+    margin-right: 15px;
+
+  }
+  .right_mini{
+    width: 100%;
+  }
+
+}
 
 .right_mini{
 
     width: 95%;
     padding-top: 5px;
-    /* padding-left: 25px; */
     border-radius: 5px;
-    /* margin-top: 0px; */
-    /* position:-webkit-sticky; */
     background-color: rgb(255, 255, 255);
-    /* margin-left: 20px; */
 
 }

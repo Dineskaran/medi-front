@@ -31,8 +31,6 @@ body {
 .left_menu {
     display: flex;
     flex-direction: column;
-    /* padding-left: 4px; */
-    /* background-color: rgba(146, 212, 190, 0.637); */
     border-radius: 8px;
 }
 

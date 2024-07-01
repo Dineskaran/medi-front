@@ -21,6 +21,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatTooltipModule} from "@angular/material/tooltip";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import{MatTabsModule} from '@angular/material/tabs'
+import { NurseDuty } from '../model/nurse-duty';
 
 @Component({
   selector: 'app-search-report',
@@ -52,15 +53,15 @@ export class SearchReportComponent {
   end_date_str:string='';
 
 
-  loaddutycount(){
-    this.__nurse.getduty_Count(this.start_date_str,this.end_date_str).subscribe((resultList) => {
-      this.duty_countArray=[]
-      resultList.forEach((countobj:any)=>{
-        console.log("dutycounts",countobj)
-        let a:any =JSON.parse(countobj)
-        this.duty_countArray.push(a)
-        })
-        })
+  loaddutycount() {
+    this.__nurse.getduty_Count(this.start_date_str, this.end_date_str).subscribe((resultList) => {
+      this.duty_countArray = [];
+      resultList.forEach((countobj: any) => {
+        console.log("dutycounts", countobj);
+        let a: any = JSON.parse(countobj);
+        this.duty_countArray.push(a);
+      });
+    });
   }
 
 

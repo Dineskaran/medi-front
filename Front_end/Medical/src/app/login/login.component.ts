@@ -59,6 +59,8 @@ export class LoginComponent {
 
 
 
+
+
     log_user():void {
       this.__user.login_user(this.userid, this.password).subscribe((resultList) => {
         this.__user.loginfoObj.userid=this.userid;
