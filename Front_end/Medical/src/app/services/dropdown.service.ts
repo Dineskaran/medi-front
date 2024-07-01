@@ -27,29 +27,29 @@ export class DropdownService {
   }
 
 
-   changeOption(){
+  changeOption(){
     // this.isAddNew=!this.isAddNew;
     this.clearDroplist();
-   }
+  }
 
-   clearDroplist(){
+  clearDroplist(){
     this.drop_DownObj={
       id:0,
       list_type:"",
       list_value:"",
       filter_by:"",
       }
-   }
+  }
 
-   edit_Dropdown(i:number):void{
+  edit_Dropdown(i:number):void{
     this.drop_DownObj = this.drop_downList[i];
     this.editflag=true;
     // this.isAddNew=false;
     this.index=i;
 
-   }
+  }
 
-   minimizedToggle(){
+  minimizedToggle(){
     this.isMinimized = !this.isMinimized;
   }
 

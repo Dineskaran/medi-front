@@ -36,11 +36,8 @@ isAddNew:boolean=true;
   }
   ngOnInit(){
     this.currentUrlValue = this.router.url;
-    // this.previousUrlvalue = this.currentUrlValue
 
 
-    console.log("mainurls: ", this.currentUrlValue);
-    console.log("mainurls: ", this.previousUrlvalue);
   }
 
   //this is the method for store the router value
@@ -66,6 +63,14 @@ isAddNew:boolean=true;
     console.log("list_type ",list_type , 'filter_by ',filter_by)
     return this.httpClient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:paramList});
   }
+
+
+  get_dutyperson(duty_option: string): Observable<any> {
+    let paramList = new HttpParams().set('duty_option', duty_option.toString());
+    console.log("show the details ", duty_option)
+    return this.httpClient.get<any>(`${this.URL}/nurse_duty_report`, { params: paramList });
+  }
+
 
   print(): void {
     window.print();

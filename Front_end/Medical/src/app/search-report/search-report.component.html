@@ -1,104 +1,104 @@
-<div >
-<!-- <div>
-  Monthly Nurse Duty Report
-</div> -->
+<div class="A__1">
+  <!-- Dropdown button for selecting report type -->
+  <button class="button" mat-button [matMenuTriggerFor]="searchBy">
+    <div class="search_dropdown_icons">
+      <span>Select Report</span>
+      <span class="material-symbols-outlined">arrow_drop_down</span>
+    </div>
+  </button>
 
-      <div class="A__1">
+  <!-- Section for date range and search button -->
+  <div class="A__2" *ngIf="!isAddNew">
+    <div class="start__date">start date: <input [(ngModel)]="start_date_str" type="date"></div>
+    <div class="end_date">end date: <input [(ngModel)]="end_date_str" type="date"></div>
+    <button class="Search" (click)="loaddutycount()">Search</button>
+  </div>
 
-          <button class="button" mat-button [matMenuTriggerFor]="searchBy">
-            <div class="search_dropdown_icons">
-              <span>Select Report</span>
-              <span class="material-symbols-outlined">arrow_drop_down</span>
+  <!-- Print button section -->
+  <div class="print__1">
+    <button class="print" (click)="__main.print()">Print</button>
+  </div>
 
-            </div>
-          </button>
+  <!-- Mat menu for report selection -->
+  <mat-menu #searchBy="matMenu">
+    <button mat-menu-item (click)="changeclick()">Monthly Investigation</button>
+    <button mat-menu-item>Pampers Catheter Change</button>
+    <button mat-menu-item>All Patient</button>
+  </mat-menu>
+</div>
 
-          <div class="A__2"  *ngIf="!isAddNew">
-            <div class="start__date">start dade : <input [(ngModel)]="start_date_str" type="date"></div>
-            <div class="end_date">end dade : <input [(ngModel)]="end_date_str" type="date"></div>
-            <button class="Search" (click)="loaddutycount()">Search</button>
+<!-- Section for displaying report heading -->
+<div class="set_print">
+  <div class="report__heading">
+    <div class="report_heading_logo">
+      <img src="../../assets/remove bg.png" alt="uyirilai_logo" class="uyilai__logo">
+    </div>
+    <div class="report_heading_content">
+      <h1>Uyirilai</h1>
+      <h3>spinal cord injury association</h3>
+      <h5 class="small__span">A9 road, mankulam, mullaitivu</h5>
+      <!-- Dynamic content can be added here based on selected report -->
+    </div>
+  </div>
+</div>
 
-          </div>
-          <div  class="print__1">
-            <button class="print" (click)="__main.print()">Print</button>
-          </div>
-
-          <mat-menu #searchBy="matMenu">
-            <button mat-menu-item (click)="changeclick()" >Monthly Investigation</button>
-            <button mat-menu-item >Pampers Cather Change</button>
-            <button mat-menu-item >All Patient</button>
-
-          </mat-menu>
-      </div>
-
-      <div class="set_print" >
-        <div class="report__heading">
-          <div class="report_heading_logo">
-           <img src="../../assets/remove bg.png" alt="uyirilai_logo" class="uyilai__logo">
-          </div>
-          <div class="report_heading_content">
-             <h1>Uyirilai</h1>
-             <h3 >spinal cord injury association</h3>
-             <h5 class="small__span">A9 road, mankulam, mullaitivu</h5>
-              <!-- here we can dynamically chage the name likedonation , mill ,monthly payment -->
-              <!-- <h6 class="small__span">{{searchName}}{{'( '}}{{searchType}}{{' )'}} sheet month-{{displayMonth}}</h6> -->
-          </div>
-       </div>
-      </div>
-
+<!-- Section for displaying duty counts based on date range -->
 <div class="home__admission">
-
-  <div *ngIf="!isAddNew"  class="show__Addmission">
-      <div class="header">
-      </div>
-      <div class="list__1" >
-          <table class="row__1" >
-              <tr >
-              <th>No</th>
-              <th>Dete</th>
-              <th>Dressing</th>
-              <th>Catheter Change</th>
-              <th>Blood Presser</th>
-              <th>Blood Suger</th>
-              </tr>
-
-              <tr  class="data__1" *ngFor="let dutycount of duty_countArray ; let i = index">
-                  <td>{{ i+1}}</td>
-                  <td>{{ dutycount.duty_date}}</td>
-                  <td>{{ dutycount.dressing_count}}</td>
-                  <td>{{ dutycount.catheter_change_count}}</td>
-                  <td>{{ dutycount.blood_presser_count  }}</td>
-                  <td>{{ dutycount.blood_sugar_count  }}</td>
-                </tr>
-          </table>
-      </div>
-  </div>
-</div>
-
-<div>
-  <div *ngIf="isAddNew_1" class="show__Addmission">
-    <table class="row__1" >
-      <tr >
-      <th>No</th>
-      <th>Dete</th>
-      <th>Dressing</th>
-      <th>Catheter Change</th>
-      <th>Blood Presser</th>
-      <th>Blood Suger</th>
-      </tr>
-
-      <tr  class="data__1" *ngFor="let dutycount of duty_countArray ; let i = index">
-          <td>{{ i+1}}</td>
-          <td>{{ dutycount.duty_date}}</td>
-          <td>{{ dutycount.dressing_count}}</td>
-          <td>{{ dutycount.catheter_change_count}}</td>
-          <td>{{ dutycount.blood_presser_count  }}</td>
-          <td>{{ dutycount.blood_sugar_count  }}</td>
+  <div *ngIf="!isAddNew" class="show__Addmission">
+    <div class="header"></div>
+    <div class="list__1">
+      <table class="row__1">
+        <tr>
+          <th>No</th>
+          <th>Date</th>
+          <th>Dressing</th>
+          <th>Catheter Change</th>
+          <th>Blood Pressure</th>
+          <th>Blood Sugar</th>
         </tr>
-  </table>
+        <tr class="data__1" *ngFor="let dutycount of duty_countArray; let i = index">
+          <td>{{ i+1 }}</td>
+          <td>{{ dutycount.duty_date }}</td>
+          <td>{{ dutycount.dressing_count }}</td>
+          <td>{{ dutycount.catheter_change_count }}</td>
+          <td>{{ dutycount.blood_presser_count }}</td>
+          <td>{{ dutycount.blood_sugar_count }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
-
-
-
 </div>
 
+<!-- Section for displaying duty persons based on selected option -->
+<div>
+  <div *ngIf="!isAddNew_1" class="show__Addmission">
+    <div>
+      <td>
+        <select type="text" (change)="get_optionPerson()" id="Duty option" name="Duty option" class="form__input" [(ngModel)]="duty_option" required>
+          <option [value]="null" [disabled]="true" [selected]="true">--Select Duty option--</option>
+          <option placeholder="dutyoption" *ngFor="let dutypersonObj of duty_optionArray" [value]="dutypersonObj.list_value">{{ dutypersonObj.list_value }}</option>
+        </select>
+      </td>
+    </div>
+    <table class="row__1">
+      <tr>
+        <th>No</th>
+        <th>Person ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>District</th>
+        <th>Duty Count</th>
+      </tr>
+      <tr class="data__1" *ngFor="let person of getoptionpersons; let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ person.person_id }}</td>
+        <td>{{ person.first_name }}</td>
+        <td>{{ person.last_name }}</td>
+        <td>{{ person.gender }}</td>
+        <td>{{ person.district }}</td>
+        <td>{{ person.duty_count }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

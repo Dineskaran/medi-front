@@ -40,19 +40,19 @@ export class NurseDutyComponent {
     this.loadPersonType();
     this.loaddesignation();
     this.loadBy_whom();
-  
+
   }
 
 
   loadAllNurseduty(): void {
     this.nurse_dutyService.getAllNurseduty().subscribe((resultList) => {
       this.nurse_dutyService.nurse_dutyList = []
-     resultList.forEach((goods:any)=>{
+      resultList.forEach((goods:any)=>{
       // console.log(goods)
-       let a:NurseDuty =JSON.parse(goods)
-       this.nurse_dutyService.nurse_dutyList .push(a)
+      let a:NurseDuty =JSON.parse(goods)
+      this.nurse_dutyService.nurse_dutyList .push(a)
       //  console.log(goods)
-     })
+    })
     })
   }
 
@@ -74,7 +74,7 @@ export class NurseDutyComponent {
       let getData = this.nurse_dutyService.insertnursedutydetails();
       getData.subscribe(data=>{
         // console.log(data);
-        alert("Nurse Duty details succesfully Added")
+        alert("Nurse Duty details successfully Added")
         this.loadAllNurseduty();
         this.nurse_dutyService.clearDutyObj()
         // this.nurse_dutyService.nurse_dutyObj=new <class name> () model class using
@@ -89,7 +89,7 @@ export class NurseDutyComponent {
 
     this.nurse_dutyService.deleteNursedutyDetail(id)
     .subscribe((result)=>{
-      alert("Home admission details succesfully delete")
+      alert("Home admission details successfully delete")
       this.loadAllNurseduty();
     },
     error=>{
@@ -105,12 +105,12 @@ export class NurseDutyComponent {
   loadAllPersondetails():void{
     this.person_detailsService.getAllPerson('').subscribe(( resultList)=>{
       this.person_detailsService.person_detailsList = []
-     resultList.forEach((person:any)=>{
+      resultList.forEach((person:any)=>{
       // console.log(person)
-       let a:PersonDetails =JSON.parse(person)
-       this.person_detailsService.person_detailsList .push(a)
+      let a:PersonDetails =JSON.parse(person)
+      this.person_detailsService.person_detailsList .push(a)
       //  console.log(person)
-     })
+    })
     })
   }
 
@@ -118,48 +118,48 @@ export class NurseDutyComponent {
   loadPersonType():void{
     this.__main.getDropdownitems('PersonType','').subscribe(( resultList)=>{
       this.personTypeArray = []
-     resultList.forEach((personType:any)=>{
+      resultList.forEach((personType:any)=>{
       // console.log(personType)
-       let a:Dropdown =JSON.parse(personType)
-       this.personTypeArray.push(a)
+      let a:Dropdown =JSON.parse(personType)
+      this.personTypeArray.push(a)
       //  console.log(personType)
-     })
+    })
     })
   }
 
   loadDutyoption():void{
     this.__main.getDropdownitems('DutyOption','').subscribe(( resultList)=>{
       this.dutyoptionArray = []
-     resultList.forEach((item:any)=>{
+      resultList.forEach((item:any)=>{
       // console.log(item)
-       let a:Dropdown =JSON.parse(item)
-       this.dutyoptionArray.push(a)
+      let a:Dropdown =JSON.parse(item)
+      this.dutyoptionArray.push(a)
       //  console.log(item)
-     })
+    })
     })
   }
 
   loaddesignation():void{
     this.__main.getDropdownitems('Designation','').subscribe(( resultList)=>{
       this.designationArray = []
-     resultList.forEach((designation:any)=>{
+      resultList.forEach((designation:any)=>{
       // console.log(personType)
-       let a:Dropdown =JSON.parse(designation)
-       this.designationArray.push(a)
+      let a:Dropdown =JSON.parse(designation)
+      this.designationArray.push(a)
       //  console.log(personType)
-     })
+    })
     })
   }
 
   loadBy_whom():void{
     this.__main.getDropdownitems('Bywhom','').subscribe(( resultList)=>{
       this.by_whomArray = []
-     resultList.forEach((by_whom:any)=>{
+      resultList.forEach((by_whom:any)=>{
       // console.log(personType)
-       let a:Dropdown =JSON.parse(by_whom)
-       this.by_whomArray.push(a)
+      let a:Dropdown =JSON.parse(by_whom)
+      this.by_whomArray.push(a)
       //  console.log(personType)
-     })
+    })
     })
   }
 
