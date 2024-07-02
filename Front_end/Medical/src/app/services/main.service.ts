@@ -36,6 +36,7 @@ isAddNew:boolean=true;
   }
   ngOnInit(){
     this.currentUrlValue = this.router.url;
+    // this.get_home_person_report("admision_date","2024-01-01","2024-07-02")
 
 
   }
@@ -69,6 +70,15 @@ isAddNew:boolean=true;
     let paramList = new HttpParams().set('duty_option', duty_option.toString());
     console.log("show the details ", duty_option)
     return this.httpClient.get<any>(`${this.URL}/nurse_duty_report`, { params: paramList });
+  }
+
+  get_home_person_report(date_option: string, start_date: string, end_date: string): Observable<any> {
+    let paramList = new HttpParams()
+      .set('date_option', date_option.toString())
+      .set('start_date', start_date.toString())
+      .set('end_date', end_date.toString());
+    console.log("date_option", date_option, 'start_date', start_date, 'end_date', end_date);
+    return this.httpClient.get<any>(`${this.URL}/home_admission_report`, { params: paramList });
   }
 
 

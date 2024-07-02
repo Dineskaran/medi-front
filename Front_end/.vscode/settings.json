@@ -1,14 +1,18 @@
 {
     "cSpell.words": [
+        "Admision",
+        "Admistion",
         "Alldrop",
         "Bywhom",
         "changeclick",
         "checkadmin",
         "countobj",
+        "dineskaran",
         "distin",
         "drodown",
         "Dropdownitems",
         "Droplist",
+        "dutycount",
         "dutycounts",
         "dutydetails",
         "dutyoption",
@@ -17,14 +21,21 @@
         "getduty",
         "getoptionpersons",
         "getreports",
+        "homeperson",
         "httpclient",
         "insertnursedutydetails",
         "loaddesignation",
         "loaddutycount",
         "mainurls",
+        "mankulam",
+        "mullaitivu",
         "Nurseduty",
         "Persondetails",
+        "reportlist",
+        "selectby",
         "Servise",
-        "Urlvalue"
+        "showdate",
+        "Urlvalue",
+        "uyirilai"
     ]
 }

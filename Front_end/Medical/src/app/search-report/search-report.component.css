@@ -26,7 +26,8 @@
 }
 
 .button{
-  border:1px solid rgba(29, 28, 28, 0.863) ;
+  border:1px solid rgba(25, 45, 233, 0.863) ;
+  height: 40px;
 
 
 }
@@ -45,7 +46,9 @@
   justify-content: space-between;
   height:35px;
   align-items: center;
+
 }
+
 .start__date{
   margin-left: 25px;
 }
@@ -148,10 +151,10 @@ input:hover{
 }
 .Search{
   display: flex;
-  margin-left: 25px;
-  height:23px;
+  margin-left: 30px;
+  height:40px;
   align-items: center;
-  border: none;
+  /* border: none; */
   border:1px solid rgba(25, 45, 233, 0.863) ;
 
 }
@@ -163,30 +166,96 @@ input:hover{
 }
 .print__1{
   display: flex;
-  margin-right: 40px;
+  margin-right: 30px;
+  height:40px;
+  align-items: center;
 
 }
+
+.form__input_1 {
+
+  padding: 12px;
+  width: 22vh;
+  background-color: rgba(245, 244, 238, 0.404);
+  border:1px solid rgba(25, 45, 233, 0.863) ;
+  border-radius: 4px;
+  height: 40px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.form__input_1 >option{
+  background-color:rgba(250, 251, 255, 0.863);
+  border:1px solid rgba(25, 45, 233, 0.863) ;
+  font-size: 14px;
+  font-weight: 400;
+  color:rgba(25, 45, 233, 0.863);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* margin: 20px; */
+}
+.form__input_1 >option:hover{
+  background-color:rgba(250, 251, 255, 0.863);
+  cursor: pointer;
+}
+.start__date >input{
+  height: 40px;
+  border-radius: 2px;
+  border:1px solid rgba(25, 45, 233, 0.863) ;
+  padding-left: 4px;
+  padding-right: 4px;
+
+}
+.end_date >input{
+  height: 40px;
+  border-radius: 2px;
+  border:1px solid rgba(25, 45, 233, 0.863) ;
+  padding-left: 4px;
+  padding-right: 4px;
+
+}
+
+
 .print{
 
 background-color: #fdfdff;
-min-width: 32px;
+min-width: 50px;
 box-sizing: border-box;
-padding: 0.8 px;
-height: 35px;
-border:1.5px solid  #0004ff;
-border-radius: 5px;
-flex:1;
-font-weight: 600;
-font-size: 14px;
-line-height: 20px;
-/* display: flex; */
+height: 40px;
+border:1px solid  #0004ff;
+font-weight: 500;
+border-radius: 2px;
 justify-content:end;
-text-align: right;
+text-align: center;
 }
 .print:hover{
   background-color: #006CBE;
+  border:1px solid  #080808;
   cursor: pointer;
+  border-radius: 2px;
 }
+
+
+.selected_duty {
+  /* Style the entire select element */
+  background-color: #eee; /* Example background color */
+  border: 1px solid #ccc; /* Example border */
+  padding: 5px; /* Example padding */
+  border-radius: 4px; /* Example rounded corners */
+
+}
+
+.selected_duty option:first-child {
+  /* Style the first option (default placeholder) */
+  color: #aaa; /* Example color for default text */
+  height: 40px;
+}
+
+.selected_duty option[selected] {
+
+  /* Style the selected option */
+  background-color: #ddd; /* Example background color for selected option */
+  font-weight: bold; /* Example font weight for selected option */
+}
+
 
 @media print {
   .A__1{
@@ -210,6 +279,9 @@ text-align: right;
     /* display: flex; */
     justify-content: center;
     margin-right: 10px;
+  }
+  .data__1{
+    align-items: center;
   }
   .report__heading{
 

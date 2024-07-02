@@ -1,4 +1,5 @@
 <div class="A__1">
+
   <!-- Dropdown button for selecting report type -->
   <button class="button" mat-button [matMenuTriggerFor]="searchBy">
     <div class="search_dropdown_icons">
@@ -7,24 +8,51 @@
     </div>
   </button>
 
+  <mat-menu #searchBy="matMenu">
+    <button mat-menu-item (click)="changeclick()">Monthly Investigation count</button>
+    <button mat-menu-item (click)="changeclick_1()">Investigation Patient Details </button>
+    <button mat-menu-item (click)="changeclick_2()">Home Admision</button>
+  </mat-menu>
+
   <!-- Section for date range and search button -->
-  <div class="A__2" *ngIf="!isAddNew">
-    <div class="start__date">start date: <input [(ngModel)]="start_date_str" type="date"></div>
-    <div class="end_date">end date: <input [(ngModel)]="end_date_str" type="date"></div>
+  <div class="A__2" *ngIf="isAddNew">
+    <div class="start__date ">Start Date: <input [(ngModel)]="start_date_str" type="date"></div>
+    <div class="end_date ">End Date: <input [(ngModel)]="end_date_str" type="date"></div>
     <button class="Search" (click)="loaddutycount()">Search</button>
   </div>
+
+  <div class="A__2" *ngIf="isAddNew_2">
+    <select type="text" (change)="showdate_1()" id="person" name="person" class="form__input_1" [(ngModel)]="date_option"  required>
+      <option  [value]="null" [disabled]="true" [selected]="true">--Select Option--</option>
+      <option value="admission_date">admission_date</option>
+      <option value="discharge_date">discharge_date</option>
+    </select>
+
+    <div *ngIf="showdate" class="A__2">
+      <div class="start__date">Start Date : <input [(ngModel)]="start_date" type="date"></div>
+      <div class="end_date">End Date : <input [(ngModel)]="end_date" type="date"></div>
+      <button class="Search" (click)="home_person_report()">Search</button>
+    </div>
+
+  </div>
+
+  <!--select the dutyoption for get person details -->
+  <div class="A__3"  *ngIf="isAddNew_1">
+    <td class="selected_duty" >
+      <select type="text" (change)="get_optionPerson()" id="Duty option" name="Duty option"  [(ngModel)]="duty_option" required>
+        <option [value]="null" [disabled]="true" [selected]="true">--Select Duty option--</option>
+        <option placeholder="dutyoption" *ngFor="let dutypersonObj of duty_optionArray" [value]="dutypersonObj.list_value">{{ dutypersonObj.list_value }}</option>
+      </select>
+    </td>
+  </div>
+
+
 
   <!-- Print button section -->
   <div class="print__1">
     <button class="print" (click)="__main.print()">Print</button>
   </div>
 
-  <!-- Mat menu for report selection -->
-  <mat-menu #searchBy="matMenu">
-    <button mat-menu-item (click)="changeclick()">Monthly Investigation</button>
-    <button mat-menu-item>Pampers Catheter Change</button>
-    <button mat-menu-item>All Patient</button>
-  </mat-menu>
 </div>
 
 <!-- Section for displaying report heading -->
@@ -44,7 +72,7 @@
 
 <!-- Section for displaying duty counts based on date range -->
 <div class="home__admission">
-  <div *ngIf="!isAddNew" class="show__Addmission">
+  <div *ngIf="isAddNew" class="show__Addmission">
     <div class="header"></div>
     <div class="list__1">
       <table class="row__1">
@@ -71,34 +99,53 @@
 
 <!-- Section for displaying duty persons based on selected option -->
 <div>
-  <div *ngIf="!isAddNew_1" class="show__Addmission">
-    <div>
-      <td>
-        <select type="text" (change)="get_optionPerson()" id="Duty option" name="Duty option" class="form__input" [(ngModel)]="duty_option" required>
-          <option [value]="null" [disabled]="true" [selected]="true">--Select Duty option--</option>
-          <option placeholder="dutyoption" *ngFor="let dutypersonObj of duty_optionArray" [value]="dutypersonObj.list_value">{{ dutypersonObj.list_value }}</option>
-        </select>
-      </td>
-    </div>
+  <div *ngIf="isAddNew_1" class="show__Addmission">
+
     <table class="row__1">
       <tr>
         <th>No</th>
-        <th>Person ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <!-- <th>Person ID</th> -->
+        <th>Name</th>
+        <!-- <th>Last Name</th> -->
         <th>Gender</th>
         <th>District</th>
-        <th>Duty Count</th>
+        <th>How Many</th>
       </tr>
       <tr class="data__1" *ngFor="let person of getoptionpersons; let i = index">
         <td>{{ i+1 }}</td>
-        <td>{{ person.person_id }}</td>
-        <td>{{ person.first_name }}</td>
-        <td>{{ person.last_name }}</td>
+        <!-- <td>{{ person.person_id }}</td> -->
+        <td>{{ person.first_name }} {{ person.last_name }}</td>
+        <!-- <td></td> -->
         <td>{{ person.gender }}</td>
         <td>{{ person.district }}</td>
         <td>{{ person.duty_count }}</td>
       </tr>
     </table>
+  </div>
+</div>
+
+
+<div>
+  <div *ngIf="isAddNew_2" class="show__Addmission">
+    <div>
+      <table class="row__1">
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>District</th>
+          <th>Reason</th>
+          <th>Date</th>
+        </tr>
+        <tr class="data__1" *ngFor="let homeperson of reportlist; let i = index">
+          <td>{{i+1 }}</td>
+          <td>{{homeperson.person_first_name}} {{homeperson.person_last_name}}</td>
+          <td>{{homeperson.person_gender }}</td>
+          <td>{{homeperson.person_district }}</td>
+          <td>{{homeperson.disease }}</td>
+          <td>{{homeperson.admission_date }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

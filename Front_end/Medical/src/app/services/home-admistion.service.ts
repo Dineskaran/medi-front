@@ -19,7 +19,7 @@ export class HomeAdmistionService   {
 
   home_admistionList:HomeAdmistion [] =[]
   home_dischargeObj:HomeAdmistion[]=[]
-  
+
 
   home_admistionObj : HomeAdmistion = {
 
@@ -40,16 +40,16 @@ export class HomeAdmistionService   {
     discharge_date: "",
     discharge_reason: "",
     note: "",
-     
-  }
   
+  }
 
-  changeOption(){ 
-    
+
+  changeOption(){
+
     this.isAddNew = !this.isAddNew;
     this.clearhomeObj()
     this.dischargeButton=false;
-   
+
   }
 
 
@@ -60,10 +60,10 @@ export class HomeAdmistionService   {
     this.isAddNew=!this.isAddNew;
     this.editflag = true;
     this.index = i;
-    this.dischargeButton=false;  
+    this.dischargeButton=false;
   }
 
-  
+
   dischargePerson(i:number){
     // console.log(this.home_admistionObj)
     this.home_admistionObj=this.home_admistionList[i];
@@ -74,7 +74,7 @@ export class HomeAdmistionService   {
 
   }
 
-  
+
 
   saveAdmisstion(){
     if(this.editflag==false)
@@ -86,11 +86,11 @@ export class HomeAdmistionService   {
 
           this.home_admistionList[this.index]=this.home_admistionObj;
           this.editflag=false;
-      }   
+      }
 
       this.clearhomeObj()
-        
-    } 
+
+    }
 
   clearhomeObj(){
     this.home_admistionObj = {
@@ -112,33 +112,33 @@ export class HomeAdmistionService   {
       discharge_date: "",
       discharge_reason: "",
       note: ""
-      
-            
+
+
     }
 
   }
-  
+
   isMinimized:boolean =true;
-  
+
   minimizedToggle(){
     this.isMinimized = !this.isMinimized;
   }
- 
+
     homeadmistioninsertdetails():Observable<HomeAdmistion[]>{
       console.log(this.home_admistionObj)
     return this.httpclient.post<HomeAdmistion[]>(`${this.__main.URL}/home_admission_insert`,this.home_admistionObj);
 
-  } 
+  }
 
   getAllHomeadmition():Observable<HomeAdmistion[]>{
     return this.httpclient.get<HomeAdmistion[]>(`${this.__main.URL}/home_admission_insert`);
-  } 
+  }
 
- 
+
   deleteHomeadmissionDetail(id:number){
     // console.log("Id is " + id)
     // console.log(`${this.__main.URL+"/delete?"}/${id}`)
-    
+
     const params = new HttpParams().set('id', id.toString());
     // return this.httpclient.delete<HomeAdmistion>(`${this.__main.URL+"/delete?id"}/${id}`);
     return this.httpclient.delete<HomeAdmistion>(`${this.__main.URL}/delete`, { params });

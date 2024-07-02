@@ -23,19 +23,47 @@ export class SearchReportComponent {
   duty_optionArray: any[] = [];
   getreports: boolean = false;
 
-  isAddNew: boolean = true;
+  isAddNew: boolean = false;
   isAddNew_1: boolean = false;
+  isAddNew_2: boolean = false;
+  showdate:boolean=false;
 
   duty_option: string = '';
+
+  date_option:string='';
+  end_date:string='';
+  start_date:string='';
+
 
   ngOnInit(): void {
     this.loadDutyoption();
     this.get_optionPerson();
   }
 
-  changeclick() {
-    this.isAddNew = false;
+  showdate_1(){
+    this.showdate=true;
   }
+
+  changeclick() {
+    this.isAddNew = true;
+
+    this.isAddNew_1 =false;
+    this.isAddNew_2 = false;
+  }
+  changeclick_1() {
+    this.isAddNew_1 =true;
+
+    this.isAddNew=false;
+    this.isAddNew_2 =false;
+  }
+  changeclick_2() {
+    this.isAddNew_2 = true;
+
+    this.isAddNew=false;
+    this.isAddNew_1 =false;
+    }
+
+
 
   start_date_str: string = '';
   end_date_str: string = '';
@@ -47,7 +75,7 @@ export class SearchReportComponent {
       if (Array.isArray(resultList)) {
         this.duty_countArray = resultList.map(countobj => JSON.parse(countobj));
       } else {
-        console.error('ResultList is not an array:', resultList);
+        // console.error('ResultList is not an array:', resultList);
       }
     });
   }
@@ -81,4 +109,23 @@ export class SearchReportComponent {
       console.error('duty_option is empty or undefined');
     }
   }
+
+  reportlist:any[]=[];
+
+  home_person_report() {
+    this.__main.get_home_person_report(this.date_option, this.start_date, this.end_date).subscribe(
+      reportlist => {
+        // Check if reportlist is an array before using it
+        if (Array.isArray(reportlist)) {
+          this.reportlist = reportlist;
+          console.log("Report list:", reportlist);
+        } else {
+          console.error('Report list is not an array:', reportlist);
+        }
+      },
+      error => {
+        console.error('Error fetching report list:', error);
+      }
+    );
+}
 }
