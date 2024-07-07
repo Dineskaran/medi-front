@@ -37,24 +37,34 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe((event) => {
-    //   const navEndEvent = event as NavigationEnd;
-    //   if (!this.__user.isLogined && navEndEvent.url !== '/login') {
-    //     this.router.navigate(['/login']);
-    //   }
-    // });
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event) => {
+      const navEndEvent = event as NavigationEnd;
+      if (!this.__user.isLogined && navEndEvent.url !== '/login') {
+        this.router.navigate(['/login']);
+      }
+    });
 
     // if (!window.onbeforeunload) {
     //   window.onbeforeunload = (e) => {
     //     e.preventDefault();
     //     return true;
     //   };
+    //   this.router.navigate(['/']);
     // }
+    // this. hide();
+
   }
 
   showSidebar() {
-    return this.isLoggedIn && this.router.url !== '/login'; // Show sidebar only if logged in and not on login page
+    return this.isLoggedIn && this.router.url !== '/login';
+     // Show sidebar only if logged in and not on login page
+  }
+  hide(){
+    if(this.router.url == '/'){
+      this.__user.isLogined = false;
+
+    }
   }
 }

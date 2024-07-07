@@ -1,69 +1,87 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { MainService } from './main.service';
 import { UserDetails } from '../model/user-details';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap ,throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { Login } from '../model/login';
+import { catchError } from 'rxjs/operators';
 import { LogInfo } from '../model/log-info';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDetailsService {
+  isEditMode: any;
 
-  isLogined:boolean=false;
-  constructor(private httpclient:HttpClient, private __main : MainService, private router: Router,) {
+
+  constructor(private httpclient:HttpClient, private router: Router,) {
     this.isLogined = localStorage.getItem('isLogined') === 'true';
   }
 
+  __main : MainService=inject(MainService);
+  isLogined : boolean = false;
   editflag:boolean=false;
   index: number=1;
   isAddNew: boolean =true;
   isMinimized:boolean =true;
 
- loggedUserObj:UserDetails={} as UserDetails;
 
- loginfoObj:LogInfo={} as LogInfo;
- logInfoList: LogInfo[] = [];
+  loggedUserObj:UserDetails={} as UserDetails;
+  loginfoObj:LogInfo={} as LogInfo;
+  logInfoList: LogInfo[] = [];
 
 
- userid: string = 'Mat01';
- password: string = '123.0';
- num_of_attempt=0;
+  userid: string = 'Mat0';
+  password: string = 'Dineskaran13#';
+  num_of_attempt=0;
 
- resetLoginInfo(): void {
+  resetLoginInfo(): void {
   this.userid = '';
   this.password = '';
   this.num_of_attempt = 0;
   this.loginfoObj = {} as LogInfo;
 }
 
-  
+
 
   logout(){
 
     if(this.isLogined){
-       this.isLogined=false;
-       this.insertLoginfo().subscribe((data)=>{// alert("update succesfully"+ data)
+      this.isLogined=false;
+      this.insertLoginfo().subscribe((data)=>{// alert("update successfully"+ data)
           })
         localStorage.removeItem('isLogined');
-       this.router.navigate(['/']);
+      this.router.navigate(['/']);
       }
       this.resetLoginInfo()
   }
   minimizedToggle(){
-   this.isMinimized = !this.isMinimized;
+  this.isMinimized = !this.isMinimized;
   }
   userdetailsList:UserDetails[] = []
   changeOption(){
     this.isAddNew = !this.isAddNew;
   }
 
-  insertuserDetails(userObj:UserDetails):Observable<UserDetails[]>{
+  insertuserDetails(userObj:UserDetails):Observable<any>{
     console.log(userObj)
-    return this.httpclient.post<UserDetails[]>(`${this.__main.URL}/insert_user_details`,userObj);
+    return this.httpclient.post<any>(`${this.__main.URL}/insert_user_details`,userObj)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
+
+  // check userid Availability
+
+  checkUserIdAvailability(userid: string):Observable<any>{
+    return this.httpclient.get<any>(`${this.__main.URL}/check_userid?userid=${userid}`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+
 
   getAll_user_DetailsList():Observable<UserDetails[]>{
     return this.httpclient.get<UserDetails[]>(`${this.__main.URL}/insert_user_details`);
@@ -110,6 +128,15 @@ export class UserDetailsService {
     }
 
 
+    private handleError(error: HttpErrorResponse) {
+      let errorMessage = 'Unknown error!';
+      if (error.error instanceof ErrorEvent) {
+        errorMessage = `Error: ${error.error.message}`;
+      } else {
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.error}`;
+      }
+      return throwError(() => new Error(errorMessage));
+    }
 
 }
 

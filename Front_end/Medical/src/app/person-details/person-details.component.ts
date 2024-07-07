@@ -30,17 +30,17 @@ export class PersonDetailsComponent {
 
   person_detailsList():void{this.person_detailsService.person_detailsList = []}
 
-  
+
 
   loadAllPersondetails():void{
     this.person_detailsService.getAllPerson('Member').subscribe(( resultList)=>{
       this.person_detailsService.person_detailsList = []
-     resultList.forEach((person:any)=>{
+    resultList.forEach((person:any)=>{
       console.log(person)
-       let a:PersonDetails =JSON.parse(person)
-       this.person_detailsService.person_detailsList .push(a)
-       console.log(person)
-     })
+      let a:PersonDetails =JSON.parse(person)
+      this.person_detailsService.person_detailsList .push(a)
+      console.log(person)
+    })
     })
   }
 }

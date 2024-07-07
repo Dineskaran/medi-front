@@ -23,5 +23,20 @@ export class LeftPanelComponent {
   toggleDropdown() {
     this.showSubmenu = !this.showSubmenu;
   }
+  isSidebarOpen = false;
+  isDarkMode = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
 
 }

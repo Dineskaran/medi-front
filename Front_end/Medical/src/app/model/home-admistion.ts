@@ -17,6 +17,8 @@ export interface HomeAdmistion {
     discharge_date:string;
     discharge_reason:string;
     note:string;
+    person_details_first_name:string;
+    person_details_last_name:string;
     
 
 }

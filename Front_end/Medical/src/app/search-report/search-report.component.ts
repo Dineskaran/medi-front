@@ -34,6 +34,19 @@ export class SearchReportComponent {
   end_date:string='';
   start_date:string='';
 
+  isadmision_date:boolean=true;
+  isdischarge_date:boolean=true;
+
+  isadmision(){
+    this.isadmision_date=true;
+    this.isdischarge_date=false;
+  }
+
+  isdischarge(){
+    this.isadmision_date=false;
+    this.isdischarge_date=true;
+  }
+
 
   ngOnInit(): void {
     this.loadDutyoption();
@@ -113,18 +126,22 @@ export class SearchReportComponent {
   reportlist:any[]=[];
 
   home_person_report() {
-    this.__main.get_home_person_report(this.date_option, this.start_date, this.end_date).subscribe(
-      reportlist => {
+    if(this.date_option=="admission_date"){
+      this.isadmision()
+    }
+    else if(this.date_option=="discharge_date"){
+      this.isdischarge()
+      }
+    this.__main.get_home_person_report(this.date_option, this.start_date, this.end_date).subscribe((reportlist) => {
+      this.reportlist =[];
         // Check if reportlist is an array before using it
-        if (Array.isArray(reportlist)) {
-          this.reportlist = reportlist;
-          console.log("Report list:", reportlist);
-        } else {
-          console.error('Report list is not an array:', reportlist);
-        }
-      },
-      error => {
-        console.error('Error fetching report list:', error);
+        reportlist.forEach((report:any)=>{
+          console.log(report)
+          let x:any=JSON.parse(report)
+          this.reportlist.push(x);
+
+
+        })
       }
     );
 }

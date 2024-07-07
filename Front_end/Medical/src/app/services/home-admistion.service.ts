@@ -40,6 +40,8 @@ export class HomeAdmistionService   {
     discharge_date: "",
     discharge_reason: "",
     note: "",
+    person_details_first_name:'',
+    person_details_last_name:''
   
   }
 
@@ -111,6 +113,8 @@ export class HomeAdmistionService   {
       work_in_uyirilai: "",
       discharge_date: "",
       discharge_reason: "",
+      person_details_first_name:'',
+      person_details_last_name:'',
       note: ""
 
 

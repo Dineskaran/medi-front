@@ -10,4 +10,6 @@ export interface NurseDuty {
     note:string;
     designation:string;
     by_whom:string;
+    person_details_first_name:string;
+    person_details_last_name:string;
 }

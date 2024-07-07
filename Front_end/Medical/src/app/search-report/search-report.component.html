@@ -21,11 +21,11 @@
     <button class="Search" (click)="loaddutycount()">Search</button>
   </div>
 
-  <div class="A__2" *ngIf="isAddNew_2">
+  <div class="A__2" *ngIf="isAddNew_2"> Select Date Option :
     <select type="text" (change)="showdate_1()" id="person" name="person" class="form__input_1" [(ngModel)]="date_option"  required>
-      <option  [value]="null" [disabled]="true" [selected]="true">--Select Option--</option>
-      <option value="admission_date">admission_date</option>
-      <option value="discharge_date">discharge_date</option>
+      <!-- <option  [value]="null" [disabled]="true" [selected]="true">--Select Date Option--</option> -->
+      <option value="admission_date">Admission Date</option>
+      <option value="discharge_date">Discharge Date</option>
     </select>
 
     <div *ngIf="showdate" class="A__2">
@@ -37,21 +37,15 @@
   </div>
 
   <!--select the dutyoption for get person details -->
-  <div class="A__3"  *ngIf="isAddNew_1">
+  <div class="A__2"  *ngIf="isAddNew_1">
     <td class="selected_duty" >
-      <select type="text" (change)="get_optionPerson()" id="Duty option" name="Duty option"  [(ngModel)]="duty_option" required>
+      <select type="text" class="form__input_1" (change)="get_optionPerson()" id="Duty option" name="Duty option"  [(ngModel)]="duty_option" required>
         <option [value]="null" [disabled]="true" [selected]="true">--Select Duty option--</option>
         <option placeholder="dutyoption" *ngFor="let dutypersonObj of duty_optionArray" [value]="dutypersonObj.list_value">{{ dutypersonObj.list_value }}</option>
       </select>
     </td>
   </div>
-
-
-
-  <!-- Print button section -->
-  <div class="print__1">
-    <button class="print" (click)="__main.print()">Print</button>
-  </div>
+  <button  (click)="__main.print()">PRINT</button>
 
 </div>
 
@@ -129,22 +123,25 @@
   <div *ngIf="isAddNew_2" class="show__Addmission">
     <div>
       <table class="row__1">
-        <tr>
+        <tr class="row__2">
           <th>No</th>
+          <th>Admision Date</th>
+          <th *ngIf="isdischarge_date">Discharge Date</th>
           <th>Name</th>
           <th>Gender</th>
           <th>District</th>
           <th>Reason</th>
-          <th>Date</th>
+
         </tr>
-        <tr class="data__1" *ngFor="let homeperson of reportlist; let i = index">
-          <td>{{i+1 }}</td>
-          <td>{{homeperson.person_first_name}} {{homeperson.person_last_name}}</td>
-          <td>{{homeperson.person_gender }}</td>
-          <td>{{homeperson.person_district }}</td>
-          <td>{{homeperson.disease }}</td>
-          <td>{{homeperson.admission_date }}</td>
-        </tr>
+          <tr class="data__1" *ngFor="let homeperson of reportlist; let i = index">
+            <td>{{i+1 }}</td>
+            <td>{{homeperson.admission_date }}</td>
+            <td *ngIf="isdischarge_date">{{homeperson.discharge_date }}</td>
+            <td>{{homeperson.person_first_name}} {{homeperson.person_last_name}}</td>
+            <td>{{homeperson.person_gender }}</td>
+            <td>{{homeperson.person_district }}</td>
+            <td>{{homeperson.disease }}</td>
+          </tr>
       </table>
     </div>
   </div>

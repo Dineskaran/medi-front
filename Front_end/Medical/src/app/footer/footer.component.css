@@ -1,13 +1,13 @@
 .footer {
 
-    height: 10%;
-    width: 100%;
-    background-color:#6882ac;
-    /* position:-webkit-sticky; */
-    display: flex;
-    bottom:0;
-    align-items: center;
-    justify-content: center;
+  height: 8vh;
+  width: 100%;
+  background-color:#071e42;
+  display: flex;
+  bottom:0;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
 
 }
 @media print {
@@ -17,11 +17,17 @@
 
 }
 
-.footer_copyright p{
+.footer_copyright {
 
-   color: rgba(14, 12, 12, 0.89);
-   text-align: center;
-   justify-content: center;
-   display: flex;
+  color: rgba(245, 245, 245, 0.89);
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  /* align-items: center; */
+  padding: 4px;
 
+}
+p{
+  align-items: center;
+  margin: 0;
 }

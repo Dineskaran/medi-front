@@ -1,3 +1,4 @@
+
 .body1 {
 
     margin: 0;
@@ -5,15 +6,20 @@
     /* background-image: url("path/to/your/image.jpg"); */
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 80vh;
+    
+    
 }
-
+.error{
+  color: red;
+}
 .container {
     background-color: rgba(59, 112, 211, 0.849);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    position: fixed;
     padding: 40px;
     width: 400px;
     border-radius: 10px;

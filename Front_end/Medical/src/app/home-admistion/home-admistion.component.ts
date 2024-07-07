@@ -10,13 +10,17 @@ import { PersonDetailsComponent } from '../person-details/person-details.compone
 import { PersonDetails } from '../model/person-details';
 import { Dropdown } from '../model/dropdown';
 import { MainService } from '../services/main.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 
 
 @Component({
   selector: 'app-home-admistion',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule,FormsModule,RouterLink,RouterModule,PersonDetailsComponent],
+  imports: [CommonModule,FormsModule,MatOptionModule,MatSelectModule,MatFormFieldModule,MatInputModule,ReactiveFormsModule,FormsModule,RouterLink,RouterModule,PersonDetailsComponent],
   templateUrl: './home-admistion.component.html',
   styleUrl: './home-admistion.component.css'
 })
@@ -25,13 +29,14 @@ export class HomeAdmistionComponent implements OnInit{
   home_AdmistionService:HomeAdmistionService = inject(HomeAdmistionService)
   person_detailsService:PersonDetailsService=inject(PersonDetailsService)
   __main:MainService=inject(MainService)
-  
+
   homeAdmistion!:HomeAdmistion;
 
   reasonArray:Dropdown[]=[]
+materialObj: any;
 
 
- 
+
 
   ngOnInit(): void {
 
@@ -41,22 +46,39 @@ export class HomeAdmistionComponent implements OnInit{
       // this.person_detailsList();
 
   }
+
+
+filteredItemnames: any[] =  this.person_detailsService.person_detailsList;
   
+onInputChange(event: any) {
+  const searchInput = event.target.value.toLowerCase();
+
+  this.filteredItemnames = this. person_detailsService.person_detailsList.filter(({first_name}) => {
+    const prov = first_name.toLowerCase();
+    return prov.includes(searchInput);
+  });
+}
+
+onOpenChange(searchInput: any) {
+  searchInput.value = "";
+  this.filteredItemnames =  this.person_detailsService.person_detailsList;
+}
+
 
   // person_detailsList():void{}
 
-          
+
   // }
   loadAllAdmitions(): void {
     this.home_AdmistionService.getAllHomeadmition().subscribe((resultList) => {
       this.home_AdmistionService.home_admistionList = []
-   
-     resultList.forEach((goods:any)=>{
+
+    resultList.forEach((goods:any)=>{
       // console.log(goods)
-       let a:HomeAdmistion =JSON.parse(goods)
-       this.home_AdmistionService.home_admistionList .push(a)
+      let a:HomeAdmistion =JSON.parse(goods)
+      this.home_AdmistionService.home_admistionList .push(a)
       //  console.log(goods)
-     })
+    })
     })
   }
 
@@ -66,25 +88,21 @@ export class HomeAdmistionComponent implements OnInit{
 
     this.home_AdmistionService.deleteHomeadmissionDetail(id)
     .subscribe((result)=>{
-      alert("Home admission details succesfully delete")
+      alert("Home admission details successfully delete")
       this.loadAllAdmitions();
     },
     error=>{
       console.log(error);
       alert("Error try again")
     });
-    
+
   }
 
   insertHomeAddmissionDetails(){
-    
-    
-
-
       let getData = this.home_AdmistionService.homeadmistioninsertdetails();
       getData.subscribe(data=>{
         // console.log(data);
-        alert("Home admission details succesfully Added")
+        alert("Home admission details successfully Added")
         this.loadAllAdmitions();
         // this.HomeAdmistionReactiveForm.reset();
       },error=>{
@@ -98,42 +116,42 @@ export class HomeAdmistionComponent implements OnInit{
   //   if (event.target['checked']){
   //     console.log("it's true");
   //     this.home_AdmistionService.home_admistionObj.if_new = 1;
-  //   } 
+  //   }
 
   //   else {
 
   //     console.log("it's false");
   //     this.home_AdmistionService.home_admistionObj.if_new = 0;
   //   }
-    
+
 
   loadAllPersondetails():void{
     this.person_detailsService.getAllPerson('Member').subscribe(( resultList)=>{
       this.person_detailsService.person_detailsList = []
-     resultList.forEach((person:any)=>{
+    resultList.forEach((person:any)=>{
       // console.log(person)
-       let a:PersonDetails =JSON.parse(person)
-       this.person_detailsService.person_detailsList .push(a)
+      let a:PersonDetails =JSON.parse(person)
+      this.person_detailsService.person_detailsList .push(a)
       //  console.log(person)
-     })
+    })
     })
   }
 
   // drop down loads  only reason array
 
   loadReasons():void{
-    this.__main.getDropdownitems('Resaon','').subscribe(( resultList)=>{
+    this.__main.getDropdownitems('Reason','').subscribe(( resultList)=>{
       this.reasonArray = []
-     resultList.forEach((item:any)=>{
+    resultList.forEach((item:any)=>{
       // console.log(person)
-       let a:Dropdown =JSON.parse(item)
-       this.reasonArray.push(a)
+      let a:Dropdown =JSON.parse(item)
+      this.reasonArray.push(a)
       //  console.log(person)
-     })
+    })
     })
   }
 
-  
-  
- 
+
+
+
 }

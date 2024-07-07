@@ -28,7 +28,7 @@
                                 <tr>
                                     <td><span class="form__name"> List Type</span></td>
                                     <td>
-                                        <select (change)="selected_drodown(drop_downServise.drop_DownObj.list_type)" type="text"  id="List Type" name="List Type" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_type"  required>
+                                        <select (change)="selected_drodown(drop_downServise.drop_DownObj.list_type, '')" type="text"  id="List Type" name="List Type" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_type"  required>
                                             <option  [value]="null" [disabled]="true" [selected]="true">--Select List Type  --</option>
                                             <option   *ngFor="let ListTypeObj of ListTypeArray" [value]="ListTypeObj.list_type"> {{ListTypeObj.list_type}}</option>
                                         </select>
@@ -42,9 +42,15 @@
                                     <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_value" />
                                 </tr>
 
-                                <tr>
+                                <tr *ngIf="FilterbyArray.length >0">
                                     <td><span class="form__name">Filter By</span></td>
-                                    <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  /></td>
+                                    <!-- <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  /></td> -->
+                                    <td>
+                                      <select (change)="selected_drodown_filterby(drop_downServise.drop_DownObj.list_type,drop_downServise.drop_DownObj.filter_by)" type="text"  id="filter_by" name="filter_by" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  required>
+                                          <option  [value]="null" [disabled]="true" [selected]="true">--Select filter_by  --</option>
+                                          <option  *ngFor="let item of FilterbyArray" [value]="item.list_value"> {{ item.list_value }}</option>
+                                      </select>
+                                  </td>
 
                                 </tr>
                                 <tr class="form__row2">

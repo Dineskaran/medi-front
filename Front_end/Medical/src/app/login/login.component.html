@@ -1,19 +1,20 @@
 <!-- <mat-progress-bar mode="indeterminate" (click)="log_user()"></mat-progress-bar> -->
 <div class="container">
+  <label class="error">{{this.__user.loginfoObj.log_status}}</label>
 
     <h1>Log in</h1>
     <form *ngIf="!isBlocked" action="#">
+      
         <label for="userid">UserId:</label>
         <input [(ngModel)]="userid" type="text" id="userid" name="userid" placeholder="Enter your userid" required><br><br>
         <label for="password">Password:</label>
         <input [(ngModel)]="password" type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
-        <div class="checkbox">
+        <!-- <div class="checkbox">
             <label for="rememberme">
                 <input type="checkbox" id="rememberme" name="rememberme">
                 Remember me
             </label>
-            <!--   -->
-        </div>
+        </div> -->
 
 
         <button class="loin" type="submit" (click)="log_user()">Login</button>

@@ -48,10 +48,10 @@ export class NurseDutyComponent {
     this.nurse_dutyService.getAllNurseduty().subscribe((resultList) => {
       this.nurse_dutyService.nurse_dutyList = []
       resultList.forEach((goods:any)=>{
-      // console.log(goods)
+      console.log(goods)
       let a:NurseDuty =JSON.parse(goods)
       this.nurse_dutyService.nurse_dutyList .push(a)
-      //  console.log(goods)
+      console.log(goods)
     })
     })
   }

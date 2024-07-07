@@ -59,10 +59,23 @@ isAddNew:boolean=true;
   URL = "http://127.0.0.1:8000/userservice"
 
   getDropdownitems(list_type:string,filter_by:string):Observable<Dropdown[]>{
-    let paramList = new HttpParams().set('list_type',list_type.toString());
-    paramList.set('filter_by',filter_by.toString());
+    // let paramList = new HttpParams().set('list_type',list_type.toString());
+    // paramList.set('filter_by',filter_by.toString());
     console.log("list_type ",list_type , 'filter_by ',filter_by)
-    return this.httpClient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:paramList});
+    let mySearchParams = new HttpParams()
+    .set('list_type', list_type.toString())
+    .set('filter_by', filter_by.toString())
+    return this.httpClient.get<Dropdown[]>(`${this.URL}/insert_drop_down`,{params:mySearchParams});
+  }
+
+  getdropdownList(listtype:string,filter_by :string): Observable<any> {
+    console.log("list type:",listtype)
+    // const params = new HttpParams().set('list_type', listtype.toString());
+  let mySearchParams = new HttpParams()
+  .set('list_type', listtype.toString())
+  .set('filter_by', filter_by.toString())
+// this.http.get<MemberMainModel[]>(environment.api_url + /member/showMainDetails , {params: mySearchParams, responseType: "json"})
+    return this.httpClient.get<any>(this.URL + "/get_dropdown",{ params:mySearchParams });
   }
 
 

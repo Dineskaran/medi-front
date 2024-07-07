@@ -3,13 +3,17 @@
 
   display:flex;
   flex-direction: column;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position:fixed;
 
 }
 @media print {
   .left-panal {
     display: none;
     margin: 0;
-    
+
     }
 
 }
@@ -39,7 +43,7 @@
 
 .menu{
 
-    font-size: 5vh;
+    font-size: 15px;
     display: flex;
     align-items: center;
     border-radius: 4px;
@@ -69,7 +73,7 @@
 
 .dropdown {
     float:inline-start;
-    overflow: hidden;
+
 
 
   }

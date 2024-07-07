@@ -5,21 +5,57 @@
 
 
 /* Order */
+
+
 * {
     margin: 0;
 }
-
-body {
-    height:80%;
-    background-color: rgb(255, 255, 255);
-
-}
-
 :root {
-    --primaryColor: black;
-
-
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --sidebar-background-color: #333333;
+  --sidebar-text-color: #ffffff;
 }
+
+body.dark-mode {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --sidebar-background-color: #111111;
+  --sidebar-text-color: #cccccc;
+}
+body {
+    height:100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .sidebar {
+    background-color: var(--sidebar-background-color);
+    color: var(--sidebar-text-color);
+    transition: background-color 0.3s, color 0.3s;
+    position: fixed;
+    left: -250px;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .main-content {
+    transition: margin-left 0.3s ease;
+  }
+
+  .main-content.open {
+    margin-left: 250px;
+  }
+
+
 .color_white {
     color: rgb(20, 21, 22);
     padding-left: 6%;
@@ -51,7 +87,7 @@ body {
 }
 .menu_icon {
 
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
 
 }
@@ -237,14 +273,15 @@ display: flex;
 
 .buttons__edit{
 
-  background-color: #3ad413c9;
-  padding: 10px;
+  /* background-color: #3ad413c9; */
+  padding: 4px;
   color: rgb(0, 0, 0);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
   border: none;
 
 }
@@ -255,8 +292,8 @@ display: flex;
 
 .buttons__discharge{
 
-  background-color: #a82b0cf3;
-  padding: 10px;
+  background-color: #cc5234f3;
+  padding: 4px;
   color: rgb(0, 0, 0);
   border-radius: 4px;
   display: flex;
@@ -275,8 +312,8 @@ display: flex;
 }
 .buttons__delete{
 
-  background-color: #e08c3df3;
-  padding: 10px;
+  background-color: #e47a68f3;
+  padding: 4px;
   color: rgb(0, 0, 0);
   border-radius: 4px;
   display: flex;
@@ -341,3 +378,5 @@ display: flex;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+

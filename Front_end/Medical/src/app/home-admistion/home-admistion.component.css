@@ -1,259 +1,37 @@
-/* 
-.header{
-  
-    border-radius: 5px;
-    background-color: rgba(141, 199, 141, 0.774);
-    justify-content: space-between; 
-    display: flex;
-    width: 100%;
-    
-   
+/* button {
+  font-size: 1.0em;
+  padding: 0.6em 0.8em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px #000000b4;
 }
 
-.title{
-    
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 20px;
-    padding-top: 10px;
-    background-color: rgba(74, 214, 45, 0.781);
-    width: 100%;
-    border-radius: 8px;
-    justify-content: center;
+.container {
+  position: relative;
+  padding: 3px;
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  border-radius: 0.9em;
+  transition: all 0.4s ease;
 }
 
-.option {
-    padding: 2px;
-   
-}
-.show__button   {
-
-    background-color: #89ac0bc0;
-    padding: 8px;
-    border: none;
-    padding-left: 5px;
-    color: rgb(0, 0, 0);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    
-    }
-.show__button:hover{
-
-    background-color: aqua;
-    text-align: center;
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 0.9em;
+  z-index: -10;
+  filter: blur(0);
+  transition: filter 0.4s ease;
 }
 
-.header {
-
-        margin-bottom: 5px;
-    }
-.tr__input  {
-
-    padding: 5px;
-    background-color: rgba(218, 208, 208, 0.418);
-    width: 40vh;
-    border: none;
-    margin-bottom: 5px;
-    border-radius: 8px;
-    }
-
- input[type="checkbox"]{
-    width: 20px;
-    height:25px;
-    border: 5px;
-    border-radius: 8px;
-    cursor: pointer;
- }
-
-.row1 > tr{
-
-        padding: 5px;
-     
-        width: 50vw;
-        border: none;
-        margin-bottom: 5px;
-        border-radius: 8px;
-        justify-content: center;
-        text-align: center;
-        
-       
-    }
-
-.row1 > tr {
-   
-    justify-content:flex-start;
-    text-align: start;
+.container:hover::before {
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  filter: blur(1.2em);
 }
-.form__row1 {
-    display: flex;
-    width: 100%;
-    
-}
-
-.Addmission__new__add{
-    display: flex;
-    flex-direction: column;
-}
-.space{
-    display: flex;
-    padding-left: 10px;
-    
-}
-
-.row2 {
- 
-   margin-left: 20vh;
-}
-.form__data {
-
-
-  margin-top: 12px;
-  justify-content:space-between;
-  display: flex;
- 
-
-}
-
-.form__name {
-
-    font-weight:bolder;
-    font-size: 20px;
-    padding-right: 10px;
- 
-}
-.data >td{
-
-    border-radius: 8px;
-    text-align: center;
-   
-    
- }  
-   
-.row2> tr> td> textarea{
-    display: flex;
-}
-.row1 > tr >th{
-
-    padding: 5px;
-    background-color: rgba(148, 140, 27, 0.527);
-    width: 38vh;
-    border: none;
-    margin-bottom: 5px;
-    border-radius: 8px;
-}
-.data {
-    padding: 5px;
-    background-color: rgba(221, 214, 214, 0.527);
-    border: none;
-    margin-bottom: 5px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.buttons__edit{
-
-    background-color: #3ad413c9;
-    padding: 10px;
-    color: rgb(0, 0, 0);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    
-}
-.buttons__edit:hover{
-
-    background-color: #3861e6da;
-}
-
-.buttons__discharge{
-
-    background-color: #a82b0cf3;
-    padding: 10px;
-    color: rgb(0, 0, 0);
-    border-radius: 4px;
-    display: flex;
-   
-    border: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-}
-
-.buttons__discharge:hover{
-    
-    background-color: #c23f17da;
-
-}
-.buttons__delete{
-
-    background-color: #e08c3df3;
-    padding: 10px;
-    color: rgb(0, 0, 0);
-    border-radius: 4px;
-    display: flex;
-   
-    border: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-.buttons__delete:hover{
-    background-color: rgba(255, 13, 13, 0.842);
-}
-.form__input {
-
-    padding: 12px;
-    width: 38vh;
-    background-color: rgba(202, 201, 194, 0.404);
-    border: none;
-    border-radius: 8px;
-
-
-}
-
-.form__row2 {
-
-    display: flex;
-    width: 100%;
-   
-    justify-content:flex-end;
-    margin-top: 2px;
-    margin-right: 10px;
-}
-.form__row2 > button {
-
-    padding: 8px;
-    margin-left: 8px;
-    margin-right:8px ;
-    cursor: pointer;
-  
-}
-.Submit__color {
-
-    background-color:rgba(77, 223, 92, 1);
-}
-.edit__color {
-
-    background-color:rgba(255, 255, 0, 1);
-}
-
-.Discharge__color {
-
-    background-color:rgba(223, 77, 191, 0.81);
-}
-.Delete__color {
-
-    background-color: rgba(243, 35, 35, 1);
-}
-.form__data > form > table > tr > td > span {
-    font-size: large;
-    width: 30%;
-    padding-right: 25px;
+.container:active::before {
+  filter: blur(0.2em);
 } */

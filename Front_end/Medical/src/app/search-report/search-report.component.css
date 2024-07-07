@@ -1,23 +1,34 @@
-.row__1 > tr >th{
+.row__1{
 
-  padding: 10px;
-  background-color: rgba(204, 191, 191, 0.116);
-  width: 38vh;
-  border: none;
-  margin-bottom: 8px;
-  border-radius: 8px;
+  background-color: rgba(223, 215, 215, 0.116);
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+  /* border: 1px solid rgb(61, 61, 61); */
+  border-radius: 5px;
+}
+
+
+table {
+  border:1px solid rgba(13, 13, 14, 0.267) ;
+  border-collapse:collapse;
+}
+.data__1> td{
+  border:1px solid rgba(8, 8, 8, 0.199) ;
+
 }
 
 .data__1 {
-  padding: 10px;
+  /* padding: 10px; */
   background-color: rgba(223, 215, 215, 0.116);
-  border: none;
+  /* border: none; */
   margin-bottom: 10px;
-  border-radius: 8px;
-  text-align: center;
-  border-radius: 5px;
+  text-align: left;
+  /* border-radius: 5px; */
+  border: 1px solid black;
 
 }
+
 
 .search_dropdown_icons{
   display: flex;
@@ -72,6 +83,12 @@
   min-height: 400px;
   margin-bottom: 15px;
 }
+.set_print{
+
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
 .report__heading{
 
   display: flex;
@@ -79,7 +96,7 @@
   justify-content: center;
   background-color: #e8ecec;
   border-radius: 5px;
-  padding: 20px 0px;
+  /* padding: 20px 0px; */
 }
 .report_heading_logo{
   /* border: 1px solid blue; */
@@ -169,13 +186,42 @@ input:hover{
   margin-right: 30px;
   height:40px;
   align-items: center;
+  
 
+}
+button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #23c483;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+button:active {
+  transform: translateY(-1px);
 }
 
 .form__input_1 {
 
   padding: 12px;
+  margin-left: 5px;
   width: 22vh;
+  font-weight: 450;
   background-color: rgba(245, 244, 238, 0.404);
   border:1px solid rgba(25, 45, 233, 0.863) ;
   border-radius: 4px;
@@ -187,11 +233,25 @@ input:hover{
   background-color:rgba(250, 251, 255, 0.863);
   border:1px solid rgba(25, 45, 233, 0.863) ;
   font-size: 14px;
+
   font-weight: 400;
   color:rgba(25, 45, 233, 0.863);
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   /* margin: 20px; */
 }
+
+.form__input_1 >option{
+  background-color:rgba(250, 251, 255, 0.863);
+  border:1px solid rgba(25, 45, 233, 0.863) ;
+  font-size: 14px;
+
+  font-weight: 400;
+  color:rgba(25, 45, 233, 0.863);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* margin: 20px; */
+}
+
+
 .form__input_1 >option:hover{
   background-color:rgba(250, 251, 255, 0.863);
   cursor: pointer;
@@ -235,9 +295,6 @@ text-align: center;
 
 
 .selected_duty {
-  /* Style the entire select element */
-  background-color: #eee; /* Example background color */
-  border: 1px solid #ccc; /* Example border */
   padding: 5px; /* Example padding */
   border-radius: 4px; /* Example rounded corners */
 
@@ -264,7 +321,15 @@ text-align: center;
   .report__heading{
     align-items: center;
     justify-content: center;
+    padding-right: 8px;
 
+  }
+  .row__1{
+    align-items: center;
+    margin-top: 5px;
+    justify-content: center;
+    margin-right: 8px;
+  
   }
   .print{
     display: none;
@@ -278,7 +343,7 @@ text-align: center;
   .set_print{
     /* display: flex; */
     justify-content: center;
-    margin-right: 10px;
+    margin-right: 8px;
   }
   .data__1{
     align-items: center;

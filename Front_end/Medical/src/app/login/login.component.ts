@@ -30,7 +30,7 @@ export class LoginComponent {
   isBlocked: boolean = false;
   blockMessage: string = '';
   userid: string = 'Mat01';
-  password: string = '123';
+  password: string = 'Dineskaran13#';
   privilege: string = '';
 
   LoginList:Login[]=[];
@@ -59,42 +59,48 @@ export class LoginComponent {
 
 
 
-
+  message:string=''
 
     log_user():void {
+      this.__user.isLogined = false;
       this.__user.login_user(this.userid, this.password).subscribe((resultList) => {
         this.__user.loginfoObj.userid=this.userid;
-        // this.__user.loginfoObj.location='kilinochchi';
         this.num_of_attempt= this.num_of_attempt + 1
         this.__user.loginfoObj.num_of_attempt=this.num_of_attempt;
-
         resultList.forEach((obj:any)=>{
-           let a:any =JSON.parse(obj);
-           this.__user.loginfoObj.log_status=a.status
+          let a:any =JSON.parse(obj);
+          this.__user.loginfoObj.log_status=a.status
+          
 
-           if (a.status === "Success") {
+          if (a.status === "Success") {
             this.__user.loginfoObj.user_details_id= a.id
             this.__user.insertLoginfo().subscribe((data)=>
               {
-                // alert("Add succesfully"+ data)
+                // this.message="user login successfully"
+                this.message=a.status
+                this.__user.isLogined = true;
+                // alert("Add successfully"+ data)
+
                 this.__user.loginfoObj.id= Number(data)
               })
 
-            alert('Loggedin successfull!');
+            // alert('Loggedin successful!');
             sessionStorage.setItem('user',a.userid)
 
             this.__user.loggedUserObj = a;
-            this.__user.isLogined = true;
+            
             this.router.navigate(['/dashboard']); // Navigate to dashboard on successful login
 
           } else {
 
-            alert("Log status " + a.status)
+            // alert("Log status " + a.status)
+            this.__user.isLogined = false;
+            this.message=a.status
             if(this.num_of_attempt>2){
               // this.blockUser(a.id);
               this.__user.insertLoginfo().subscribe((data)=>
                 {
-                  // alert("Add succesfully"+ data)
+                  // alert("Add successfully"+ data)
                   alert("Too many login attempts. Your account has been blocked. Please contact the admin.")
                 })
             }
@@ -103,7 +109,7 @@ export class LoginComponent {
             // }
 
           }
-         })
+        })
         })
     }
 

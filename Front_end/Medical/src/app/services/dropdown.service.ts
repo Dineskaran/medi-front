@@ -20,7 +20,7 @@ export class DropdownService {
 
   drop_DownObj:Dropdown={
     id:0,
-    list_type:"Bywhom",
+    list_type:"DutyOption",
     list_value:"",
     filter_by:"",
 
@@ -29,13 +29,13 @@ export class DropdownService {
 
   changeOption(){
     // this.isAddNew=!this.isAddNew;
-    this.clearDroplist();
+    this.clearDropObj();
   }
 
-  clearDroplist(){
+  clearDropObj(){
     this.drop_DownObj={
       id:0,
-      list_type:"",
+      list_type:"DutyOption",
       list_value:"",
       filter_by:"",
       }
@@ -65,7 +65,6 @@ export class DropdownService {
   getAll_ListType():Observable<Dropdown[]>{
     return this.httpclient.get<Dropdown[]>(`${this.__main.URL}/drop_down_distin`);
   }
-
 
 
 

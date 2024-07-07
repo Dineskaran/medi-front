@@ -31,7 +31,7 @@
 
                 <tr  class="data" *ngFor="let nerse_duty of nurse_dutyService.nurse_dutyList ; let i = index">
                     <td>{{ i+1}}</td>
-                    <td>{{ nerse_duty.person_details_id}}</td>
+                    <td>{{ nerse_duty.person_details_first_name}} {{ nerse_duty.person_details_last_name}}</td>
                     <td>{{ nerse_duty.date }}</td>
                     <td>{{ nerse_duty.time }}</td>
                     <td>{{ nerse_duty.person_type}}</td>

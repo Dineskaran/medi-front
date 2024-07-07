@@ -1,13 +1,13 @@
 .header__nav {
-    height: 10%;
-    position: sticky;
-    top: 0;
-    justify-content: space-between;
-    background-color:#7495c9;
-    padding-left: 1.4%;
-    padding-right: 5%;
-    display: flex;
-    align-items: center;
+  height: 8vh;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  background-color:#071e42;
+  padding-left: 1.4%;
+  padding-right: 1.4%;
+  display: flex;
+  align-items: center;
 }
 @media print {
   .header__nav {
@@ -15,13 +15,26 @@
     }
 }
 
-
+.logo{
+  padding: 4px;
+}
 .header_menu_logo {
 
     display: flex;
     justify-content: center;
-    padding-right: 10px;
+    padding: 10px;
     align-items: center;
+
+}
+.menubar{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4px;
+  align-items: center;
+}
+.header_menu_logo > span{
+align-items: center;
+padding: 4px;
 
 }
 .header_menu_logo img{
@@ -32,20 +45,24 @@
 
 
 }
-.header_option {
-
-    padding-left: 5%;
-    display: flex;
-    justify-content: center;
-
-
-
+.nav4{
+  display: flex;
+  padding: 4px;
+  justify-content: space-between;align-items: center;
 }
-.header_menu_logo > span{
-
-    padding-right: 5%;
-    size: 45px;
-    cursor: pointer;
+.nav5{
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+.nav6{
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+.header_option {
+  display: flex;
+  justify-content:center;
 }
 
 .header_menu_logo > span:hover{
@@ -55,51 +72,269 @@
     /* font-size:30px; */
     padding-left: 8%;
 
- }
- .color_white{
+}
+.color_white{
   color: aliceblue;
- }
+    }
 
 .header_option > span {
 
-    padding-left: 10%;
+    /* padding-left: 5%; */
     cursor: pointer;
 }
 
 .header_option >span:hover{
 
-   cursor:pointer;
-   color: rgb(255, 255, 255);
+  cursor:pointer;
+  color: rgb(255, 255, 255);
    /* font-size:30px; */
 
 }
-
-
-.Search_in {
-
-    border: none;
-    background-color:#fdfeff;
-    display: flex;
-    justify-content: center;
-    color: white;
-    /* padding-right: 80px; */
-    border-radius: 4px;
-    padding-right: 20px;
-}
-.Search_in :hover{
-
-    cursor: pointer;
-}
-.search_submit:hover {
-
-    /* background-color: #000000a6; */
-    cursor: pointer;
+.nav2{
+  display: flex;
+  justify-content: center;
+  justify-content:space-around;
 
 }
-.search_submit{
-    /* padding-left: 5px; */
-    border: none;
-    border-radius: 4px;
-    margin-left: 2px;
-    background-color: #ffffff;
+.nav3{
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 5px;
+
+}
+
+/* this is a recreation of twitter search in css */
+.form {
+  --input-text-color: #fff;
+  --input-bg-color: #283542;
+  --focus-input-bg-color: transparent;
+  --text-color: #949faa;
+  --active-color: #1b9bee;
+  --width-of-input: 200px;
+  --inline-padding-of-input: 1.2em;
+  --gap: 0.9rem;
+}
+/* form style */
+.form {
+  font-size: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: var(--width-of-input);
+  position: relative;
+  isolation: isolate;
+}
+/* a fancy bg for showing background and border when focus. */
+.fancy-bg {
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  background: var(--input-bg-color);
+  border-radius: 30px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+/* label styling */
+label {
+  width: 100%;
+  padding: 0.8em;
+  height: 40px;
+  padding-inline: var(--inline-padding-of-input);
+  display: flex;
+  align-items: center;
+}
+
+.search,.close-btn {
+  position: absolute;
+}
+/* styling search-icon */
+.search {
+  fill: var(--text-color);
+  left: var(--inline-padding-of-input);
+}
+/* svg -- size */
+svg {
+  width: 17px;
+  display: block;
+}
+/* styling of close button */
+.close-btn {
+  border: none;
+  right: var(--inline-padding-of-input);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0.1em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--active-color);
+  opacity: 0;
+  visibility: hidden;
+  
+}
+/* styling of input */
+.input {
+  color: var(--input-text-color);
+  width: 100%;
+  margin-inline: min(2em,calc(var(--inline-padding-of-input) + var(--gap)));
+  background: none;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-color)
+}
+/* input background change in focus */
+.input:focus ~ .fancy-bg {
+  border: 1px solid var(--active-color);
+  background: var(--focus-input-bg-color);
+}
+/* search icon color change in focus */
+.input:focus ~ .search {
+  fill: var(--active-color);
+}
+/* showing close button when typing */
+.input:valid ~ .close-btn {
+  opacity: 1;
+  visibility: visible;
+}
+/* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
+}
+
+.bell_button {
+  /* margin-top: 3px; */
+  width: 30px;
+  height: 33px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(109, 106, 106);
+  border-radius: 30%;
+  cursor: pointer;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
+  border: none;
+  /* margin-left: 5px; */
+}
+
+.bell {
+  width: 15px;
+}
+
+.bell path {
+  fill: white;
+}
+
+.bell_button:hover {
+  /* background-color: rgba(82, 79, 79, 0.856); */
+  --input-text-color: #fff;
+  --input-bg-color: #283542;
+  --focus-input-bg-color: transparent;
+  --text-color: #949faa;
+  --active-color: #1b9bee;
+  --width-of-input: 200px;
+  --inline-padding-of-input: 1.2em;
+  --gap: 0.9rem;
+}
+
+.bell_button:hover .bell {
+  animation: bellRing 0.9s both;
+}
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+  0%,
+  80% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  40% {
+    transform: rotateZ(5deg);
+  }
+
+  55% {
+    transform: rotateZ(-5deg);
+  }
+
+  70% {
+    transform: rotateZ(2deg);
+  }
+}
+
+.bell_button:active {
+  transform: scale(0.8);
+}
+
+
+/* dark mode css */
+/* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  justify-content: space-between;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  border: 2px solid #414141;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  left: 0.2em;
+  bottom: 0.2em;
+  background-color: white;
+  border-radius: inherit;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.switch input:checked + .slider {
+  box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
+  border: 2px solid #0974f1;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.5em);
 }

@@ -1,14 +1,15 @@
 <div class="home__admission">
 
     <div *ngIf="home_AdmistionService.isAddNew" class="show__Addmission">
-        <div class="header"> 
+        <div class="header">
 
             <div class="title">
                 Home Addmission
             </div>
 
             <div class="option">
-                <button class="show__button" (click)="home_AdmistionService.changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
+              <!-- button_1,container -->
+                <button class=" show__button" (click)="home_AdmistionService.changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
             </div>
 
         </div>
@@ -17,23 +18,23 @@
 
             <table class="row1" >
                 <tr >
-                
-                <!-- <th>No</th> -->
-                <th>Member</th>
-                <th>Addmission Date</th>
-                <th>Reason</th>
-                <th>Room No</th>
-                <!-- <th>Hospital Name</th>
-                <th>Discharge Date</th>
-                <th>Dicharge Reason</th> -->
-                <th>Bed Sores</th>
-    
+
+                    <!-- <th>No</th> -->
+                    <th>Member</th>
+                    <th>Addmission Date</th>
+                    <th>Reason</th>
+                    <th>Room No</th>
+                    <!-- <th>Hospital Name</th>
+                    <th>Discharge Date</th>
+                    <th>Dicharge Reason</th> -->
+                    <th>Bed Sores</th>
+
                 </tr>
 
                 <tr  class="data" *ngFor="let home_Admistion of home_AdmistionService.home_admistionList ; let i = index">
                     <!-- <td>{{ i+1}}</td> -->
                     <!-- <td>{{ home_Admistion.id}}</td> -->
-                    <td>{{home_Admistion.person_details_id}}</td>
+                    <td>{{home_Admistion.person_details_first_name}} {{home_Admistion.person_details_last_name}}</td>
                     <td>{{home_Admistion.admission_date }}</td>
                     <td>{{home_Admistion.disease }}</td>
                     <td>{{home_Admistion.room_no}}</td>
@@ -44,7 +45,7 @@
                     <td><button  class="material-symbols-outlined buttons__edit" (click)="this.home_AdmistionService.editAdmistion(i)">edit</button></td>
                     <td><button  class="material-symbols-outlined buttons__discharge" (click)="this.home_AdmistionService.dischargePerson(i)">transfer_within_a_station</button></td>
                     <td><button  class="material-symbols-outlined buttons__delete" (click)="deleteHomeadmission(home_Admistion.id)">delete</button></td>
-                  </tr>              
+                </tr>
             </table>
 
         </div>
@@ -52,7 +53,7 @@
     </div>
 
     <div *ngIf="!home_AdmistionService.isAddNew" class="Addmission__new__add">
-        
+
         <div class="header">
 
             <div class="title">
@@ -64,27 +65,38 @@
         <div class="form__row1">
             <div class="form__data">
 
-                
+
                     <table class="space" >
                         <div class="row1">
 
-                           
+
                             <tr >
                                 <td><span class="form__name">If New</span></td>
                                 <td><input  type="checkbox" class="checkbox" id="checkbox"  name="sendemail" [(ngModel)]="home_AdmistionService.home_admistionObj.if_new"></td>
                                 <!-- <td><input id="checkbox" type="checkbox" name="sendemail" (change)="onChange($event)" [(ngModel)]="home_AdmistionService.home_admistionObj.if_new"></td> -->
                             </tr>
 
-                            
+
                             <tr>
                                 <td><span class="form__name" >Member</span></td>
-                                
+                                <!-- <mat-form-field appearance="fill">
+                                  <mat-label>Select Admit Member</mat-label>
+                                  <mat-select [(ngModel)]="home_AdmistionService.home_admistionObj.person_details_id" (openedChange)="onOpenChange(multiUserSearch)">
+                                    <mat-select-trigger>
+                                      <input #multiUserSearch type="text" autocomplete="off" placeholder="Search By Itemname" (input)="onInputChange($event)" class="form-control"/>
+                                    </mat-select-trigger>
+                                    <mat-option [value]="null" disabled>--Select Admit Member--</mat-option>
+                                    <mat-option *ngFor="let personObj of person_detailsService.person_detailsList" [value]="personObj.id">
+                                      {{personObj.first_name}} {{personObj.last_name}} {{personObj.district}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field> -->
                                     <td>
                                         <select type="text"  id="person" name="person" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.person_details_id"  required>
                                             <option  [value]="null" [disabled]="true" [selected]="true">--Select Admit Member--</option>
                                             <option  *ngFor="let personObj of person_detailsService.person_detailsList" [value]="personObj.id">{{personObj.first_name}} {{personObj.last_name}}  {{personObj.district}}</option>
                                         </select>
-                                    </td>    
+                                    </td>
                             </tr>
 
                             <tr>
@@ -100,7 +112,7 @@
                                         <option  [value]="null" [disabled]="true" [selected]="true">--Select disease--</option>
                                         <option  placeholder=" Reason" *ngFor="let reasonObj of reasonArray" [value]="reasonObj.list_value"> {{reasonObj.list_value}}</option>
                                     </select>
-                                </td>    
+                                </td>
                                 <!-- <td><input  placeholder="Admit Reason" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.disease"/></td> -->
 
                             </tr>
@@ -110,7 +122,7 @@
                                 <td><input placeholder="Enter Room No" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.room_no" /></td>
 
                             </tr>
-                            
+
                             <tr>
                                 <td><span class="form__name">Given Things</span></td>
                                 <td><input placeholder="Enter Given Things" type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.given_things"/></td>
@@ -120,9 +132,9 @@
                             <tr>
                                 <td><span class="form__name">Bed Sores</span></td>
                                 <td><select  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.bed_sores_status" >
-                                    <option value="இல்லை">இல்லை</option>
-                                    <option value="சாதாரணம்">சாதாரணம்</option>
-                                    <option value="கடுமை">கடுமை</option>
+                                    <option value="No Disease">No Disease</option>
+                                    <option value="Ordinary">Ordinary</option>
+                                    <option value="Serious">Serious</option>
                                 </select></td>
 
                             </tr>
@@ -133,18 +145,18 @@
 
                             </tr>
 
-                    
+
 
                         </div>
 
                         <div class="row2">
 
-                          
+
                             <tr>
                                 <td><span class="form__name">Urine Managing</span></td>
                                 <td> <input placeholder="write here " type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.urine_managing" >
                             </tr>
-                            
+
                             <tr>
                                 <td><span class="form__name">Work In uyirilai</span></td>
                                 <td> <input placeholder="write here " type="text"  class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.work_in_uyirilai" ></td>
@@ -153,7 +165,7 @@
 
                             <tr>
                                 <td><span class="form__name">Is Go Clinic</span></td>
-                               
+
                                     <td><input  class="check" id="checkbox"  type="checkbox" name="sendemail" [(ngModel)]="home_AdmistionService.home_admistionObj.is_go_clinic"></td>
                             </tr>
 
@@ -166,7 +178,7 @@
                             <tr >
                                 <td><span class="form__name">Able To ActIndepend</span></td>
                                 <td><input  class="check" id="checkbox" type="checkbox" name="sendemail" [(ngModel)]="home_AdmistionService.home_admistionObj.act_independently"></td>
-                                
+
 
                             </tr>
 
@@ -176,7 +188,7 @@
 
                             </tr>
 
-                           
+
                                 <tr *ngIf="this.home_AdmistionService.dischargeButton">
                                     <td><span class="form__name">Dicharge Reason</span></td>
                                     <td><input placeholder="write Reason " type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_reason" /></td>
@@ -187,12 +199,12 @@
                                     <td><input  type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_date" /></td>
 
                                 </tr>
-                            
+
 
                     </div>
                     </table>
-                    
-            
+
+
             </div>
 
         </div>
@@ -201,7 +213,7 @@
 
             <button class="Submit__color" (click)="insertHomeAddmissionDetails()">Save</button>
             <button class="Discharge__color" (click)="home_AdmistionService.changeOption()">Back</button>
-           
+
         </div>
 
     </div>
