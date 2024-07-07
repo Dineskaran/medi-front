@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 
 
 
+
 @Component({
   selector: 'app-home-admistion',
   standalone: true,
@@ -33,8 +34,12 @@ export class HomeAdmistionComponent implements OnInit{
   homeAdmistion!:HomeAdmistion;
 
   reasonArray:Dropdown[]=[]
-materialObj: any;
+  materialObj: any;
 
+  start_date: string = '';
+  end_date: string = '';
+
+  
 
 
 
@@ -49,7 +54,7 @@ materialObj: any;
 
 
 filteredItemnames: any[] =  this.person_detailsService.person_detailsList;
-  
+
 onInputChange(event: any) {
   const searchInput = event.target.value.toLowerCase();
 
@@ -69,18 +74,34 @@ onOpenChange(searchInput: any) {
 
 
   // }
-  loadAllAdmitions(): void {
-    this.home_AdmistionService.getAllHomeadmition().subscribe((resultList) => {
-      this.home_AdmistionService.home_admistionList = []
+  
+  message:string='';
+  input(str_date:string){
+    // this.__main.checkDate(this.start_date);
+    // this.__main.checkDate(this.end_date);
+    if(this.__main.checkDate(str_date)){
+      this.message="";
+    }
+    else{
+      this.message="Please enter valid date";
+      }
 
-    resultList.forEach((goods:any)=>{
-      // console.log(goods)
-      let a:HomeAdmistion =JSON.parse(goods)
-      this.home_AdmistionService.home_admistionList .push(a)
-      //  console.log(goods)
-    })
-    })
   }
+
+
+  loadAllAdmitions(): void {
+    
+      this.home_AdmistionService.getAllHomeadmition(this.start_date, this.end_date).subscribe((resultList) => {
+        this.home_AdmistionService.home_admistionList = []
+        resultList.forEach((goods:any)=>{
+        // console.log(goods)
+        let a:HomeAdmistion =JSON.parse(goods)
+        this.home_AdmistionService.home_admistionList .push(a)
+        //  console.log(goods)
+      })
+      })
+    }
+  
 
 
 
@@ -126,7 +147,7 @@ onOpenChange(searchInput: any) {
 
 
   loadAllPersondetails():void{
-    this.person_detailsService.getAllPerson('Member').subscribe(( resultList)=>{
+    this.__main.getAllPerson('Member').subscribe(( resultList)=>{
       this.person_detailsService.person_detailsList = []
     resultList.forEach((person:any)=>{
       // console.log(person)
@@ -150,8 +171,4 @@ onOpenChange(searchInput: any) {
     })
     })
   }
-
-
-
-
 }

@@ -5,6 +5,11 @@
 
           <div class="title">
               User logInfo Details
+              <div>
+                <div class="start__date ">Start Date: <input [(ngModel)]="start_date" type="date"></div>
+                <div class="end_date ">End Date: <input [(ngModel)]="end_date" type="date"></div>
+                <button class="Search" (click)="LoadLoginfo()">Search</button>
+              </div>
           </div>
 
       </div>

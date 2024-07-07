@@ -118,8 +118,11 @@ export class UserDetailsService {
 
     }
 
-    getAllLoginfo():Observable<LogInfo[]>{
-      return this.httpclient.get<LogInfo[]>(`${this.__main.URL}/insert_log_details`);
+    getAllLoginfo(start_date:string,end_date:string):Observable<LogInfo[]>{
+      const paramList = new HttpParams()
+      .set('start_date',start_date.toString())
+      .set('end_date',end_date.toString())
+      return this.httpclient.get<LogInfo[]>(`${this.__main.URL}/insert_log_details`,{params:paramList});
     }
 
     insertLoginfo():Observable<LogInfo[]>{

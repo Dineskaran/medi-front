@@ -94,9 +94,7 @@ export class NurseDutyService {
     return this.httpclient.post<NurseDuty[]>(`${this.__main.URL}/insert_nurse_duty`,this.nurse_dutyObj);
   }
 
-  getAllNurseduty():Observable<NurseDuty[]>{
-    return this.httpclient.get<NurseDuty[]>(`${this.__main.URL}/insert_nurse_duty`);
-  }
+
 
   deleteNursedutyDetail(id:number){
     console.log("Id is " + id)
@@ -104,6 +102,12 @@ export class NurseDutyService {
     // return this.httpclient.delete<HomeAdmistion>(`${this.__main.URL+"/delete?id"}/${id}`);
     return this.httpclient.delete<NurseDuty>(`${this.__main.URL}/delete_nurse_duty_details`, { params });
 
+  }
+  getAllNurseduty(start_date_str:string,end_date_str:string):Observable<NurseDuty[]>{
+    const paramList = new HttpParams()
+    .set('start_date_str',start_date_str.toString())
+    .set('end_date_str',end_date_str.toString())
+    return this.httpclient.get<NurseDuty[]>(`${this.__main.URL}/insert_nurse_duty`,{params:paramList});
   }
 
   // duty_option count get

@@ -67,14 +67,14 @@
                                         <th>No</th>
                                         <th>List Type</th>
                                         <th>List Value</th>
-                                        <th>Filter_by</th>
+                                        <th *ngIf="FilterbyArray.length >0">Filter_by</th>
                                     </tr>
 
                                     <tr  class="data" *ngFor="let dropdown of drop_downServise.drop_downList ; let i = index">
                                         <td>{{ i+1}}</td>
                                         <td>{{ dropdown.list_type}}</td>
                                         <td>{{ dropdown.list_value }}</td>
-                                        <td>{{ dropdown.filter_by }}</td>
+                                        <td *ngIf="FilterbyArray.length >0">{{ dropdown.filter_by }}</td>
                                         <td><button  class="material-symbols-outlined buttons__edit"  (click)="drop_downServise.edit_Dropdown(i)">edit</button></td>
                                         <td><button  class="material-symbols-outlined buttons__delete" (click)="delete_dropDown(dropdown.id)" >delete</button></td>
                                     </tr>

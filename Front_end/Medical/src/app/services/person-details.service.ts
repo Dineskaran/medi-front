@@ -39,15 +39,15 @@ export class PersonDetailsService {
     address :"",
     district:"",
     now_status:"",
-  
+
   }
 
 
-  changeOption(){ 
-    
+  changeOption(){
+
     this.isAddNew = !this.isAddNew;
     this.clearPersonObj()
-   
+
   }
 
   editPerson(i:number):void {
@@ -56,7 +56,7 @@ export class PersonDetailsService {
     this.editflag = true;
     this.index = i;
 
-    
+
 
   }
 
@@ -66,7 +66,7 @@ export class PersonDetailsService {
       {
         this.person_detailsList.push(this.person_detailsObj);
       }
-    
+
       else{
 
         this.person_detailsList[this.index]=this.person_detailsObj;
@@ -78,7 +78,7 @@ export class PersonDetailsService {
 
   clearPersonObj(){
     this.person_detailsObj={
-      
+
       id:0,
       person_type:"",
       person_no:"",
@@ -95,7 +95,7 @@ export class PersonDetailsService {
       effect_date:"",
       is_bed_sore:"",
       contact_number:"",
-      address:"", 
+      address:"",
       district:"",
       now_status:"",
 
@@ -104,7 +104,7 @@ export class PersonDetailsService {
   }
 
   isMinimized:boolean =true;
-  
+
   minimizedToggle(){
     this.isMinimized = !this.isMinimized;
   }
@@ -115,10 +115,7 @@ export class PersonDetailsService {
     return this.httpclient.post<PersonDetails[]>(`${this.__main.URL}/insert_prson_details`,this.person_detailsObj);
   }
 
-  getAllPerson(person_type:string):Observable<PersonDetails[]>{
-    const params = new HttpParams().set('person_type',person_type);
-    return this.httpclient.get<PersonDetails[]>(`${this.__main.URL}/insert_prson_details`, { params });
-  } 
+
 
   deletepersonDetail(id:number){
     console.log("Id is " + id)
@@ -128,5 +125,5 @@ export class PersonDetailsService {
 
   }
 
-  
+
 }

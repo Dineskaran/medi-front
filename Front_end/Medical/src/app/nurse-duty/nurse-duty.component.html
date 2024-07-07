@@ -6,6 +6,11 @@
             <div class="title">
                 Investigation Diagnosis and treatment
             </div>
+            <div>
+              <div class="start__date ">Start Date: <input [(ngModel)]="start_date_str" type="date"></div>
+              <div class="end_date ">End Date: <input [(ngModel)]="end_date_str" type="date"></div>
+              <button class="Search" (click)="loadAllNurseduty()">Search</button>
+            </div>
 
             <div class="option">
                 <button class="show__button" (click)="nurse_dutyService.changeOption()"><span class="material-symbols-outlined"> add </span>New</button>
@@ -24,22 +29,22 @@
                 <th>Time</th>
                 <th>Person Type</th>
                 <th>Treatment</th>
-                <th>Description</th>
+                <!-- <th>Description</th> -->
 
 
                 </tr>
 
-                <tr  class="data" *ngFor="let nerse_duty of nurse_dutyService.nurse_dutyList ; let i = index">
+                <tr  class="data" *ngFor="let nurse_duty of nurse_dutyService.nurse_dutyList ; let i = index">
                     <td>{{ i+1}}</td>
-                    <td>{{ nerse_duty.person_details_first_name}} {{ nerse_duty.person_details_last_name}}</td>
-                    <td>{{ nerse_duty.date }}</td>
-                    <td>{{ nerse_duty.time }}</td>
-                    <td>{{ nerse_duty.person_type}}</td>
-                    <td>{{ nerse_duty.duty_option}}</td>
-                    <td>{{ nerse_duty.note}}</td>
+                    <td>{{ nurse_duty.person_details_first_name}} {{ nurse_duty.person_details_last_name}}</td>
+                    <td>{{ nurse_duty.date }}</td>
+                    <td>{{ nurse_duty.time }}</td>
+                    <td>{{ nurse_duty.person_type}}</td>
+                    <td>{{ nurse_duty.duty_option}}</td>
+                    <!-- <td>{{ nurse_duty.note}}</td> -->
                     <td></td>
                     <td><button  class="material-symbols-outlined buttons__edit" (click)="this.nurse_dutyService.editNurseduty(i)" >edit</button></td>
-                    <td><button  class="material-symbols-outlined buttons__delete" (click)="deleteNurseduty(nerse_duty.id)" >delete</button></td>
+                    <td><button  class="material-symbols-outlined buttons__delete" (click)="deleteNurseduty(nurse_duty.id)" >delete</button></td>
                 </tr>
             </table>
 
@@ -79,8 +84,8 @@
                             <tr>
                                 <td><span class="form__name"> Designation</span></td>
                                 <td>
-                                    <select type="text"  id="designation" name="designation" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.designation"  required>
-                                        <option  [value]="null" [disabled]="true" [selected]="true">--Select Designation Name --</option>
+                                    <select (change)="loadBy_whom()" type="text"  id="designation" name="designation" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.designation"  required>
+                                        <option  [value]="null" [disabled]="true" [selected]="true">--Select Designation  --</option>
                                         <option   *ngFor="let designationObj of designationArray" [value]="designationObj.list_value"> {{designationObj.list_value}}</option>
                                     </select>
                                 </td>
@@ -103,7 +108,7 @@
                             <tr>
                                 <td><span class="form__name">Patient Type</span></td>
                                 <td>
-                                    <select type="text"  id="Person Type" name="Person Type" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type"  required>
+                                    <select (change)="loadAllselectperson()" type="text"  id="Person Type" name="Person Type" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_type"  required>
                                         <option  [value]="null" [disabled]="true" [selected]="true">--Select Patient Type --</option>
                                         <option  placeholder=" PeronType" *ngFor="let PeronTypeObj of personTypeArray" [value]="PeronTypeObj.list_value"> {{PeronTypeObj.list_value}}</option>
                                     </select>
@@ -116,9 +121,9 @@
                                 <td><span class="form__name" >Patient</span></td>
 
                                     <td>
-                                        <select type="text"  id="person" name="person" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_details_id" required>
+                                        <select  type="text"  id="person" name="person" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.person_details_id" required>
                                             <option [value]="null" [disabled]="true" [selected]="true">-- Patient --</option>
-                                            <option *ngFor="let person_detailsList of person_detailsService.person_detailsList" [value]="person_detailsList.id">{{person_detailsList.first_name}} {{person_detailsList.last_name}}</option>
+                                            <option *ngFor="let person_detailsList of selectpersonlist" [value]="person_detailsList.id">{{person_detailsList.first_name}} {{person_detailsList.last_name}}</option>
                                             <!-- <option>1</option> -->
                                         </select>
                                     </td>

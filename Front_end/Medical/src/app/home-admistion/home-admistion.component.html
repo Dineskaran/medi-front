@@ -1,39 +1,48 @@
 <div class="home__admission">
 
-    <div *ngIf="home_AdmistionService.isAddNew" class="show__Addmission">
-        <div class="header">
+    <div *ngIf="home_AdmistionService.isAddNew" class="show__details">
+      <div class="header">
+        Home Addmission Member Details
+      </div>
 
-            <div class="title">
-                Home Addmission
-            </div>
+        <div class="title__1">
+          <!-- <div></div> -->
 
-            <div class="option">
-              <!-- button_1,container -->
-                <button class=" show__button" (click)="home_AdmistionService.changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
-            </div>
+          <div class="title__2">
+            <div class="start__date ">Start Date</div>
+            <div class="start__date"><input [(ngModel)]="start_date" type="date" (input)="input(start_date)" ></div>
+            <span>{{message}}</span>
+          </div>
 
-        </div>
+          <div class="title__3">
+            <div class="start__date ">End Date</div>
+            <div class="start__date"><input [(ngModel)]="end_date" type="date" (input)="input(end_date)"></div>
+            <!-- <span>{{message}}</span> -->
+          </div>
+
+            <div class="title__4">
+            <button class="Search" (click)="loadAllAdmitions()">Search</button>
+          </div>
+
+          <div class="title__5">
+            <button class="Search" (click)="home_AdmistionService.changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
+          </div>
+          </div>
 
         <div class="list" >
 
             <table class="row1" >
                 <tr >
-
-                    <!-- <th>No</th> -->
+                    <th>No</th>
                     <th>Member</th>
                     <th>Addmission Date</th>
                     <th>Reason</th>
                     <th>Room No</th>
-                    <!-- <th>Hospital Name</th>
-                    <th>Discharge Date</th>
-                    <th>Dicharge Reason</th> -->
                     <th>Bed Sores</th>
-
                 </tr>
 
                 <tr  class="data" *ngFor="let home_Admistion of home_AdmistionService.home_admistionList ; let i = index">
-                    <!-- <td>{{ i+1}}</td> -->
-                    <!-- <td>{{ home_Admistion.id}}</td> -->
+                    <td>{{ i+1}}</td>
                     <td>{{home_Admistion.person_details_first_name}} {{home_Admistion.person_details_last_name}}</td>
                     <td>{{home_Admistion.admission_date }}</td>
                     <td>{{home_Admistion.disease }}</td>
@@ -132,7 +141,7 @@
                             <tr>
                                 <td><span class="form__name">Bed Sores</span></td>
                                 <td><select  type="text" class ="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.bed_sores_status" >
-                                    <option value="No Disease">No Disease</option>
+                                    <option value="No">No</option>
                                     <option value="Ordinary">Ordinary</option>
                                     <option value="Serious">Serious</option>
                                 </select></td>

@@ -4,12 +4,15 @@ import { Observable } from 'rxjs';
 import { Dropdown } from '../model/dropdown';
 import { NavigationEnd, Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { PersonDetails } from '../model/person-details';
+import { format } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
 location: any;
+  
   // constructor(private httpclient:HttpClient, private router:Router) { }
   constructor(private httpClient:HttpClient,private http:HttpClient,@Inject(DOCUMENT) private document: HTMLDocument,private router:Router) {
     this.router.events.subscribe(event=>{
@@ -31,6 +34,20 @@ isAddNew:boolean=true;
 
   previousUrlvalue!:string;
   currentUrlValue!:string;
+  formattedDate: string | undefined;
+
+
+  checkDate(inputDate:string){
+    let today = new Date();
+    this.formattedDate = format(today, 'yyyy-MM-dd');
+    if(this.formattedDate  >= inputDate){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
   currentUrl(){
     return this.router.url;
   }
@@ -70,12 +87,17 @@ isAddNew:boolean=true;
 
   getdropdownList(listtype:string,filter_by :string): Observable<any> {
     console.log("list type:",listtype)
-    // const params = new HttpParams().set('list_type', listtype.toString());
   let mySearchParams = new HttpParams()
   .set('list_type', listtype.toString())
   .set('filter_by', filter_by.toString())
 // this.http.get<MemberMainModel[]>(environment.api_url + /member/showMainDetails , {params: mySearchParams, responseType: "json"})
     return this.httpClient.get<any>(this.URL + "/get_dropdown",{ params:mySearchParams });
+  }
+
+  getAllPerson(person_type:string):Observable<PersonDetails[]>{
+    let paramslist = new HttpParams()
+    .set('person_type',person_type);
+    return this.httpClient.get<PersonDetails[]>(`${this.URL}/insert_prson_details`, { params:paramslist });
   }
 
 
