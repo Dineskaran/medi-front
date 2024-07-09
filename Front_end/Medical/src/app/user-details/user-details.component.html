@@ -28,7 +28,7 @@
             </div>
 
           </div>
-          <div class="title__6"><span>{{message}}</span></div>
+          <div class="title__6"><span>{{message1}}</span></div>
 
       <div class="list">
           <table class="row1">
@@ -68,19 +68,19 @@
 </div>
 <div class="home__admission">
   <div *ngIf="user_detailsService.isAddNew" class="show__details">
-      <div class="header__1">User Details <div *ngIf="message">{{ message }}</div>
+      <div class="header__1">User Details <div class="message" *ngIf="message">{{ message1 }}</div>
       <div *ngIf="errorMessage">{{ errorMessage }}</div></div>
-      
+
     <br class="br__color">
 
 
-    <div class="show__details">
-          <div class="row__input">
+    <div class="form__row1">
+          <div class="form__data" >
               <!-- Existing form code with form group and form controls -->
-              <form [formGroup]="user_detailReactiveForm" (ngSubmit)="insert_user_Details()">
+              <form class="row" [formGroup]="user_detailReactiveForm" (ngSubmit)="insert_user_Details()">
                 <div class="group__1">
                           <div class="input-group">
-                            <input formControlName="userid" required="" type="text" name="text" autocomplete="off" class="input">
+                            <input formControlName="userid" required="" type="text" name="text" autocomplete="off" class="input form__name">
                             <label class="user-label">User ID</label>
                               <div *ngIf="user_detailReactiveForm.controls['userid'].invalid && user_detailReactiveForm.controls['userid'].touched">User ID is required.</div>
                               <div *ngIf="user_detailReactiveForm.controls['userid'].hasError('useridTaken') && user_detailReactiveForm.controls['userid'].touched">
@@ -89,31 +89,30 @@
                           </div>
 
                           <div class="input-group">
-                              <input formControlName="user_name" required="" type="text" name="text" autocomplete="off" class="input">
+                              <input formControlName="user_name" required="" type="text" name="text" autocomplete="off" class="input form__name">
                               <label class="user-label">User Name</label>
                               <div *ngIf="user_detailReactiveForm.controls['user_name'].invalid && user_detailReactiveForm.controls['user_name'].touched">
                                   User Name is required.
                               </div>
                           </div>
 
-                </div>
-                <div class="group__2">
+              
 
                   <div *ngIf="changeButton">
                     <td>
                       <div class="input-group">
-                        <input formControlName="password" required="" type="text" name="text" autocomplete="off" class="input">
+                        <input formControlName="password" required="" type="text" name="text" autocomplete="off" class="input form__name">
                         <label class="user-label">Password</label></div></td>
-                    <td>
+                  
                         <div *ngIf="user_detailReactiveForm.controls['password'].invalid && user_detailReactiveForm.controls['password'].touched">
-                            Password is required and must be between 8 and 16 characters long.
+                          Password is between 8-16 characters long.
                         </div>
-                    </td>
-                </div>
+                    
+                  </div>
 
-                <div *ngIf="changeButton">
+                  <div *ngIf="changeButton">
                   <div class="input-group">
-                    <input formControlName="confirmPassword" required="" type="text" name="text" autocomplete="off" class="input" required>
+                    <input formControlName="confirmPassword" required="" type="text" name="text" autocomplete="off" class="input form__name" required>
                     <label class="user-label">Conform Password</label></div>
                     <td>
                         <div *ngIf="user_detailReactiveForm.controls['confirmPassword'].invalid && user_detailReactiveForm.controls['confirmPassword'].touched">
@@ -123,35 +122,31 @@
                             Passwords do not match.
                         </div>
                     </td>
-                </div>
-
-
-                </div>
-
-                <div class="group__3">
+                  </div>
 
                   <div class="input-group">
-                    <td>
-                    <label class="user-label"> Privilage</label>
-                      <select type="text"  id="privilegeObj" name="privilegeObj" autocomplete="off" class="input" formControlName="privilege"   required>
+                  
+                    <label class="user-label"> Privilege</label>
+                      <select type="text"  id="privilegeObj" name="privilegeObj" autocomplete="off"  formControlName="privilege" class="input"  required>
                           <!-- <option  [value]="null" [disabled]="true" [selected]="true">--Select Designation Name --</option> -->
                           <option   *ngFor="let privilegeObj of loginArray" [value]="privilegeObj.list_value"> {{privilegeObj.list_value}}</option>
                       </select>
-                    </td>
                   </div>
-
-
                 </div>
-
-                <div class="form__row2">
-                    <button class="Submit__color" type="submit">Submit</button>
-                    <button class="Discharge__color" (click)="changeOption()">Back</button>
-                </div>
-
               </form>
           </div>
+
+          <div class="form__row2">
+            <button class="Submit__color" type="submit">Submit</button>
+            <button (click)="changeOption()">Back</button>
+          </div>
+    
     </div>
+    
+    
 
   </div>
 
+  
 </div>
+

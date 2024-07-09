@@ -29,6 +29,7 @@ export class UserDetailsComponent implements OnInit {
   privilegeArray: any;
   selectedPrivilege:string='privilage';
   MAX_PRIVILEGE_LENGTH: any;
+
   constructor(private formBuilder: FormBuilder){}
 
   editflag:boolean=false;
@@ -49,20 +50,20 @@ export class UserDetailsComponent implements OnInit {
   end_date: string = '';
 
 
-  // message1:string='';
+  message1:string='';
   Search:boolean=false;
 
   input(str_date:string){
     // this.__main.checkDate(this.start_date);
     // this.__main.checkDate(this.end_date);
     if(this.__main.checkDate(str_date)){
-      this.message="";
+      this.message1="";
       this.Search=false;
     }
     else{
-      this.message="Please enter valid date";
+      this.message1="Please enter valid date";
       this.Search=true;
-    
+
       }
   }
 

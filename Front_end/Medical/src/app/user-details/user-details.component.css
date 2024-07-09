@@ -2,7 +2,10 @@
 .form__row1 {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Adjust the gap between form elements */
+  gap: 5px; /* Adjust the gap between form elements */
+  align-items: center;
+  align-content: center;
+  width: 85%;
 }
 
 /* Style for each form field */
@@ -33,11 +36,27 @@
 
 /* Style for form buttons */
 .form__row2 {
-  margin-top: 10px;
+
+  display: flex;
+  position: absolute;
+  width: 75%;
+  /* align-items: center; */
+  justify-content:flex-end;
+  margin-top: 2px;
+  margin-right: 5px;
+  bottom: 100px;
+}
+.form__row2 > button {
+
+  padding: 8px;
+  margin-left: 8px;
+  margin-right:5px ;
+  cursor: pointer;
+  /* background-color: brown; */
 }
 
-.form__row2 button {
-  /* margin-right: 10px; */
+.form__row2 >button {
+  
   padding: 10px 20px;
   background-color: dodgerblue;
   color: white;
@@ -63,6 +82,8 @@
 }
 .input-group {
   position: relative;
+  padding-bottom: 8px;
+  padding-top: 4px;
 }
 
 .input {
@@ -70,6 +91,7 @@
   border-radius: 1rem;
   background: none;
   padding: 1rem;
+  width: 38vh;
   font-size: 1rem;
   color: #181717;
   transition: border 150ms cubic-bezier(0.4,0,0.2,1);
@@ -222,11 +244,6 @@ button:active {
 
 }
 
-table{
-  /* border-bottom: 1px solid black; */
-  /* border-top: 1px solid black; */
-
-}
 th{
   border-bottom: 1px solid black;
   border-top: 1px solid black;
@@ -236,14 +253,48 @@ th{
   background-color: #be0009;
   display: flex;
   justify-content: space-between;
-  
+
 }
 .header__1{
   display: flex;
   justify-content: space-between;
   /* box-shadow: #181717; */
   border-bottom: 1px solid blue;
-  width: 100vw;
+  width: 92vw;
   padding-right: 10vw;
+
+}
+.message{
+  color: #be0009;
+
+}
+.row{
+
+  align-content: center;
+}
+form{
+  align-content: center;
+  align-items: center;
+}
+.group__1{
+  background-color: red;
+}
+.group__1{
+  padding: 1.3em 3em;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #000;
+  background-color: #e2ebf3;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid blue;
+}
+.group__1:hover{
+  background-color: #fff;;
 
 }
