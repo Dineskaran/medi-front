@@ -4,6 +4,7 @@
   top: 0;
   justify-content: space-between;
   background-color:#071e42;
+  /* background-color: #001a80; */
   padding-left: 1.4%;
   padding-right: 1.4%;
   display: flex;
@@ -175,7 +176,7 @@ svg {
   background: var(--active-color);
   opacity: 0;
   visibility: hidden;
-  
+
 }
 /* styling of input */
 .input {

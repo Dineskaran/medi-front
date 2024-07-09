@@ -25,14 +25,6 @@ export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
   private router = inject(Router);
 
-  constructor() {
-    // if (!window.onbeforeunload) {
-    //   window.onbeforeunload = (e) => {
-    //     e.preventDefault();
-    //     return true;
-    //   };
-    // }
-  }
 
   ngOnInit() {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -59,7 +51,6 @@ export class AppComponent implements OnInit {
 
   showSidebar() {
     return this.isLoggedIn && this.router.url !== '/login';
-     // Show sidebar only if logged in and not on login page
   }
   hide(){
     if(this.router.url == '/'){

@@ -59,7 +59,6 @@ export class SearchReportComponent {
 
   changeclick() {
     this.isAddNew = true;
-
     this.isAddNew_1 =false;
     this.isAddNew_2 = false;
   }
@@ -80,6 +79,24 @@ export class SearchReportComponent {
 
   start_date_str: string = '';
   end_date_str: string = '';
+
+
+    message:string='';
+    Search:boolean=false;
+
+    input(str_date:string){
+      // this.__main.checkDate(this.start_date);
+      // this.__main.checkDate(this.end_date);
+      if(this.__main.checkDate(str_date)){
+        this.message="";
+        this.Search=false;
+      }
+      else{
+        this.message="Please enter valid date";
+        this.Search=true;
+
+        }
+    }
 
   loaddutycount() {
     this.__nurse.getduty_Count(this.start_date_str, this.end_date_str).subscribe(resultList => {

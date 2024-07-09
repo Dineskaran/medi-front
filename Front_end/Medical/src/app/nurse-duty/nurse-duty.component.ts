@@ -46,7 +46,22 @@ export class NurseDutyComponent {
 
   }
 
+  message:string='';
+  Search:boolean=false;
 
+  input(str_date:string){
+    // this.__main.checkDate(this.start_date);
+    // this.__main.checkDate(this.end_date);
+    if(this.__main.checkDate(str_date)){
+      this.message="";
+      this.Search=false;
+    }
+    else{
+      this.message="Please enter valid date";
+      this.Search=true;
+    
+      }
+  }
   loadAllNurseduty(): void {
     this.nurse_dutyService.getAllNurseduty(this.start_date_str, this.end_date_str).subscribe((resultList) => {
       this.nurse_dutyService.nurse_dutyList = []
@@ -59,16 +74,6 @@ export class NurseDutyComponent {
     })
   }
 
-  // loaddutycount():void{
-  //   this.nurse_dutyService.getduty_Count().subscribe((resultList) => {
-  //     this.duty_countArray=[]
-  //     resultList.forEach((goods:any)=>{
-  //       console.log("dutycounts",goods)
-  //       let a:any =JSON.parse(goods)
-  //       this.duty_countArray.push(a)
-  //       })
-  //       })
-  // }
 
 
   insertNursedutyDetails(){

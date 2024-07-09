@@ -1,100 +1,99 @@
 <div class="home__admission">
 
-    <div *ngIf="drop_downServise.isAddNew" class="show__Addmission">
-        <div class="header">
+  <div *ngIf="drop_downServise.isAddNew" class="show__details">
+      
+    <div class="header">
+        Dropdown Insert & Menage
+    </div>
 
-            <div class="title_1">
-                Drop Down List
+
+    <div class="list" >
+
+      <div class="form__row1">
+
+        <div class="form__data">
+                    <!-- <form> -->
+          <table class="space1" >
+            <div class="row">
+
+              <tr>
+                <td><span class="form__name"> List Type</span></td>
+                <td>
+                  <select (change)="selected_drodown(drop_downServise.drop_DownObj.list_type, '')" type="text"  id="List Type" name="List Type" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_type"  required>
+                    <option  [value]="null" [disabled]="true" [selected]="true">--Select List Type  --</option>
+                    <option   *ngFor="let ListTypeObj of ListTypeArray" [value]="ListTypeObj.list_type"> {{ListTypeObj.list_type}}</option>
+                  </select>
+                </td>
+                <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
+              </tr>
+
+              <tr>
+                <td><span class="form__name">List Value</span></td>
+                <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_value" />
+              </tr>
+
+              <tr *ngIf="FilterbyArray.length >0">
+                <td>
+                  <span class="form__name">Filter By</span>
+                </td>
+                  <!-- <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  /></td> -->
+                <td>
+                  <select (change)="selected_drodown_filterby(drop_downServise.drop_DownObj.list_type,drop_downServise.drop_DownObj.filter_by)" type="text"  id="filter_by" name="filter_by" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  required>
+                    <option  [value]="null" [disabled]="true" [selected]="true">--Select filter_by  --</option>
+                    <option  *ngFor="let item of FilterbyArray" [value]="item.list_value"> {{ item.list_value }}</option>
+                  </select>
+                </td>
+
+              </tr>
+
+              <tr class="form__row2">
+
+                <button class="Submit__color" (click)="insert_drop_downDetails()"  >Submit</button>
+                <button class="Discharge__color" (click)="drop_downServise.changeOption()"  >Back</button>
+
+              </tr>
+
             </div>
 
-            <!-- <div class="option">
-                <button class="show__button" (click)="drop_downServise.changeOption()" ><span class="material-symbols-outlined"> add </span>New</button>
-            </div> -->
+            <div class="row1" >
+              <tr >
+                <th>No</th>
+                <th>List Type</th>
+                <th>List Value</th>
+                <th *ngIf="FilterbyArray.length >0">Filter_by</th>
+              </tr>
 
-        </div>
-
-        <div class="list" >
-            <div class="form__row1">
-                <div class="form__data">
-
-                    <!-- <form> -->
-                        <table class="space1" >
-                            <div class="row">
-
-                                <!-- <tr>
-                                    <td><span class="form__name">List Type</span></td>
-                                    <td><input  type="text" class="form__input"  [(ngModel)]="drop_downServise.drop_DownObj.list_type"/>
-                                </tr> -->
-                                <tr>
-                                    <td><span class="form__name"> List Type</span></td>
-                                    <td>
-                                        <select (change)="selected_drodown(drop_downServise.drop_DownObj.list_type, '')" type="text"  id="List Type" name="List Type" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_type"  required>
-                                            <option  [value]="null" [disabled]="true" [selected]="true">--Select List Type  --</option>
-                                            <option   *ngFor="let ListTypeObj of ListTypeArray" [value]="ListTypeObj.list_type"> {{ListTypeObj.list_type}}</option>
-                                        </select>
-                                    </td>
-                                    <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
-
-                                </tr>
-
-                                <tr>
-                                    <td><span class="form__name">List Value</span></td>
-                                    <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.list_value" />
-                                </tr>
-
-                                <tr *ngIf="FilterbyArray.length >0">
-                                    <td><span class="form__name">Filter By</span></td>
-                                    <!-- <td><input   type="text" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  /></td> -->
-                                    <td>
-                                      <select (change)="selected_drodown_filterby(drop_downServise.drop_DownObj.list_type,drop_downServise.drop_DownObj.filter_by)" type="text"  id="filter_by" name="filter_by" class="form__input" [(ngModel)]="drop_downServise.drop_DownObj.filter_by"  required>
-                                          <option  [value]="null" [disabled]="true" [selected]="true">--Select filter_by  --</option>
-                                          <option  *ngFor="let item of FilterbyArray" [value]="item.list_value"> {{ item.list_value }}</option>
-                                      </select>
-                                  </td>
-
-                                </tr>
-                                <tr class="form__row2">
-
-                                    <button class="Submit__color" (click)="insert_drop_downDetails()"  >Submit</button>
-                                    <button class="Discharge__color" (click)="drop_downServise.changeOption()"  >Back</button>
-
-                                </tr>
-
-                            </div>
-
-                                <div class="row1" >
-                                    <tr >
-                                        <th>No</th>
-                                        <th>List Type</th>
-                                        <th>List Value</th>
-                                        <th *ngIf="FilterbyArray.length >0">Filter_by</th>
-                                    </tr>
-
-                                    <tr  class="data" *ngFor="let dropdown of drop_downServise.drop_downList ; let i = index">
-                                        <td>{{ i+1}}</td>
-                                        <td>{{ dropdown.list_type}}</td>
-                                        <td>{{ dropdown.list_value }}</td>
-                                        <td *ngIf="FilterbyArray.length >0">{{ dropdown.filter_by }}</td>
-                                        <td><button  class="material-symbols-outlined buttons__edit"  (click)="drop_downServise.edit_Dropdown(i)">edit</button></td>
-                                        <td><button  class="material-symbols-outlined buttons__delete" (click)="delete_dropDown(dropdown.id)" >delete</button></td>
-                                    </tr>
-                                </div>
+              <tr  class="data" *ngFor="let dropdown of drop_downServise.drop_downList ; let i = index">
+                <td>{{ i+1}}</td>
+                <td>{{ dropdown.list_type}}</td>
+                <td>{{ dropdown.list_value }}</td>
+                <td *ngIf="FilterbyArray.length >0">{{ dropdown.filter_by }}</td>
+                <td>
+                  <button  class="material-symbols-outlined buttons__edit"  (click)="drop_downServise.edit_Dropdown(i)">edit</button>
+                </td>
+                <td>
+                  <button  class="material-symbols-outlined buttons__delete" (click)="delete_dropDown(dropdown.id)" >delete</button>
+                </td>
+              </tr>
+            </div>
 
 
 
-                        </table>
+          </table>
 
                     <!-- </form> -->
 
-                </div>
-
-            </div>
-
-
-
         </div>
 
+      </div>
+
+
+
     </div>
+
+  </div>
+
+</div>
 
 
 

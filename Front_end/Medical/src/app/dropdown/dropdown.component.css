@@ -9,3 +9,24 @@
   font-weight:500;
 
 }
+table{
+  /* border-bottom: 1px solid black; */
+  border-top: 1px solid black;
+
+}
+th{
+  border-bottom: 1px solid black;
+  /* border-top: 1px solid black; */
+  /* border-collapse:collapse; */
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  height: fit-content;
+  padding: 4px;
+  color: blue;
+
+
+}

@@ -1,53 +1,63 @@
 <div class="home__admission">
 
-  <div *ngIf="__user.isAddNew" class="show__Addmission">
-      <div class="header">
+  <div *ngIf="__user.isAddNew" class="show__details">
+    <div class="header">
+      User login information Details
+    </div>
 
-          <div class="title">
-              User logInfo Details
-              <div>
-                <div class="start__date ">Start Date: <input [(ngModel)]="start_date" type="date"></div>
-                <div class="end_date ">End Date: <input [(ngModel)]="end_date" type="date"></div>
-                <button class="Search" (click)="LoadLoginfo()">Search</button>
-              </div>
-          </div>
-
+    <div class="title__1">
+      <div class="title__2">
+        <div class="start__date ">Start Date</div>
+        <div class="start__date"><input [(ngModel)]="start_date" type="date" (input)="input(start_date)"></div>
       </div>
 
-      <div class="list" >
-
-          <table class="row1" >
-              <tr >
-
-              <th>No</th>
-              <th>User Id</th>
-              <th>User</th>
-              <th>Log Date </th>
-              <th>Log Time</th>
-              <th>Location</th>
-              <th>Logout Time</th>
-              <th>Num Attempt</th>
-              <th>Log Status</th>
-
-
-              </tr>
-
-              <tr  class="data" *ngFor="let logdetals of __user.logInfoList ; let i = index">
-                  <td>{{ i+1}}</td>
-                  <td>{{ logdetals.user_details_id}}</td>
-                  <td>{{ logdetals.userid}}</td>
-                  <td>{{ logdetals.log_date }}</td>
-                  <td>{{ logdetals.log_time }}</td>
-                  <td>{{ logdetals.location}}</td>
-                  <td>{{ logdetals.log_out_time}}</td>
-                  <td>{{ logdetals.num_of_attempt}}</td>
-                  <td>{{ logdetals.log_status}}</td>
-                  <!-- <td><button  class="material-symbols-outlined buttons__delete" (click)="delete_user(userdetals.id)" >delete</button></td> -->
-                </tr>
-          </table>
-
+      <div class="title__3">
+        <div class="start__date ">End Date</div>
+        <div class="start__date"><input [(ngModel)]="end_date" type="date"(input)="input(end_date)"></div>
+        <!-- <span>{{message}}</span> -->
       </div>
+
+      <div class="title__4">
+        <button *ngIf="!Search" class="Search"  (click)="LoadLoginfo()">Search</button>
+      </div>
+
+    </div>
+  <div class="title__6"><span>{{message}}</span></div>
+
+
+    <div class="list" >
+
+      <table class="row1" >
+        <tr>
+          <th>No</th>
+            <th>User Id</th>
+            <th>User</th>
+            <th>Log Date </th>
+            <th>Log Time</th>
+            <th>Location</th>
+            <th>Logout Time</th>
+            <th>Num Attempt</th>
+            <th>Log Status</th>
+        </tr>
+
+        <tr  class="data" *ngFor="let logdetals of __user.logInfoList ; let i = index">
+          <td>{{ i+1}}</td>
+          <td>{{ logdetals.user_details_id}}</td>
+          <td>{{ logdetals.userid}}</td>
+          <td>{{ logdetals.log_date }}</td>
+          <td>{{ logdetals.log_time }}</td>
+          <td>{{ logdetals.location}}</td>
+          <td>{{ logdetals.log_out_time}}</td>
+          <td>{{ logdetals.num_of_attempt}}</td>
+          <td>{{ logdetals.log_status}}</td>
+          <!-- <td><button  class="material-symbols-outlined buttons__delete" (click)="delete_user(userdetals.id)" >delete</button></td> -->
+        </tr>
+      </table>
+      
+    </div>
 
   </div>
+
+</div>
 
 

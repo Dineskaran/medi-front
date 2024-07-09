@@ -3,10 +3,7 @@
 
   display:flex;
   flex-direction: column;
-  height: 80vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  position:fixed;
+  height: 100vh;
 
 }
 @media print {
@@ -116,6 +113,37 @@
     display: block;
 
   }
+  /* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .container {
+      background-color: lightblue;
+      padding: 10px;
+  }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+  .container {
+      background-color: lightgreen;
+      padding: 20px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media (max-width: 992px) {
+  .container {
+      background-color: lightcoral;
+      padding: 30px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media (max-width: 1200px) {
+  .container {
+      background-color: lightgoldenrodyellow;
+      padding: 40px;
+  }
+}
 
 .dropdown-content a:hover {
   background-color: rgba(163, 231, 86, 0.815);

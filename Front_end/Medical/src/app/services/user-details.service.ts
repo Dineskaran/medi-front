@@ -83,8 +83,12 @@ export class UserDetailsService {
 
 
 
-  getAll_user_DetailsList():Observable<UserDetails[]>{
-    return this.httpclient.get<UserDetails[]>(`${this.__main.URL}/insert_user_details`);
+  getAll_user_DetailsList(start_date:string,end_date:string):Observable<UserDetails[]>{
+    const paramList = new HttpParams()
+      .set('start_date',start_date.toString())
+      .set('end_date',end_date.toString())
+
+    return this.httpclient.get<UserDetails[]>(`${this.__main.URL}/insert_user_details`,{params:paramList});
   }
 
   delete_user_Details(id:number){

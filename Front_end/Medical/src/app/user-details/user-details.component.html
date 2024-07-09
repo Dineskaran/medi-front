@@ -1,17 +1,34 @@
 <div class="home__admission">
 
   <!-- Existing code for showing existing users -->
-  <div *ngIf="user_detailsService.isAddNew" class="show__Addmission">
-      <div class="header">
-          <div class="title">
+  <div *ngIf="!user_detailsService.isAddNew" class="show__details">
+
+          <div class="header">
               User Details
           </div>
-          <div class="option">
-              <button class="show__button" (click)="changeOption()">
-                  <span class="material-symbols-outlined"> add </span>New
-              </button>
+
+          <div class="title__1">
+            <div class="title__2">
+              <div class="start__date ">Start Date</div>
+              <div class="start__date"><input [(ngModel)]="start_date" type="date" (input)="input(start_date)"></div>
+            </div>
+
+            <div class="title__3">
+              <div class="start__date ">End Date</div>
+              <div class="start__date"><input [(ngModel)]="end_date" type="date" (input)="input(end_date)"></div>
+              <!-- <span>{{message}}</span> -->
+            </div>
+
+            <div class="title__4">
+              <button *ngIf="!Search" class="Search"  (click)="loadAll_User()">Search</button>
+            </div>
+
+            <div class="title__5">
+              <button class="Search" (click)="changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
+            </div>
+
           </div>
-      </div>
+          <div class="title__6"><span>{{message}}</span></div>
 
       <div class="list">
           <table class="row1">
@@ -22,8 +39,6 @@
                   <th>Privilege</th>
                   <th>Create Date</th>
                   <th>Create By</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
               </tr>
 
               <!-- Iterate over user details -->
@@ -50,19 +65,20 @@
   </div>
 
   <!-- Form for adding new user -->
-  <div *ngIf="!user_detailsService.isAddNew" class="Addmission__new__add">
-      <div class="header">
-          <div class="title">
-              User Details
-          </div>
-      </div>
+</div>
+<div class="home__admission">
+  <div *ngIf="user_detailsService.isAddNew" class="show__details">
+      <div class="header__1">User Details <div *ngIf="message">{{ message }}</div>
+      <div *ngIf="errorMessage">{{ errorMessage }}</div></div>
+      
+    <br class="br__color">
 
-      <div class="form__row1">
-          <div class="form__data">
+
+    <div class="show__details">
+          <div class="row__input">
               <!-- Existing form code with form group and form controls -->
               <form [formGroup]="user_detailReactiveForm" (ngSubmit)="insert_user_Details()">
-                  <table class="space">
-                      <tr>
+                <div class="group__1">
                           <div class="input-group">
                             <input formControlName="userid" required="" type="text" name="text" autocomplete="off" class="input">
                             <label class="user-label">User ID</label>
@@ -70,9 +86,8 @@
                               <div *ngIf="user_detailReactiveForm.controls['userid'].hasError('useridTaken') && user_detailReactiveForm.controls['userid'].touched">
                                   User ID is already taken.
                               </div>
-                            </div>
-                      </tr>
-                      <tr>
+                          </div>
+
                           <div class="input-group">
                               <input formControlName="user_name" required="" type="text" name="text" autocomplete="off" class="input">
                               <label class="user-label">User Name</label>
@@ -80,69 +95,62 @@
                                   User Name is required.
                               </div>
                           </div>
-                      </tr>
 
-                      <tr *ngIf="changeButton">
-                          <td>
-                            <div class="input-group">
-                              <input formControlName="password" required="" type="text" name="text" autocomplete="off" class="input">
-                              <label class="user-label">Password</label></div></td>
-                          <td>
-                              <div *ngIf="user_detailReactiveForm.controls['password'].invalid && user_detailReactiveForm.controls['password'].touched">
-                                  Password is required and must be between 8 and 16 characters long.
-                              </div>
-                          </td>
-                      </tr>
+                </div>
+                <div class="group__2">
 
-                      <tr *ngIf="changeButton">
-                        <div class="input-group">
-                          <input formControlName="confirmPassword" required="" type="text" name="text" autocomplete="off" class="input" required>
-                          <label class="user-label">Conform Password</label></div>
-                          <td>
-                              <div *ngIf="user_detailReactiveForm.controls['confirmPassword'].invalid && user_detailReactiveForm.controls['confirmPassword'].touched">
-
-                              </div>
-                              <div *ngIf="!checkpassword() && user_detailReactiveForm.controls['confirmPassword'].touched">
-                                  Passwords do not match.
-                              </div>
-                          </td>
-                      </tr>
-                      <tr>
-                        <td>
-                        <div class="input-group">
-                          <td>
-                          <label class="user-label"></label>
-                            <select type="text"  id="privilegeObj" name="privilegeObj" autocomplete="off" class="input" formControlName="privilege"   required>
-                                <!-- <option  [value]="null" [disabled]="true" [selected]="true">--Select Designation Name --</option> -->
-                                <option   *ngFor="let privilegeObj of loginArray" [value]="privilegeObj.list_value"> {{privilegeObj.list_value}}</option>
-                            </select>
-                          </td>
+                  <div *ngIf="changeButton">
+                    <td>
+                      <div class="input-group">
+                        <input formControlName="password" required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label">Password</label></div></td>
+                    <td>
+                        <div *ngIf="user_detailReactiveForm.controls['password'].invalid && user_detailReactiveForm.controls['password'].touched">
+                            Password is required and must be between 8 and 16 characters long.
                         </div>
-                        <!-- <td><input  type="text" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option" > -->
+                    </td>
+                </div>
 
-                          </td>
-                        </tr>
+                <div *ngIf="changeButton">
+                  <div class="input-group">
+                    <input formControlName="confirmPassword" required="" type="text" name="text" autocomplete="off" class="input" required>
+                    <label class="user-label">Conform Password</label></div>
+                    <td>
+                        <div *ngIf="user_detailReactiveForm.controls['confirmPassword'].invalid && user_detailReactiveForm.controls['confirmPassword'].touched">
+
+                        </div>
+                        <div *ngIf="!checkpassword() && user_detailReactiveForm.controls['confirmPassword'].touched">
+                            Passwords do not match.
+                        </div>
+                    </td>
+                </div>
 
 
-                  </table>
-                  <div class="form__row2">
-                    <button class="Submit__color" type="submit">Submit</button>
-                    <button class="Discharge__color" (click)="changeOption()">Back</button>
+                </div>
 
+                <div class="group__3">
+
+                  <div class="input-group">
+                    <td>
+                    <label class="user-label"> Privilage</label>
+                      <select type="text"  id="privilegeObj" name="privilegeObj" autocomplete="off" class="input" formControlName="privilege"   required>
+                          <!-- <option  [value]="null" [disabled]="true" [selected]="true">--Select Designation Name --</option> -->
+                          <option   *ngFor="let privilegeObj of loginArray" [value]="privilegeObj.list_value"> {{privilegeObj.list_value}}</option>
+                      </select>
+                    </td>
                   </div>
 
-              </form>
-              <div class="form__row2">
-                <div *ngIf="message">
-                    {{ message }}
-                </div>
-                <div *ngIf="errorMessage">
-                    {{ errorMessage }}
-                </div>
-            </div>
-          </div>
-      </div>
 
+                </div>
+
+                <div class="form__row2">
+                    <button class="Submit__color" type="submit">Submit</button>
+                    <button class="Discharge__color" (click)="changeOption()">Back</button>
+                </div>
+
+              </form>
+          </div>
+    </div>
 
   </div>
 

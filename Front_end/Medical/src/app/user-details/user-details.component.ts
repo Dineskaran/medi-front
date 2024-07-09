@@ -45,7 +45,26 @@ export class UserDetailsComponent implements OnInit {
 
   selectedprivilage:UserDetails  |undefined;
 
+  start_date: string = '';
+  end_date: string = '';
 
+
+  // message1:string='';
+  Search:boolean=false;
+
+  input(str_date:string){
+    // this.__main.checkDate(this.start_date);
+    // this.__main.checkDate(this.end_date);
+    if(this.__main.checkDate(str_date)){
+      this.message="";
+      this.Search=false;
+    }
+    else{
+      this.message="Please enter valid date";
+      this.Search=true;
+    
+      }
+  }
 
 
 
@@ -121,8 +140,8 @@ export class UserDetailsComponent implements OnInit {
         }
       );
     } else {
-      this.message = '';
-      alert("Please fill all the fields and ensure UserID is available");
+      this.message = 'Please fill all the fields and ensure UserID is available';
+      // alert("Please fill all the fields and ensure UserID is available");
     }
   }
 
@@ -160,7 +179,7 @@ export class UserDetailsComponent implements OnInit {
 
 
   loadAll_User():void{
-    this.user_detailsService.getAll_user_DetailsList().subscribe((data)=>{
+    this.user_detailsService.getAll_user_DetailsList(this.start_date, this.end_date).subscribe((data)=>{
       this.user_detailsService.userdetailsList = []
       data.forEach((user:any) => {
         let x:UserDetails = JSON.parse(user)

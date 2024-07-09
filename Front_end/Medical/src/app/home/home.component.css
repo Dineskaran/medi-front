@@ -1,5 +1,5 @@
 .home {
-    background-color: rgba(255, 255, 255, 0.849);
+  background-color: #f1f5f9;
     display: flex;
     justify-content: center;
     height: 84vh;
@@ -14,8 +14,8 @@
     border-radius: 8px;
     /* right: 0; */
     display: flex;
-    /* overflow: scroll; */
-    background-color: rgba(255, 255, 255, 0.74);
+    overflow-y: scroll;
+    background-color:rgb(203 213 225 );
 }
 
 .right{
@@ -23,10 +23,11 @@
     width: 85%;
     height:86vh;
     padding-top: 5px;
+    padding-left: 8px;
     border-radius: 14px;
     margin-left: 3px;
     justify-content: flex-start;
-    background-color: rgb(255, 255, 255);
+    background-color: #f1f5f9;
     /* overflow: scroll; */
 
 }
@@ -34,14 +35,22 @@
 
 .left_mini{
 
-    width: 8%;
+    /* width: 8%; */
     height: 100%;
     border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.74);
+    background-color:rgb(203 213 225 );
     display: flex;
     padding-top: 5px;
+    display: none;
 
+}
+.right_mini{
 
+  width: 100%;
+  padding-top: 5px;
+  border-radius: 5px;
+  background-color: #f1f5f9;
+  padding-left: 20px;
 
 }
 @media print {
@@ -62,11 +71,74 @@
 
 }
 
-.right_mini{
 
-    width: 95%;
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .right_mini{
+
+    width: 90%;
     padding-top: 5px;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
+    background-color: #f1f5f9;
+}
+
+
+.left_mini{
+
+  width: 8%;
+  height: 100%;
+  border-radius: 4px;
+  background-color:rgb(203 213 225 );
+  display: flex;
+  padding-top: 5px;
+  display: block;
 
 }
+}
+
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+  .right_mini{
+
+    width: 100%;
+    padding-top: 5px;
+    border-radius: 5px;
+    background-color: #f1f5f9;
+}
+.left_mini{
+
+display: none;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media (max-width: 992px) {
+  .right_mini{
+
+    width: 100%;
+    padding-top: 5px;
+    border-radius: 5px;
+    background-color: #f1f5f9;
+}
+.left_mini{
+
+display: none;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media (max-width: 1200px) {
+  .right_mini{
+
+    width: 100%;
+    padding-top: 5px;
+    border-radius: 5px;
+    background-color: #f1f5f9;
+}
+.left_mini{
+
+display: none;
+}
+}
+

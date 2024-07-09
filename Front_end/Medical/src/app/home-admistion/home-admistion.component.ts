@@ -76,18 +76,22 @@ onOpenChange(searchInput: any) {
   // }
   
   message:string='';
+
+  Search:boolean=false;
+
   input(str_date:string){
     // this.__main.checkDate(this.start_date);
     // this.__main.checkDate(this.end_date);
     if(this.__main.checkDate(str_date)){
       this.message="";
+      this.Search=false;
     }
     else{
       this.message="Please enter valid date";
+      this.Search=true;
+    
       }
-
   }
-
 
   loadAllAdmitions(): void {
     
@@ -109,7 +113,8 @@ onOpenChange(searchInput: any) {
 
     this.home_AdmistionService.deleteHomeadmissionDetail(id)
     .subscribe((result)=>{
-      alert("Home admission details successfully delete")
+      // alert("Home admission details successfully delete")
+      this.message="Home admission details successfully delete"
       this.loadAllAdmitions();
     },
     error=>{
