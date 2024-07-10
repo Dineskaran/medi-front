@@ -1,23 +1,30 @@
-import { Injectable, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateFn,GuardResult,MaybeAsync,Router, RouterStateSnapshot } from '@angular/router';
+import { HostListener, Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserDetailsService } from './user-details.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate {
-
-  __user:UserDetailsService=inject(UserDetailsService);
+export class AuthGuardService {
 
   constructor(private router: Router) { }
 
-  canActivate(): boolean {
-    if (this.__user.isLogined) {
-      return true;
-    } else {
-      this.router.navigate(['/login']); // Redirect to login page if not logged in
-      return false;
-    }
+  // __user:UserDetailsService=inject(UserDetailsService);
+
+  isLoggedIn(): boolean {
+    return sessionStorage.getItem('isLogged') === 'true';
   }
+
+  login(): void {
+    // Perform login logic here
+    // Assuming login is successful:
+    sessionStorage.setItem('isLogged', 'true');
+  }
+
+  logout(): void {
+    // Perform logout logic here
+    sessionStorage.removeItem('isLogged');
+  }
+
 }
 

@@ -26,6 +26,8 @@
     padding-left: 8px;
     border-radius: 14px;
     margin-left: 3px;
+    padding-right: 8px;
+    margin-right: 3px;
     justify-content: flex-start;
     background-color: #f1f5f9;
     /* overflow: scroll; */

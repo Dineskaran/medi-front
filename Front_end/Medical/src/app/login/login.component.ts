@@ -9,6 +9,7 @@ import { MainService } from '../services/main.service';
 import { UserDetailsService } from '../services/user-details.service';
 import { LogInfo } from '../model/log-info';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginComponent {
 
   __main:MainService=inject(MainService);
   __user:UserDetailsService=inject(UserDetailsService);
+  __auth:AuthGuardService=inject(AuthGuardService);
 
 
   constructor(private router: Router) {}
@@ -70,15 +72,19 @@ export class LoginComponent {
         resultList.forEach((obj:any)=>{
           let a:any =JSON.parse(obj);
           this.__user.loginfoObj.log_status=a.status
-          
+
 
           if (a.status === "Success") {
+            this.__auth.login();
             this.__user.loginfoObj.user_details_id= a.id
+            this.message="login successfully"
             this.__user.insertLoginfo().subscribe((data)=>
               {
                 // this.message="user login successfully"
-                this.message=a.status
+                
+
                 this.__user.isLogined = true;
+
                 // alert("Add successfully"+ data)
 
                 this.__user.loginfoObj.id= Number(data)
@@ -88,14 +94,14 @@ export class LoginComponent {
             sessionStorage.setItem('user',a.userid)
 
             this.__user.loggedUserObj = a;
-            
+
             this.router.navigate(['/dashboard']); // Navigate to dashboard on successful login
 
           } else {
 
             // alert("Log status " + a.status)
             this.__user.isLogined = false;
-            this.message=a.status
+            this.message="Incorrect username or password. Please try again"
             if(this.num_of_attempt>2){
               // this.blockUser(a.id);
               this.__user.insertLoginfo().subscribe((data)=>

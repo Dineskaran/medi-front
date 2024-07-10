@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -22,40 +22,45 @@ export class AppComponent implements OnInit {
   __main: MainService = inject(MainService);
   __user: UserDetailsService = inject(UserDetailsService);
 
-  isLoggedIn: boolean = false;
+  // isLoggedIn: boolean = false;
   private router = inject(Router);
 
+  @HostListener('window:beforeunload', ['$event'])
+    clearSessionStorage(event: Event) {
+    sessionStorage.removeItem('isLogged');
+    console.log('host listener',sessionStorage.removeItem('isLogged'));
+  }
 
   ngOnInit() {
-    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    // this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event) => {
-      const navEndEvent = event as NavigationEnd;
-      if (!this.__user.isLogined && navEndEvent.url !== '/login') {
-        this.router.navigate(['/login']);
-      }
-    });
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationEnd)
+    // ).subscribe((event) => {
+    //   const navEndEvent = event as NavigationEnd;
+    //   if (!this.__user.isLogined && navEndEvent.url !== '/login') {
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
 
-    // if (!window.onbeforeunload) {
-    //   window.onbeforeunload = (e) => {
-    //     e.preventDefault();
-    //     return true;
-    //   };
-    //   this.router.navigate(['/']);
-    // }
+    if (!window.onbeforeunload) {
+      window.onbeforeunload = (e) => {
+        e.preventDefault();
+        return true;
+      };
+      // this.router.navigate(['/']);
+    }
     // this. hide();
 
   }
 
-  showSidebar() {
-    return this.isLoggedIn && this.router.url !== '/login';
-  }
-  hide(){
-    if(this.router.url == '/'){
-      this.__user.isLogined = false;
+  // showSidebar() {
+  //   return this.isLoggedIn && this.router.url !== '/login';
+  // }
+  // hide(){
+  //   if(this.router.url == '/'){
+  //     this.__user.isLogined = false;
 
-    }
-  }
+  //   }
+  // }
 }

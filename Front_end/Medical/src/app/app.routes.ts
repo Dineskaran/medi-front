@@ -12,23 +12,24 @@ import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { MainHomeComponent } from './main-home/main-home.component';
 import { LogInfoComponent } from './log-info/log-info.component';
+import {authGuard} from './auth.gaurd'
 
 export const routes: Routes = [
 
     {path:'', redirectTo:'login', pathMatch:'full'},
 
     {path:'',component:LoginComponent,title:'login'},
-    {path:'dashboard',component:MainHomeComponent,title:'dashboard'},
-    {path:'homeadmision',component:HomeAdmistionComponent,title:'homeadmision'},
-    {path:'search&report',component:SearchReportComponent,title:'search&report'},
-    {path:'notification',component:NotificationComponent,title:'notification'},
-    {path:'dropdown',component:DropdownComponent,title:'dropdown'},
-    {path:'nurseduty',component:NurseDutyComponent,title:'nurseduty'},
-    {path:'userDetails',component:UserDetailsComponent,title:'user details'},
-    {path:'person',component:PersonDetailsComponent,title:'person'},
-    {path:'settings',component:SettingsComponent,title:'settings'},
-    {path:'change-password',component:ChangePasswordComponent,title:'changepassword'},
-    {path:'log-info',component:LogInfoComponent,title:'log-info'},
+    {path:'dashboard',component:MainHomeComponent,title:'dashboard',canActivate:[authGuard]},
+    {path:'homeadmision',component:HomeAdmistionComponent,title:'homeadmision',canActivate:[authGuard]},
+    {path:'search&report',component:SearchReportComponent,title:'search&report',canActivate:[authGuard]},
+    {path:'notification',component:NotificationComponent,title:'notification',canActivate:[authGuard]},
+    {path:'dropdown',component:DropdownComponent,title:'dropdown',canActivate:[authGuard]},
+    {path:'nurseduty',component:NurseDutyComponent,title:'nurseduty',canActivate:[authGuard]},
+    {path:'userDetails',component:UserDetailsComponent,title:'user details',canActivate:[authGuard]},
+    {path:'person',component:PersonDetailsComponent,title:'person',canActivate:[authGuard]},
+    {path:'settings',component:SettingsComponent,title:'settings',canActivate:[authGuard]},
+    {path:'change-password',component:ChangePasswordComponent,title:'changepassword',canActivate:[authGuard]},
+    {path:'log-info',component:LogInfoComponent,title:'log-info',canActivate:[authGuard]},
 
 
 

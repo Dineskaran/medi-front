@@ -6,6 +6,7 @@ import { Observable, tap ,throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { LogInfo } from '../model/log-info';
+import { AuthGuardService } from './auth-guard.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,8 @@ export class UserDetailsService {
   }
 
   __main : MainService=inject(MainService);
+  __auth:AuthGuardService=inject(AuthGuardService);
+
   isLogined : boolean = false;
   editflag:boolean=false;
   index: number=1;
@@ -50,11 +53,14 @@ export class UserDetailsService {
       this.isLogined=false;
       this.insertLoginfo().subscribe((data)=>{// alert("update successfully"+ data)
           })
-        localStorage.removeItem('isLogined');
-      this.router.navigate(['/']);
+        // localStorage.removeItem('isLogined');
+        this.__auth. logout();
+        this.router.navigate(['/']);
       }
       this.resetLoginInfo()
   }
+
+
   minimizedToggle(){
   this.isMinimized = !this.isMinimized;
   }
