@@ -43,24 +43,17 @@ export class AppComponent implements OnInit {
     //   }
     // });
 
-    if (!window.onbeforeunload) {
-      window.onbeforeunload = (e) => {
-        e.preventDefault();
-        return true;
-      };
-      // this.router.navigate(['/']);
-    }
-    // this. hide();
+  //   if (!window.onbeforeunload) {
+  //     window.onbeforeunload = (e) => {
+  //       e.preventDefault();
+  //       return true;
+  //     };
+  //     this.router.navigate(['/']);
+  //   }
+  //   this. hide();
+
+  // }
+
 
   }
-
-  // showSidebar() {
-  //   return this.isLoggedIn && this.router.url !== '/login';
-  // }
-  // hide(){
-  //   if(this.router.url == '/'){
-  //     this.__user.isLogined = false;
-
-  //   }
-  // }
 }

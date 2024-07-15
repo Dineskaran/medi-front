@@ -4,36 +4,36 @@
       <div class="header">
         Home Addmission Member Details
       </div>
+      <br>
 
-        <div class="title__1">
+      <div class="title__1">
           <!-- <div></div> -->
 
-          <div class="title__2">
-            <div class="start__date ">Start Date</div>
-            <div class="start__date"><input [(ngModel)]="start_date" type="date" (input)="input(start_date)" ></div>
-
-          </div>
-
-          <div class="title__3">
-            <div class="start__date ">End Date</div>
-            <div class="start__date"><input [(ngModel)]="end_date" type="date" (input)="input(end_date)"></div>
-            <!-- <span>{{message}}</span> -->
-          </div>
-
-          <div class="title__4">
-            <button *ngIf="!Search" class="Search" (click)="loadAllAdmitions()">Search</button>
-          </div>
-
-          <div class="title__5">
-            <button class="Search" (click)="home_AdmistionService.changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
-          </div>
+        <div class="title__2">
+          <div class="start__date ">Start Date</div>
+          <div class="start__date"><input [(ngModel)]="start_date" type="date" (input)="input(start_date)" ></div>
         </div>
-        <div class="title__6"><span>{{message}}</span></div>
+
+        <div class="title__3">
+          <div class="start__date ">End Date</div>
+          <div class="start__date"><input [(ngModel)]="end_date" type="date" (input)="input(end_date)"></div>
+            <!-- <span>{{message}}</span> -->
+        </div>
+
+        <div class="title__4">
+            <button *ngIf="!Search" class="Search" (click)="loadAllAdmitions()">Search</button>
+        </div>
+
+        <div class="title__5">
+          <button class="Search" (click)="home_AdmistionService.changeOption()"><span class="material-symbols-outlined"> add </span>Add New</button>
+        </div>
+      </div>
+      <div class="title__6"><span>{{message}}</span></div>
 
         <div class="list" >
 
             <table class="row1" >
-                <tr class="tr" >
+                <tr>
                     <th>No</th>
                     <th>Member</th>
                     <th>Addmission Date</th>
@@ -74,7 +74,7 @@
 
 
                     <table class="space" >
-                        <div class="row1">
+                        <div class="row">
 
 
                             <tr >
@@ -206,16 +206,10 @@
                                     <td><input  type="date" class="form__input" [(ngModel)]="home_AdmistionService.home_admistionObj.discharge_date" /></td>
 
                                 </tr>
-
-
                     </div>
-                    </table>
-
-
+                  </table>
             </div>
-
         </div>
-
         <div class="form__row2">
 
             <button class="Submit__color" (click)="insertHomeAddmissionDetails()">Save</button>

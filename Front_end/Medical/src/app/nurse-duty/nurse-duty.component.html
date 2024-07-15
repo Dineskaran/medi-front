@@ -1,6 +1,6 @@
 <div class="home__admission">
 
-    <div *ngIf="!nurse_dutyService.isAddNew" class="show__details">
+    <div *ngIf="nurse_dutyService.isAddNew" class="show__details">
         <div class="header">
           Investigation Diagnosis and treatment
         </div>
@@ -33,12 +33,12 @@
 
             <table class="row1" >
                 <tr >
-                <th>No</th>
-                <th>Member</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Person Type</th>
-                <th>Treatment</th>
+                  <th>No</th>
+                  <th>Member</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Person Type</th>
+                  <th>Treatment</th>
                 </tr>
 
                 <tr  class="data" *ngFor="let nurse_duty of nurse_dutyService.nurse_dutyList ; let i = index">
@@ -56,20 +56,22 @@
         </div>
 
     </div>
+</div>
+<div class="home__admission">
 
-    <div *ngIf="nurse_dutyService.isAddNew" class="show__details">
+    <div *ngIf="!nurse_dutyService.isAddNew" class="show__details">
 
       <div class="header">
         Investigation Diagnosis and treatment
       </div>
       <br>
 
-      <div class="title__1">
-        <div class="title__1">
-          <table class="title__1" >
+      <div >
+        <div >
+          <table>
 
             <div class="row">
-              <div>
+              <tr>
                 <td><span class="form__name">Treatment</span></td>
                 <td>
                   <select type="text"  id="Duty option" name="Duty option" class="form__input" [(ngModel)]="nurse_dutyService.nurse_dutyObj.duty_option"  required>
@@ -77,7 +79,7 @@
                       <option  placeholder=" dutyoption" *ngFor="let dutyoptionObj of dutyoptionArray" [value]="dutyoptionObj.list_value"> {{dutyoptionObj.list_value}}</option>
                   </select>
                 </td>
-              </div>
+              </tr>
 
               <tr>
                 <td><span class="form__name"> Designation</span></td>
@@ -142,7 +144,7 @@
         </div>
       </div>
 
-      <div class="title__1">
+      <div class="form__row2">
         <button class="Submit__color" (click)="insertNursedutyDetails()">Submit</button>
         <button class="Discharge__color" (click)="nurse_dutyService.changeOption()" >Back</button>
       </div>

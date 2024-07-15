@@ -1,10 +1,11 @@
 .home {
-  background-color: #f1f5f9;
     display: flex;
+    background:url("../../assets/img\ 2.webp") no-repeat;
     justify-content: center;
-    height: 84vh;
-    padding-left: 1vh;
+    height: 100%;
+    /* padding-left: 1vh; */
     overflow:auto;
+    background-color:rgba(233, 243, 250, 0.658);
 }
 
 .left {
@@ -15,7 +16,7 @@
     /* right: 0; */
     display: flex;
     overflow-y: scroll;
-    background-color:rgb(203 213 225 );
+    background-color:rgba(233, 243, 250, 0.658);
 }
 
 .right{
@@ -29,7 +30,7 @@
     padding-right: 8px;
     margin-right: 3px;
     justify-content: flex-start;
-    background-color: #f1f5f9;
+    /* background-color:rgba(233, 243, 250, 0.658); */
     /* overflow: scroll; */
 
 }
@@ -37,10 +38,10 @@
 
 .left_mini{
 
-    /* width: 8%; */
+    width: 8%;
     height: 100%;
     border-radius: 4px;
-    background-color:rgb(203 213 225 );
+    /* background-color:rgba(233, 243, 250, 0.658); */
     display: flex;
     padding-top: 5px;
     display: none;
@@ -48,10 +49,10 @@
 }
 .right_mini{
 
-  width: 100%;
+  width: 92%;
   padding-top: 5px;
   border-radius: 5px;
-  background-color: #f1f5f9;
+  /* background-color:rgba(233, 243, 250, 0.658); */
   padding-left: 20px;
 
 }

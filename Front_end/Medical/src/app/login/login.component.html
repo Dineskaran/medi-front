@@ -1,6 +1,6 @@
-<!-- <mat-progress-bar mode="indeterminate" (click)="login()"></mat-progress-bar> -->
+<!--
 <div class="container">
-  <!-- <label class="error">{{message}}</label> -->
+
 
     <h1>Log in</h1>
     <form *ngIf="!isBlocked" action="#">
@@ -10,11 +10,31 @@
         <label for="password">Password:</label>
         <input [(ngModel)]="password" type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
 
-        <label class="error">{{message}}</label> 
+        <label class="error">{{message}}</label>
         <button class="loin" type="submit" (click)="log_user()"> Login</button>
 
     </form>
     <div *ngIf="isBlocked" class="alert alert-danger">
       {{ blockMessage }}
     </div>
+</div> -->
+
+<div class="container">
+
+  <section class="login">
+    <form>
+      <h1>Log In</h1>
+      <div>
+        <label for="userid">UserId:</label>
+        <input [(ngModel)]="userid" type="text" id="userid" name="userid" placeholder="Enter your userid" required >
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input [(ngModel)]="password" type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" (click)="log_user()">Log In</button>
+      <label class="error">{{message}}</label>
+    </form>
+
+  </section>
 </div>

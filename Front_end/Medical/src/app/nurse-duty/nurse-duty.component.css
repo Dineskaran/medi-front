@@ -10,10 +10,9 @@
 .header{
   display: flex;
   justify-content: space-between;
-  font-weight: 500;
+  font-weight: 550;
   height: fit-content;
   padding: 4px;
-  color: blue;
   border-bottom: 1px solid blue;
 }
 .title__1{
@@ -127,31 +126,27 @@ br{
 }
 .row1>tr{
   border-bottom:1px solid #000;
+}
 
-}
-.row1>tr{
-  padding: 1.3em 3em;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: #fff;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease 0s;
-  cursor: pointer;
-  outline: none;
-}
 .row1>tr:hover{
-  background-color: rgb(203 213 225 );
+  background-color: white;
 
 }
-
 .tr>th{
-  border-bottom:1px solid #000;
+  /* border-bottom:1px solid #000; */
   border-top:1px solid #000 ;
 }
 .data>td{
   border-bottom:1px solid #2221219c;
+}
+.list{
+  list-style: none;
+  background-color: #fff;
+  box-shadow: 2px 8px 10px rgba(40, 75, 228, 0.473);
+  transition: all 0.2s ease 0s;
+}
+.list{
+  overflow-y: scroll;
+  height: 60vh;
+  overflow-x: hidden;
 }

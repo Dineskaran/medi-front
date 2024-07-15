@@ -56,7 +56,7 @@
 }
 
 .form__row2 >button {
-  
+
   padding: 10px 20px;
   background-color: dodgerblue;
   color: white;
@@ -263,6 +263,13 @@ th{
   width: 92vw;
   padding-right: 10vw;
 
+}
+.row1>tr{
+  color: white;
+  
+}
+.data{
+  color: white;
 }
 .message{
   color: #be0009;
